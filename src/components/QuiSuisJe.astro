@@ -1,0 +1,180 @@
+
+---
+---
+
+<section class="jp" id="jp">
+  <div class="jp__inner">
+    <div class="jp__content">
+      <div class="section-badge">Qui suis-je</div>
+
+      <h2 class="section-title">
+        Jean-Philippe, expert en redressement d'entreprise
+      </h2>
+
+      <p class="jp__text">
+        Après 20 ans passés sur le terrain en Europe et 10 ans aux États-Unis,
+        j’ai vécu de près les réalités de l’entrepreneuriat : croissance, crise,
+        restructuration, décisions difficiles et relance d’activité.
+      </p>
+
+      <p class="jp__text">
+        Mon approche est simple : pas de théorie, pas de rapports qui dorment dans un tiroir.
+        J'interviens vite, je m'implique personnellement, et je suis rémunéré sur les résultats obtenus.
+      </p>
+
+      <div class="jp__badges">
+        <div class="jp__badge">
+          <span class="jp__badge-n">30 ans</span>
+          <span class="jp__badge-l">d'expérience terrain</span>
+        </div>
+
+        <div class="jp__badge">
+          <span class="jp__badge-n">2</span>
+          <span class="jp__badge-l">continents</span>
+        </div>
+
+        <div class="jp__badge">
+          <span class="jp__badge-n">+50</span>
+          <span class="jp__badge-l">entreprises accompagnées</span>
+        </div>
+      </div>
+
+      <div class="jp__certs">
+        <div class="jp__cert">✅ Certification en "Turnaround" obtenue aux États-Unis</div>
+        <div class="jp__cert">✅ Expérience multisectorielle : artisanat, commerce, startup, industrie, agricole, distribution</div>
+        <div class="jp__cert">✅ Honoraires principalement alignés sur les résultats</div>
+      </div>
+    </div>
+
+    <div class="jp__photo">
+      <img
+        src="/IMG_9794 petite.jpg"
+        alt="Jean-Philippe, expert FixBiz"
+        class="jp__photo-img"
+      />
+    </div>
+  </div>
+</section>
+
+<style>
+  .jp {
+    padding: 92px 0;
+    background: linear-gradient(180deg, #ffffff 0%, #f7fbfe 100%);
+  }
+
+  .jp__inner {
+    max-width: 1160px;
+    margin: 0 auto;
+    padding: 0 48px;
+    display: grid;
+    grid-template-columns: 1.05fr .95fr;
+    gap: 5rem;
+    align-items: center;
+  }
+
+  .jp__content {
+    max-width: 640px;
+  }
+
+  .jp__content .section-title {
+    margin-bottom: 1.4rem;
+    line-height: 1.05;
+    color: #163047;
+  }
+
+  .jp__text {
+    font-size: 1rem;
+    color: var(--muted);
+    line-height: 1.9;
+    margin-bottom: 1.15rem;
+  }
+
+  .jp__badges {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin: 2.2rem 0;
+  }
+
+  .jp__badge {
+    background: rgba(255,255,255,.9);
+    border: 1px solid rgba(46,127,177,.12);
+    border-radius: 22px;
+    padding: 20px 18px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 110px;
+    box-shadow: 0 12px 28px rgba(16,45,70,.05);
+  }
+
+  .jp__badge-n {
+    font-size: 1.7rem;
+    line-height: 1;
+    font-weight: 800;
+    color: var(--blue);
+    margin-bottom: .55rem;
+  }
+
+  .jp__badge-l {
+    font-size: .8rem;
+    line-height: 1.45;
+    color: var(--muted);
+    font-weight: 600;
+  }
+
+  .jp__certs {
+    display: grid;
+    gap: .8rem;
+    margin-top: 1rem;
+  }
+
+  .jp__cert {
+    padding: 14px 16px;
+    background: rgba(46,127,177,.06);
+    border-radius: 16px;
+    font-size: .92rem;
+    line-height: 1.6;
+    font-weight: 600;
+    color: #163047;
+  }
+
+  .jp__photo {
+    display: flex;
+    justify-content: center;
+  }
+
+  .jp__photo-img {
+    width: 100%;
+    max-width: 420px;
+    border-radius: 30px;
+    box-shadow: 0 24px 60px rgba(16,45,70,.16);
+    object-fit: cover;
+    aspect-ratio: 4 / 5;
+  }
+
+  @media (max-width: 980px) {
+    .jp {
+      padding: 78px 0;
+    }
+
+    .jp__inner {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+      padding: 0 24px;
+    }
+
+    .jp__photo {
+      order: -1;
+    }
+
+    .jp__photo-img {
+      max-width: 100%;
+      aspect-ratio: 4 / 4.5;
+    }
+
+    .jp__badges {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

@@ -1,0 +1,16 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import Whatsapp from '../components/Whatsapp.astro';
+import Contact from '../components/Contact.astro';
+---
+<Layout title="Contact — FixBiz" description="Contactez FixBiz pour un diagnostic gratuit concernant une difficulté d'entreprise, une restructuration, un besoin de pilotage ou un projet de cession.">
+  <Nav />
+  <main class="contact-page">
+    <Contact />
+  </main>
+  <Footer />
+  <Whatsapp />
+</Layout>
+<style>.contact-page { padding-top: 68px; }</style>

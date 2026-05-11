@@ -1,0 +1,285 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="Mentions légales — FixBiz">
+
+  <Nav />
+
+  <main class="legal">
+    <div class="wrap">
+
+      <div class="legal__header">
+        <div class="section-badge">Informations légales</div>
+
+        <h1>
+          Mentions légales
+        </h1>
+
+        <p class="legal__intro">
+          Les présentes mentions légales ont pour objectif d’informer
+          les utilisateurs du site fixbiz.fr sur l’identité de l’éditeur,
+          les conditions d’utilisation et les obligations légales
+          conformément à la loi n°2004-575 du 21 juin 2004
+          pour la confiance dans l’économie numérique (LCEN).
+        </p>
+
+        <div class="legal__date">
+          Dernière mise à jour : 18 novembre 2025
+        </div>
+      </div>
+
+      <div class="legal__content">
+
+        <section>
+          <h2>Éditeur du site</h2>
+
+          <p><strong>Dénomination :</strong> FixBiz</p>
+          <p><strong>Forme juridique :</strong> en cours</p>
+          <p><strong>Capital social :</strong> en cours</p>
+          <p><strong>Adresse du siège :</strong> en cours</p>
+          <p><strong>RCS :</strong> en cours</p>
+          <p><strong>N° TVA intracommunautaire :</strong> en cours</p>
+
+          <p>
+            <strong>Responsable de la publication :</strong>
+            Jean-Philippe Schneider
+          </p>
+
+          <p>
+            <strong>Contact :</strong>
+            contact@fixbiz.fr
+          </p>
+        </section>
+
+        <section>
+          <h2>Hébergement</h2>
+
+          <p>
+            Le site est hébergé par :
+          </p>
+
+          <p>
+            <strong>AMEN</strong><br />
+            12-14 Rond-Point des Champs Élysées<br />
+            75008 Paris
+          </p>
+
+          <p>
+            Site web :
+            <strong>www.amen.fr</strong>
+          </p>
+        </section>
+
+        <section>
+          <h2>Propriété intellectuelle</h2>
+
+          <p>
+            L’ensemble du contenu du site fixbiz.fr
+            (textes, images, graphismes, logo,
+            structure, mise en page, etc.)
+            est la propriété exclusive de FixBiz,
+            sauf mention contraire.
+          </p>
+
+          <p>
+            Toute reproduction, représentation ou modification,
+            totale ou partielle,
+            est interdite sans autorisation écrite préalable.
+          </p>
+
+          <p>
+            Toute exploitation non autorisée
+            pourra constituer une contrefaçon
+            au sens des articles L.335-2
+            et suivants du Code de la propriété intellectuelle.
+          </p>
+        </section>
+
+        <section>
+          <h2>Description des services fournis</h2>
+
+          <p>
+            Le site fixbiz.fr présente les services de conseil
+            et d’accompagnement proposés par FixBiz,
+            ainsi que les moyens de contact
+            et de prise de rendez-vous.
+          </p>
+
+          <p>
+            Les informations fournies sont indicatives
+            et non contractuelles.
+            Elles peuvent évoluer.
+          </p>
+        </section>
+
+        <section>
+          <h2>Limitation de responsabilité</h2>
+
+          <p>
+            FixBiz s’efforce de fournir des informations exactes
+            et mises à jour.
+            Toutefois, des erreurs ou omissions peuvent survenir.
+          </p>
+
+          <p>
+            L’utilisateur est seul responsable
+            de l’usage qu’il fait du site.
+          </p>
+
+          <p>
+            FixBiz ne pourra être tenue responsable
+            de dommages directs ou indirects
+            liés à l’utilisation du site
+            ou à l’impossibilité d’y accéder.
+          </p>
+        </section>
+
+        <section>
+          <h2>Liens hypertextes</h2>
+
+          <p>
+            Le site peut contenir des liens vers des sites tiers.
+          </p>
+
+          <p>
+            FixBiz n’exerce aucun contrôle sur leur contenu
+            et ne garantit ni leur exactitude
+            ni leur conformité légale.
+          </p>
+
+          <p>
+            La responsabilité de FixBiz
+            ne saurait être engagée
+            en cas de dommage lié à ces sites tiers.
+          </p>
+        </section>
+
+        <section>
+          <h2>Protection des données personnelles</h2>
+
+          <p>
+            La gestion des données personnelles
+            est réalisée conformément au RGPD.
+          </p>
+
+          <p>
+            Pour en savoir plus,
+            consultez notre Politique de confidentialité.
+          </p>
+        </section>
+
+        <section>
+          <h2>Cookies</h2>
+
+          <p>
+            Le site peut utiliser des cookies.
+          </p>
+
+          <p>
+            Pour plus d’informations,
+            consultez notre Politique de cookies.
+          </p>
+        </section>
+
+        <section>
+          <h2>Droit applicable</h2>
+
+          <p>
+            Le site est soumis au droit français.
+          </p>
+
+          <p>
+            En cas de litige,
+            et à défaut de résolution amiable,
+            les tribunaux compétents seront ceux
+            du ressort de Mulhouse,
+            sous réserve des règles impératives de compétence.
+          </p>
+        </section>
+
+      </div>
+
+    </div>
+  </main>
+
+  <Footer />
+
+</Layout>
+
+<style>
+  .legal {
+    padding: 130px 0 90px;
+    background:
+      linear-gradient(180deg, #ffffff 0%, #f7fbfe 100%);
+  }
+
+  .legal__header {
+    max-width: 820px;
+    margin-bottom: 4rem;
+  }
+
+  .legal h1 {
+    font-size: clamp(2.2rem, 4vw, 4rem);
+    line-height: 1.02;
+    letter-spacing: -.05em;
+    color: #163047;
+    margin-bottom: 1.2rem;
+  }
+
+  .legal__intro {
+    max-width: 760px;
+    color: var(--muted);
+    line-height: 1.8;
+    font-size: 1.05rem;
+  }
+
+  .legal__date {
+    margin-top: 1.5rem;
+    font-size: .9rem;
+    color: var(--muted);
+    font-weight: 600;
+  }
+
+  .legal__content {
+    max-width: 860px;
+    display: flex;
+    flex-direction: column;
+    gap: 2.8rem;
+  }
+
+  .legal section {
+    background: rgba(255,255,255,.92);
+    border: 1px solid rgba(20,65,95,.08);
+    border-radius: 24px;
+    padding: 32px;
+    box-shadow: 0 12px 28px rgba(16,45,70,.04);
+  }
+
+  .legal h2 {
+    font-size: 1.2rem;
+    color: #163047;
+    margin-bottom: 1rem;
+  }
+
+  .legal p,
+  .legal li {
+    color: var(--muted);
+    line-height: 1.8;
+    font-size: .97rem;
+  }
+
+  @media (max-width: 768px) {
+
+    .legal {
+      padding: 110px 0 70px;
+    }
+
+    .legal section {
+      padding: 24px;
+    }
+
+  }
+</style>

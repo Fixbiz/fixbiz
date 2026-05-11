@@ -1,0 +1,194 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+import Whatsapp from '../../components/Whatsapp.astro';
+
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+
+  return posts.map((post) => ({
+    params: { slug: post.id.replace(/\.md$/, '') },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+---
+
+<Layout title={post.data.title} description={post.data.description}>
+  <Nav />
+
+  <main class="article">
+    <section class="article__hero">
+      <div class="wrap">
+        <div class="article__meta">{post.data.category}</div>
+
+        <h1>{post.data.title}</h1>
+
+        <p class="article__desc">{post.data.description}</p>
+
+        {
+          post.data.image && (
+            <img
+              src={post.data.image}
+              alt={post.data.title}
+              class="article__image"
+            />
+          )
+        }
+      </div>
+    </section>
+
+    <section class="article__section">
+      <div class="wrap">
+        <article class="article__content">
+          <Content />
+        </article>
+
+        <div class="article__cta">
+          <h3>Besoin d’un regard extérieur sur votre situation ?</h3>
+
+          <p>
+            Un premier échange permet souvent d’identifier rapidement les priorités
+            et les premières actions utiles.
+          </p>
+
+          <a href="/prendre-rdv/" class="btn btn--primary">
+            Parler de ma situation
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+  <Whatsapp />
+</Layout>
+
+<style>
+  .article__hero {
+    padding: 140px 0 76px;
+    background:
+      radial-gradient(circle at 15% 20%, #dff1fb 0, transparent 34%),
+      linear-gradient(135deg, var(--blue-soft), #ffffff);
+  }
+
+  .article__meta {
+    color: var(--blue-dark);
+    font-size: .82rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+  }
+
+  .article__hero h1 {
+    max-width: 920px;
+    font-size: clamp(2.4rem, 5vw, 4.5rem);
+    line-height: 1.02;
+    letter-spacing: -.05em;
+    color: #163047;
+    margin-bottom: 1.2rem;
+  }
+
+  .article__desc {
+    max-width: 760px;
+    color: var(--muted);
+    line-height: 1.8;
+    font-size: 1.05rem;
+  }
+
+  .article__image {
+    width: 100%;
+    max-width: 920px;
+    height: auto;
+    object-fit: contain;
+    border-radius: 30px;
+    margin-top: 2.2rem;
+    box-shadow: 0 22px 55px rgba(16,45,70,.14);
+  }
+
+  .article__section {
+    padding: 70px 0 90px;
+    background: #ffffff;
+  }
+
+  .article__content {
+    max-width: 860px;
+    background: #fff;
+    border-radius: 30px;
+    padding: 46px;
+    border: 1px solid rgba(20,65,95,.08);
+    box-shadow: 0 18px 40px rgba(16,45,70,.05);
+    color: #355066;
+    line-height: 1.9;
+  }
+
+  .article__content h1,
+  .article__content h2,
+  .article__content h3 {
+    color: #163047;
+    line-height: 1.15;
+  }
+
+  .article__content h2 {
+    margin-top: 2.8rem;
+    margin-bottom: 1rem;
+  }
+
+  .article__content p {
+    margin-bottom: 1.3rem;
+  }
+
+  .article__content ul {
+    padding-left: 1.2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .article__content li {
+    margin-bottom: .7rem;
+  }
+
+  .article__cta {
+    max-width: 860px;
+    margin-top: 2rem;
+    padding: 38px;
+    border-radius: 28px;
+    background: linear-gradient(135deg, #eff6fb 0%, #ffffff 100%);
+    border: 1px solid rgba(46,127,177,.12);
+  }
+
+  .article__cta h3 {
+    font-size: 1.55rem;
+    color: #163047;
+    margin-bottom: 1rem;
+  }
+
+  .article__cta p {
+    max-width: 620px;
+    color: var(--muted);
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+  }
+
+  @media (max-width: 768px) {
+    .article__hero {
+      padding: 120px 0 60px;
+    }
+
+    .article__image {
+      height: auto;
+      border-radius: 22px;
+    }
+
+    .article__content {
+      padding: 30px;
+    }
+
+    .article__cta {
+      padding: 30px;
+    }
+  }
+</style>

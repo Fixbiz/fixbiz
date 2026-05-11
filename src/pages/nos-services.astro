@@ -1,0 +1,142 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import Whatsapp from '../components/Whatsapp.astro';
+
+const packs = [
+  {
+    id: 'resilience', tag: 'Urgence', title: 'Pack Résilience',
+    intro: "Pour les situations où il faut agir vite : trésorerie tendue, dettes, pression des créanciers, perte de clients ou risque de blocage.",
+    actions: ['Diagnostic clair de la situation réelle', 'Priorités 7 / 30 / 90 jours', 'Plan de trésorerie d’urgence', 'Négociation avec créanciers et partenaires', 'Réduction des dépenses non essentielles', 'Suivi rapproché jusqu’à stabilisation'],
+    result: "Stabiliser l’entreprise, reprendre la main et éviter que l’urgence ne se transforme en impasse."
+  },
+  {
+    id: 'performance', tag: 'Rentabilité', title: 'Pack Performance',
+    intro: "Pour les entreprises qui fonctionnent mais manquent de structure, de marge ou de visibilité dans le pilotage.",
+    actions: ['Audit des chiffres et de l’organisation', 'Analyse des marges, coûts et priorités', 'Mise en place de processus simples', 'Tableaux de bord utiles au dirigeant', 'Suivi mensuel des objectifs', 'Plan d’amélioration de rentabilité'],
+    result: "Faire mieux avec les moyens existants : moins de chaos, plus de méthode, plus de rentabilité."
+  },
+  {
+    id: 'soutien', tag: 'Dirigeant', title: 'Pack Soutien',
+    intro: "Pour les dirigeants seuls face à trop de décisions, trop d’administratif ou une pression quotidienne difficile à porter.",
+    actions: ['Point régulier avec le dirigeant', 'Tri des priorités et décisions à prendre', 'Aide à la préparation de courriers ou dossiers', 'Coordination avec les interlocuteurs clés', 'Suivi des échéances importantes'],
+    result: "Réduire la charge mentale et avancer avec un cadre clair."
+  },
+  {
+    id: 'starter', tag: 'Création', title: 'Pack Starter',
+    intro: "Pour lancer un projet sur des bases propres : structure, partenaires, contrats, chiffres et organisation initiale.",
+    actions: ['Clarification du modèle économique', 'Préparation des formalités et partenaires', 'Organisation administrative simple', 'Premiers outils de suivi', 'Liste des risques à éviter'],
+    result: "Démarrer proprement, sans perdre du temps dans des erreurs évitables."
+  },
+  {
+    id: 'expert', tag: 'Bras droit', title: 'Pack Expert',
+    intro: "Pour déléguer une partie du pilotage quotidien sans embauche interne : administratif, coordination, reporting, trésorerie.",
+    actions: ['Suivi administratif et financier', 'Coordination banques, comptables, conseils', 'Organisation des relances et échéances', 'Reporting simple et régulier', 'Préparation des décisions importantes'],
+    result: "Libérer du temps au dirigeant tout en gardant une vision claire."
+  },
+  {
+    id: 'surmesure', tag: 'Mission ciblée', title: 'Pack Sur mesure',
+    intro: "Pour les cas qui ne rentrent pas dans une case : cession, pivot, conflit opérationnel, réorganisation ou situation atypique.",
+    actions: ['Diagnostic personnalisé', 'Objectifs définis ensemble', 'Plan d’action adapté', 'Rythme flexible', 'Ajustements selon l’évolution'],
+    result: "Construire un accompagnement utile, sans format imposé."
+  }
+];
+---
+
+<Layout title="Services FixBiz — Redressement, performance, soutien et pilotage" description="Découvrez les services FixBiz : redressement d'entreprise, pilotage, structuration, soutien dirigeant, création et accompagnement sur mesure.">
+  <Nav />
+  <main>
+    <section class="services-hero">
+      <div class="wrap">
+        <div class="eyebrow">Services FixBiz</div>
+        <h1>Choisir le bon niveau d’accompagnement selon votre situation.</h1>
+        <p>Chaque mission commence par un diagnostic simple : comprendre l’urgence, identifier les priorités et décider si FixBiz peut vraiment vous aider.</p>
+      </div>
+    </section>
+
+    <section class="section services-intro">
+      <div class="wrap intro-grid">
+        <div class="card intro-card">
+          <strong>1. Comprendre</strong>
+          <span>Où est le vrai blocage ? Trésorerie, organisation, rentabilité, stratégie, administratif ?</span>
+        </div>
+        <div class="card intro-card">
+          <strong>2. Prioriser</strong>
+          <span>Ce qui doit être traité maintenant, ce qui peut attendre, ce qui doit être arrêté.</span>
+        </div>
+        <div class="card intro-card">
+          <strong>3. Agir</strong>
+          <span>Un plan concret, suivi dans le temps, avec des actions mesurables.</span>
+        </div>
+      </div>
+    </section>
+
+    {packs.map((pack, index) => (
+      <section id={pack.id} class:list={['pack-section', { 'pack-section--soft': index % 2 === 0 }]}>
+        <div class="wrap pack">
+          <div class="pack__main">
+            <span class="pack__tag">{pack.tag}</span>
+            <h2>{pack.title}</h2>
+            <p class="pack__intro">{pack.intro}</p>
+            <h3>Ce que l’on met en place</h3>
+            <ul class="pack__list">
+              {pack.actions.map((action) => <li>{action}</li>)}
+            </ul>
+          </div>
+          <aside class="pack__aside card">
+            <strong>Objectif</strong>
+            <p>{pack.result}</p>
+            <a href="/prendre-rdv/" class="btn btn--primary">Diagnostic gratuit →</a>
+          </aside>
+        </div>
+      </section>
+    ))}
+
+    <section class="section final-cta">
+      <div class="wrap final-cta__box card">
+        <div>
+          <div class="eyebrow">Premier échange</div>
+          <h2>Vous ne savez pas quel service choisir ?</h2>
+          <p>Expliquez votre situation. Le premier échange sert justement à déterminer si vous avez besoin d’une intervention urgente, d’un suivi ou d’une mission ciblée.</p>
+        </div>
+        <a class="btn btn--primary" href="/prendre-rdv/">Prendre rendez-vous</a>
+      </div>
+    </section>
+  </main>
+  <Footer />
+  <Whatsapp />
+</Layout>
+
+<style>
+  .services-hero { padding: 138px 0 72px; background: linear-gradient(135deg, var(--blue-soft), #fff 64%); }
+  .services-hero h1 { max-width: 830px; margin: 1rem 0; font-size: clamp(2.25rem, 5vw, 4rem); line-height: 1.05; letter-spacing: -.05em; }
+  .services-hero p { max-width: 680px; margin: 0; color: var(--muted); font-size: 1.05rem; }
+  .services-intro { padding-bottom: 44px; }
+  .intro-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .intro-card { padding: 22px; }
+  .intro-card strong { display: block; font-size: 1rem; color: var(--blue-dark); margin-bottom: 6px; }
+  .intro-card span { display: block; color: var(--muted); font-size: .92rem; }
+  .pack-section { padding: 70px 0; background: #fff; }
+  .pack-section--soft { background: var(--bg); }
+  .pack { display: grid; grid-template-columns: 1fr 350px; gap: 42px; align-items: start; }
+  .pack__tag { display: inline-block; color: var(--blue-dark); background: var(--blue-soft); border-radius: 999px; padding: .35rem .75rem; font-size: .75rem; font-weight: 800; }
+  .pack h2 { margin: 14px 0 10px; font-size: clamp(1.8rem, 3vw, 2.6rem); line-height: 1.12; letter-spacing: -.035em; }
+  .pack__intro { max-width: 720px; margin: 0 0 22px; color: var(--muted); }
+  .pack h3 { margin: 0 0 12px; font-size: 1rem; }
+  .pack__list { margin: 0; padding: 0; list-style: none; display: grid; gap: 10px; }
+  .pack__list li { color: var(--ink); }
+  .pack__list li::before { content: '✓'; color: var(--green); font-weight: 800; margin-right: 10px; }
+  .pack__aside { position: sticky; top: 90px; padding: 24px; }
+  .pack__aside strong { color: var(--blue-dark); text-transform: uppercase; letter-spacing: .04em; font-size: .78rem; }
+  .pack__aside p { color: var(--muted); margin: 10px 0 20px; }
+  .final-cta { background: #fff; }
+  .final-cta__box { padding: 34px; display: flex; gap: 24px; align-items: center; justify-content: space-between; background: linear-gradient(135deg, #fff, var(--blue-soft)); }
+  .final-cta h2 { margin: 12px 0 8px; font-size: clamp(1.6rem, 3vw, 2.25rem); }
+  .final-cta p { margin: 0; color: var(--muted); max-width: 680px; }
+  @media (max-width: 900px) {
+    .intro-grid, .pack { grid-template-columns: 1fr; }
+    .pack__aside { position: static; }
+    .final-cta__box { align-items: flex-start; flex-direction: column; }
+  }
+</style>

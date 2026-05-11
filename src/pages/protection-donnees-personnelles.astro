@@ -1,0 +1,259 @@
+
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="Protection des données personnelles — FixBiz">
+
+  <Nav />
+
+  <main class="legal">
+    <div class="wrap">
+
+      <div class="legal__header">
+        <div class="section-badge">Protection des données</div>
+
+        <h1>Protection des données personnelles</h1>
+
+        <p class="legal__intro">
+          Cette page présente la protection des données personnelles mise en œuvre par FixBiz,
+          conformément au RGPD et à la loi Informatique et Libertés.
+        </p>
+
+        <div class="legal__date">
+          Dernière mise à jour : 18 novembre 2025
+        </div>
+      </div>
+
+      <div class="legal__content">
+
+        <section>
+          <h2>Principes et conformité RGPD</h2>
+          <p>
+            FixBiz applique des mesures organisationnelles et techniques adaptées
+            pour assurer la protection des données personnelles de ses utilisateurs.
+          </p>
+          <p>
+            Les informations sont traitées de manière licite, loyale, transparente
+            et uniquement pour des finalités précises.
+          </p>
+        </section>
+
+        <section>
+          <h2>Responsable du traitement</h2>
+          <p>
+            Le responsable du traitement des données personnelles collectées sur ce site
+            est l’éditeur de FixBiz.
+          </p>
+          <p>
+            Pour toute demande relative aux données personnelles :
+            <strong>contact@fixbiz.fr</strong>
+          </p>
+        </section>
+
+        <section>
+          <h2>Collecte et utilisation des données personnelles</h2>
+          <p>
+            Le site peut collecter des informations personnelles via les formulaires
+            de contact ou les échanges par e-mail.
+          </p>
+          <p>
+            Ces données sont utilisées exclusivement pour répondre aux demandes,
+            organiser un échange, fournir un service ou assurer le suivi
+            d’une relation commerciale ou informative.
+          </p>
+          <p>
+            FixBiz ne revend pas, ne loue pas et ne transmet pas les données personnelles
+            à des tiers, sauf obligation légale ou prestataire nécessaire au fonctionnement du service.
+          </p>
+        </section>
+
+        <section>
+          <h2>Conservation des données</h2>
+          <p>
+            Les informations sont conservées pour une durée proportionnée
+            aux finalités poursuivies.
+          </p>
+          <ul>
+            <li>Demandes de contact : jusqu’à 3 ans après le dernier échange.</li>
+            <li>Données contractuelles ou de facturation : durée légale applicable.</li>
+            <li>Cookies et traceurs : durée indiquée dans la Politique des cookies.</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Cookies et traceurs</h2>
+          <p>
+            Le site peut utiliser des cookies pour améliorer l’expérience utilisateur,
+            mesurer l’audience ou permettre certaines fonctionnalités essentielles.
+          </p>
+          <p>
+            Pour plus de détails, l’utilisateur peut consulter la page dédiée
+            à la Politique des cookies.
+          </p>
+        </section>
+
+        <section>
+          <h2>Droits des utilisateurs</h2>
+          <p>
+            Conformément au RGPD, chaque utilisateur dispose notamment des droits suivants :
+          </p>
+          <ul>
+            <li>droit d’accès ;</li>
+            <li>droit de rectification ;</li>
+            <li>droit d’opposition ;</li>
+            <li>droit à l’effacement ;</li>
+            <li>droit à la portabilité ;</li>
+            <li>droit à la limitation du traitement ;</li>
+            <li>droit de retirer son consentement à tout moment.</li>
+          </ul>
+          <p>
+            L’utilisateur peut également définir des directives relatives
+            à la conservation, à l’effacement et à la communication de ses données
+            après son décès.
+          </p>
+          <p>
+            Pour exercer ces droits :
+            <strong>contact@fixbiz.fr</strong>.
+            Une réponse sera fournie dans les meilleurs délais conformément aux obligations légales.
+          </p>
+        </section>
+
+        <section>
+          <h2>Sécurité des informations</h2>
+          <p>
+            FixBiz attache une importance particulière à la transparence
+            et à la protection des informations personnelles.
+          </p>
+          <p>
+            Des mesures techniques et organisationnelles adaptées sont mises en œuvre
+            pour limiter les risques de perte, d’accès non autorisé,
+            de divulgation ou d’altération des données.
+          </p>
+        </section>
+
+        <section>
+          <h2>Réclamation auprès de la CNIL</h2>
+          <p>
+            Pour des informations officielles sur la protection des données personnelles,
+            l’utilisateur peut consulter le site de la CNIL :
+            <strong>www.cnil.fr</strong>.
+          </p>
+          <p>
+            L’utilisateur peut également introduire une réclamation auprès de la CNIL
+            s’il estime que ses droits ne sont pas respectés.
+          </p>
+        </section>
+
+        <section>
+          <h2>Droit applicable</h2>
+          <p>
+            Le présent site est soumis au droit français.
+          </p>
+          <p>
+            En cas de différend non résolu à l’amiable,
+            les tribunaux du ressort de Mulhouse seront compétents,
+            sous réserve des règles de compétence impératives.
+          </p>
+        </section>
+
+        <section>
+          <h2>Informations complémentaires</h2>
+          <p>
+            Pour en savoir plus sur le cadre juridique du site,
+            vous pouvez également consulter nos mentions légales
+            et notre politique de confidentialité.
+          </p>
+        </section>
+
+      </div>
+
+    </div>
+  </main>
+
+  <Footer />
+
+</Layout>
+
+<style>
+  .legal {
+    padding: 130px 0 90px;
+    background: linear-gradient(180deg, #ffffff 0%, #f7fbfe 100%);
+  }
+
+  .legal__header {
+    max-width: 820px;
+    margin-bottom: 4rem;
+  }
+
+  .legal h1 {
+    font-size: clamp(2.2rem, 4vw, 4rem);
+    line-height: 1.02;
+    letter-spacing: -.05em;
+    color: #163047;
+    margin-bottom: 1.2rem;
+  }
+
+  .legal__intro {
+    max-width: 760px;
+    color: var(--muted);
+    line-height: 1.8;
+    font-size: 1.05rem;
+  }
+
+  .legal__date {
+    margin-top: 1.5rem;
+    font-size: .9rem;
+    color: var(--muted);
+    font-weight: 600;
+  }
+
+  .legal__content {
+    max-width: 860px;
+    display: flex;
+    flex-direction: column;
+    gap: 2.8rem;
+  }
+
+  .legal section {
+    background: rgba(255,255,255,.92);
+    border: 1px solid rgba(20,65,95,.08);
+    border-radius: 24px;
+    padding: 32px;
+    box-shadow: 0 12px 28px rgba(16,45,70,.04);
+  }
+
+  .legal h2 {
+    font-size: 1.2rem;
+    color: #163047;
+    margin-bottom: 1rem;
+  }
+
+  .legal p,
+  .legal li {
+    color: var(--muted);
+    line-height: 1.8;
+    font-size: .97rem;
+  }
+
+  .legal ul {
+    margin: 1rem 0;
+    padding-left: 1.2rem;
+  }
+
+  .legal li {
+    margin-bottom: .45rem;
+  }
+
+  @media (max-width: 768px) {
+    .legal {
+      padding: 110px 0 70px;
+    }
+
+    .legal section {
+      padding: 24px;
+    }
+  }
+</style>

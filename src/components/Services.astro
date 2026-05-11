@@ -1,0 +1,304 @@
+---
+const services = [
+  {
+    id: 'resilience',
+    tag: 'Entreprise en difficulté',
+    title: 'Redressement & trésorerie',
+    text: "Stabiliser une entreprise sous pression : trésorerie tendue, dettes, créanciers et priorités à court terme.",
+    points: [
+      'Diagnostic rapide',
+      'Plan de trésorerie',
+      'Négociation créanciers'
+    ],
+    featured: true
+  },
+
+  {
+    id: 'performance',
+    tag: 'Rentabilité',
+    title: 'Performance & rentabilité',
+    text: "Structurer l’activité, améliorer les marges et remettre de l’ordre dans le pilotage quotidien.",
+    points: [
+      'Audit 360°',
+      'Process simples',
+      'Indicateurs utiles'
+    ]
+  },
+
+  {
+    id: 'soutien',
+    tag: 'Dirigeant',
+    title: 'Accompagnement du dirigeant',
+    text: "Un appui régulier pour ne plus décider seul et garder de la clarté dans les périodes chargées.",
+    points: [
+      'Point régulier',
+      'Aide à la décision',
+      'Priorités claires'
+    ]
+  },
+
+  {
+    id: 'starter',
+    tag: 'Création',
+    title: 'Création & structuration',
+    text: "Poser les bases d’un projet : organisation, partenaires, contrats, formalités et premiers chiffres.",
+    points: [
+      'Structure de départ',
+      'Formalités',
+      'Organisation'
+    ]
+  },
+
+  {
+    id: 'expert',
+    tag: 'Pilotage',
+    title: 'Pilotage opérationnel',
+    text: "Déléguer une partie du pilotage administratif, financier et opérationnel sans recruter en interne.",
+    points: [
+      'Coordination',
+      'Suivi trésorerie',
+      'Reporting'
+    ]
+  },
+
+  {
+    id: 'surmesure',
+    tag: 'Mission ciblée',
+    title: 'Cession, transition ou crise ponctuelle',
+    text: "Construire un accompagnement adapté aux situations atypiques : transition, cession, réorganisation ou crise.",
+    points: [
+      'Objectifs précis',
+      'Format flexible',
+      'Suivi adapté'
+    ]
+  }
+];
+---
+
+<section class="section services" id="services">
+
+  <div class="wrap">
+
+    <div class="section-head section-head--center fade">
+
+      <div class="eyebrow">
+        Services FixBiz
+      </div>
+
+      <h2 class="section-title section-title--small">
+        Redressement, performance et accompagnement des dirigeants.
+      </h2>
+
+      <p class="section-sub">
+        FixBiz accompagne les TPE et PME pour stabiliser une situation difficile,
+        améliorer la rentabilité, structurer l’organisation ou préparer une vente.
+      </p>
+
+    </div>
+
+    <div class="services__grid fade">
+
+      {services.map((s) => (
+
+        <article
+          class:list={[
+            'services__card',
+            'card',
+            { 'services__card--featured': s.featured }
+          ]}
+        >
+
+          <span class="services__tag">
+            {s.tag}
+          </span>
+
+          <h3>
+            {s.title}
+          </h3>
+
+          <p>
+            {s.text}
+          </p>
+
+          <ul>
+
+            {s.points.map((p) => (
+              <li>{p}</li>
+            ))}
+
+          </ul>
+
+          <a
+            href={`/nos-services/#${s.id}`}
+            class="services__link"
+          >
+            Détail du service →
+          </a>
+
+        </article>
+
+      ))}
+
+    </div>
+
+    <div class="services__bottom fade">
+
+      <a
+        href="/nos-services/"
+        class="btn btn--primary"
+      >
+        Voir tous les services
+      </a>
+
+      <a
+        href="/prendre-rdv/"
+        class="btn btn--ghost"
+      >
+        Parler de ma situation
+      </a>
+
+    </div>
+
+  </div>
+
+</section>
+
+<style>
+
+  .services {
+    background: #fff;
+  }
+
+  .services__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+  }
+
+  .services__card {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    min-height: 330px;
+  }
+
+  .services__card--featured {
+    border-color: rgba(46,127,177,.45);
+
+    background:
+      linear-gradient(
+        180deg,
+        #fff 0%,
+        #f2f9fd 100%
+      );
+  }
+
+  .services__tag {
+    width: fit-content;
+
+    padding: .32rem .68rem;
+
+    border-radius: 999px;
+
+    background: var(--blue-soft);
+
+    color: var(--blue-dark);
+
+    font-size: .72rem;
+
+    font-weight: 800;
+  }
+
+  .services__card h3 {
+    margin: 18px 0 8px;
+
+    font-size: 1.16rem;
+
+    line-height: 1.25;
+
+    color: #163047;
+  }
+
+  .services__card p {
+    margin: 0;
+
+    color: var(--muted);
+
+    font-size: .92rem;
+
+    line-height: 1.7;
+  }
+
+  .services__card ul {
+    margin: 18px 0 0;
+
+    padding: 0;
+
+    list-style: none;
+
+    display: grid;
+
+    gap: 8px;
+  }
+
+  .services__card li {
+    color: var(--ink);
+
+    font-size: .88rem;
+  }
+
+  .services__card li::before {
+    content: '✓';
+
+    color: var(--green);
+
+    font-weight: 800;
+
+    margin-right: 8px;
+  }
+
+  .services__link {
+    margin-top: auto;
+
+    padding-top: 20px;
+
+    color: var(--blue-dark);
+
+    font-weight: 800;
+
+    font-size: .9rem;
+  }
+
+  .services__bottom {
+    margin-top: 30px;
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 12px;
+
+    flex-wrap: wrap;
+  }
+
+  @media (max-width: 980px) {
+
+    .services__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+  }
+
+  @media (max-width: 640px) {
+
+    .services__grid {
+      grid-template-columns: 1fr;
+    }
+
+    .services__card {
+      min-height: auto;
+    }
+
+  }
+
+</style>

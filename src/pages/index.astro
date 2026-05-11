@@ -1,0 +1,61 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import Whatsapp from '../components/Whatsapp.astro';
+
+import Hero from '../components/Hero.astro';
+import Signaux from '../components/Signaux.astro';
+import Services from '../components/Services.astro';
+import QuiSuisJe from '../components/QuiSuisJe.astro';
+import BlogPreview from '../components/BlogPreview.astro';
+import Faq from '../components/Faq.astro';
+import Contact from '../components/Contact.astro';
+---
+
+<Layout
+  title="FixBiz — Redressement, performance et accompagnement des dirigeants"
+  description="FixBiz accompagne les dirigeants de TPE et PME pour redresser, structurer, améliorer la rentabilité ou préparer la vente de leur entreprise."
+>
+
+  <Nav />
+
+  <main>
+
+    <Hero />
+
+    <Signaux />
+
+    <Services />
+
+    <QuiSuisJe />
+
+    <BlogPreview />
+
+    <Faq />
+
+    <Contact />
+
+  </main>
+
+  <Footer />
+
+  <Whatsapp />
+
+</Layout>
+
+<script>
+  const obs = new IntersectionObserver(
+    entries =>
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('in');
+        }
+      }),
+    { threshold: 0.12 }
+  );
+
+  document
+    .querySelectorAll('.fade')
+    .forEach(el => obs.observe(el));
+</script>

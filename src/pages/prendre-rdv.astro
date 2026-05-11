@@ -1,0 +1,23 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import Whatsapp from '../components/Whatsapp.astro';
+---
+
+<Layout title="Prendre rendez-vous — FixBiz">
+  <Nav />
+  <main>
+    <section style="padding:140px 0 80px;background:linear-gradient(135deg,#eff6fb 0%,#fff 60%);">
+      <div style="max-width:1160px;margin:0 auto;padding:0 48px;">
+        <div style="display:inline-block;background:#eff6fb;color:#2e7fb1;font-size:.8rem;font-weight:700;padding:.4rem 1rem;border-radius:20px;border:1px solid #dbe8f3;margin-bottom:1rem">Consultation gratuite</div>
+        <h1 style="font-size:clamp(2rem,4vw,3.2rem);font-weight:800;line-height:1.15;color:#163047;margin-bottom:1rem">Prenons 15 minutes<br>pour parler de votre situation</h1>
+        <p style="font-size:1rem;color:#5d7183;line-height:1.7;max-width:600px;margin-bottom:2rem">Choisissez un créneau qui vous convient. La première discussion est gratuite et sans engagement.</p>
+        <div class="calendly-inline-widget" data-url="https://calendly.com/contact-fixbiz/15-minutes" style="min-width:320px;height:710px;"></div>
+        <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+      </div>
+    </section>
+  </main>
+  <Footer />
+  <Whatsapp />
+</Layout>

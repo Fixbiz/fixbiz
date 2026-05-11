@@ -1,0 +1,223 @@
+
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="Politique des cookies — FixBiz">
+
+  <Nav />
+
+  <main class="legal">
+    <div class="wrap">
+
+      <div class="legal__header">
+        <div class="section-badge">Cookies</div>
+
+        <h1>Politique des cookies</h1>
+
+        <p class="legal__intro">
+          Cette politique de cookies explique comment le site fixbiz.fr utilise
+          les cookies et autres traceurs pour améliorer votre expérience,
+          mesurer l’audience et assurer le fonctionnement correct des services proposés.
+        </p>
+
+        <div class="legal__date">
+          Dernière mise à jour : 18 novembre 2025
+        </div>
+      </div>
+
+      <div class="legal__content">
+
+        <section>
+          <h2>Qu’est-ce qu’un cookie ?</h2>
+          <p>
+            Un cookie est un petit fichier texte déposé sur votre appareil
+            lors de la consultation d’un site web. Il permet, durant sa période
+            de validité, de reconnaître votre terminal, de mémoriser certaines
+            informations et de faciliter la navigation.
+          </p>
+        </section>
+
+        <section>
+          <h2>Types de cookies utilisés sur fixbiz.fr</h2>
+
+          <h3>1. Cookies nécessaires</h3>
+          <p>
+            Ces cookies sont indispensables au bon fonctionnement du site.
+            Ils servent notamment à la gestion des sessions, à la sécurité
+            ou à l’affichage des éléments techniques essentiels.
+          </p>
+
+          <h3>2. Cookies de mesure d’audience</h3>
+          <p>
+            Ces cookies permettent d’analyser le trafic du site,
+            de comprendre comment les visiteurs utilisent fixbiz.fr
+            et d’améliorer les contenus proposés.
+            Ils peuvent être fournis par des outils de statistiques
+            comme Google Analytics ou équivalents.
+          </p>
+
+          <h3>3. Cookies de fonctionnalité</h3>
+          <p>
+            Ces cookies améliorent l’expérience utilisateur en enregistrant
+            certaines préférences : langue, paramètres d’affichage,
+            formulaires, etc.
+          </p>
+        </section>
+
+        <section>
+          <h2>Gestion du consentement</h2>
+          <p>
+            Lors de votre première visite, un bandeau d’information vous permet
+            d’accepter, de refuser ou de personnaliser l’utilisation des cookies
+            non essentiels.
+          </p>
+          <p>
+            Vous pouvez à tout moment modifier vos préférences via les paramètres
+            de votre navigateur ou via le gestionnaire de consentement prévu sur le site.
+          </p>
+        </section>
+
+        <section>
+          <h2>Paramétrage de votre navigateur</h2>
+          <p>
+            Vous pouvez configurer votre navigateur pour gérer les cookies :
+          </p>
+
+          <ul>
+            <li>Chrome : Paramètres → Confidentialité et sécurité → Cookies et autres données des sites</li>
+            <li>Firefox : Options → Vie privée et sécurité → Cookies et données de sites</li>
+            <li>Safari : Préférences → Confidentialité</li>
+            <li>Edge : Paramètres → Cookies et autorisations de site</li>
+          </ul>
+
+          <p>
+            Pour des informations officielles, consultez le site de la CNIL.
+          </p>
+        </section>
+
+        <section>
+          <h2>Durée de conservation</h2>
+          <p>
+            La durée maximale de conservation des cookies est de 13 mois,
+            conformément aux recommandations de la CNIL.
+          </p>
+          <p>
+            Les choix de consentement, acceptation ou refus, peuvent également
+            être mémorisés durant une période limitée.
+          </p>
+        </section>
+
+        <section>
+          <h2>Mise à jour de la politique de cookies</h2>
+          <p>
+            Cette politique de cookies peut être mise à jour pour intégrer
+            les évolutions légales, techniques ou les modifications des cookies
+            utilisés sur fixbiz.fr.
+          </p>
+          <p>
+            Nous vous invitons à la consulter régulièrement.
+          </p>
+          <p>
+            Pour en savoir plus sur les aspects légaux du site,
+            vous pouvez consulter nos mentions légales.
+          </p>
+        </section>
+
+      </div>
+
+    </div>
+  </main>
+
+  <Footer />
+
+</Layout>
+
+<style>
+  .legal {
+    padding: 130px 0 90px;
+    background: linear-gradient(180deg, #ffffff 0%, #f7fbfe 100%);
+  }
+
+  .legal__header {
+    max-width: 820px;
+    margin-bottom: 4rem;
+  }
+
+  .legal h1 {
+    font-size: clamp(2.2rem, 4vw, 4rem);
+    line-height: 1.02;
+    letter-spacing: -.05em;
+    color: #163047;
+    margin-bottom: 1.2rem;
+  }
+
+  .legal__intro {
+    max-width: 760px;
+    color: var(--muted);
+    line-height: 1.8;
+    font-size: 1.05rem;
+  }
+
+  .legal__date {
+    margin-top: 1.5rem;
+    font-size: .9rem;
+    color: var(--muted);
+    font-weight: 600;
+  }
+
+  .legal__content {
+    max-width: 860px;
+    display: flex;
+    flex-direction: column;
+    gap: 2.8rem;
+  }
+
+  .legal section {
+    background: rgba(255,255,255,.92);
+    border: 1px solid rgba(20,65,95,.08);
+    border-radius: 24px;
+    padding: 32px;
+    box-shadow: 0 12px 28px rgba(16,45,70,.04);
+  }
+
+  .legal h2 {
+    font-size: 1.2rem;
+    color: #163047;
+    margin-bottom: 1rem;
+  }
+
+  .legal h3 {
+    font-size: 1rem;
+    color: #163047;
+    margin: 1.4rem 0 .5rem;
+  }
+
+  .legal p,
+  .legal li {
+    color: var(--muted);
+    line-height: 1.8;
+    font-size: .97rem;
+  }
+
+  .legal ul {
+    margin: 1rem 0;
+    padding-left: 1.2rem;
+  }
+
+  .legal li {
+    margin-bottom: .45rem;
+  }
+
+  @media (max-width: 768px) {
+    .legal {
+      padding: 110px 0 70px;
+    }
+
+    .legal section {
+      padding: 24px;
+    }
+  }
+</style>

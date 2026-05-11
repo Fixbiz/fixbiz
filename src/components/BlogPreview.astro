@@ -1,0 +1,192 @@
+---
+import { getCollection } from 'astro:content';
+
+const posts = await getCollection('blog');
+
+posts.sort((a, b) =>
+  new Date(b.data.date).getTime() -
+  new Date(a.data.date).getTime()
+);
+
+const latestPosts = posts.slice(0, 3);
+---
+
+<section class="blog-preview">
+
+  <div class="wrap">
+
+    <div class="blog-preview__top">
+
+      <div>
+        <div class="section-badge">
+          Blog
+        </div>
+
+        <h2 class="section-title">
+          Derniers conseils et analyses.
+        </h2>
+
+        <p class="section-sub">
+          Des articles pratiques pour aider les dirigeants
+          à mieux piloter leur activité et anticiper les difficultés.
+        </p>
+      </div>
+
+      <a href="/blog/" class="blog-preview__link">
+        Voir tous les articles →
+      </a>
+
+    </div>
+
+    <div class="blog-preview__grid">
+
+      {latestPosts.map((post) => (
+
+        <a
+          href={`/blog/${post.id.replace(/\.md$/, '')}/`}
+          class="blog-card"
+        >
+
+          {
+            post.data.image && (
+              <img
+                src={post.data.image}
+                alt={post.data.title}
+                class="blog-card__image"
+              />
+            )
+          }
+
+          <div class="blog-card__content">
+
+            <div class="blog-card__meta">
+              {post.data.category}
+            </div>
+
+            <h3>
+              {post.data.title}
+            </h3>
+
+            <p>
+              {post.data.description}
+            </p>
+
+            <span>
+              Lire l’article →
+            </span>
+
+          </div>
+
+        </a>
+
+      ))}
+
+    </div>
+
+  </div>
+
+</section>
+
+<style>
+
+  .blog-preview {
+    padding: 90px 0;
+    background:
+      linear-gradient(180deg,#ffffff 0%,#f7fbfe 100%);
+  }
+
+  .blog-preview__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    gap: 2rem;
+    margin-bottom: 3rem;
+  }
+
+  .blog-preview__link {
+    color: var(--blue);
+    font-weight: 800;
+    white-space: nowrap;
+  }
+
+  .blog-preview__grid {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 24px;
+  }
+
+  .blog-card {
+    background: #fff;
+    border-radius: 28px;
+    overflow: hidden;
+    text-decoration: none;
+
+    border:
+      1px solid rgba(20,65,95,.08);
+
+    box-shadow:
+      0 14px 34px rgba(16,45,70,.05);
+
+    transition:
+      transform .22s ease,
+      box-shadow .22s ease;
+  }
+
+  .blog-card:hover {
+    transform: translateY(-6px);
+
+    box-shadow:
+      0 22px 48px rgba(16,45,70,.1);
+  }
+
+  .blog-card__image {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+  }
+
+  .blog-card__content {
+    padding: 28px;
+  }
+
+  .blog-card__meta {
+    color: var(--blue);
+    font-size: .78rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+  }
+
+  .blog-card h3 {
+    color: #163047;
+    line-height: 1.2;
+    font-size: 1.28rem;
+    margin-bottom: 1rem;
+  }
+
+  .blog-card p {
+    color: var(--muted);
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+    font-size: .94rem;
+  }
+
+  .blog-card span {
+    color: var(--blue);
+    font-weight: 800;
+    font-size: .9rem;
+  }
+
+  @media (max-width: 980px) {
+
+    .blog-preview__grid {
+      grid-template-columns: 1fr;
+    }
+
+    .blog-preview__top {
+      flex-direction: column;
+      align-items: start;
+    }
+
+  }
+
+</style>
