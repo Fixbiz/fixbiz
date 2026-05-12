@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 import Whatsapp from '../components/Whatsapp.astro';
@@ -7,17 +8,18 @@ import Whatsapp from '../components/Whatsapp.astro';
 import Hero from '../components/Hero.astro';
 import Signaux from '../components/Signaux.astro';
 import Services from '../components/Services.astro';
+import Process from '../components/Process.astro';
 import QuiSuisJe from '../components/QuiSuisJe.astro';
 import BlogPreview from '../components/BlogPreview.astro';
-import Faq from '../components/Faq.astro';
+import FaqSection from '../components/FaqSection.astro';
 import Contact from '../components/Contact.astro';
 ---
 
 <Layout
-  title="FixBiz — Redressement, performance et accompagnement des dirigeants"
-  description="FixBiz accompagne les dirigeants de TPE et PME pour redresser, structurer, améliorer la rentabilité ou préparer la vente de leur entreprise."
+  title="Redressement d’entreprise, trésorerie et accompagnement dirigeant | FixBiz"
+  description="FixBiz accompagne les dirigeants de TPE et PME confrontés à des difficultés de trésorerie, de rentabilité, d’organisation ou de transition."
+  canonical="https://fixbiz.fr/"
 >
-
   <Nav />
 
   <main>
@@ -28,11 +30,13 @@ import Contact from '../components/Contact.astro';
 
     <Services />
 
+    <Process />
+
     <QuiSuisJe />
 
     <BlogPreview />
 
-    <Faq />
+    <FaqSection />
 
     <Contact />
 
@@ -45,17 +49,29 @@ import Contact from '../components/Contact.astro';
 </Layout>
 
 <script>
+
   const obs = new IntersectionObserver(
+
     entries =>
+
       entries.forEach(e => {
+
         if (e.isIntersecting) {
+
           e.target.classList.add('in');
+
         }
+
       }),
-    { threshold: 0.12 }
+
+    {
+      threshold: 0.12
+    }
+
   );
 
   document
     .querySelectorAll('.fade')
     .forEach(el => obs.observe(el));
+
 </script>

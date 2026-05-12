@@ -1,4 +1,3 @@
-
 ---
 title: "32 000 défaillances : le coût réel des faillites d’entreprises en France"
 description: "Plus de 32 000 entreprises ont été placées en procédure collective au premier semestre 2025. Derrière ces chiffres, une pression économique de plus en plus forte sur les dirigeants."
@@ -106,15 +105,30 @@ Mais beaucoup de dirigeants continuent encore à attendre le dernier moment.
 
 ## Chez FixBiz
 
+Le [Pack Résilience](/nos-services/#resilience) accompagne les dirigeants confrontés :
+- à une trésorerie tendue ;
+- une baisse de rentabilité ;
+- des difficultés de financement ;
+- ou un risque de blocage de l’activité.
+
 L’objectif n’est pas de créer davantage de complexité.
 
 L’objectif est de comprendre rapidement ce qui bloque, identifier les priorités, stabiliser la situation et aider le dirigeant à reprendre le contrôle avant que les difficultés ne deviennent irréversibles.
+
+Le [Pack Soutien](/nos-services/#soutien) peut également aider les dirigeants confrontés :
+- à une forte pression ;
+- une surcharge mentale ;
+- ou un manque de visibilité dans les décisions quotidiennes.
 
 ## La faillite n’est pas toujours une fatalité
 
 Plus une entreprise agit tôt, plus elle garde de possibilités.
 
-Même dans un contexte économique difficile, certaines entreprises arrivent à se restructurer, se réorganiser et repartir sur des bases plus solides.
+Même dans un contexte économique difficile, certaines entreprises arrivent à :
+- se restructurer ;
+- se réorganiser ;
+- améliorer leur rentabilité ;
+- et repartir sur des bases plus solides.
 
 Le plus difficile est souvent de faire le premier pas.
 
@@ -125,4 +139,4 @@ Un premier échange permet souvent d’identifier rapidement :
 - les erreurs à éviter ;
 - et les premières actions prioritaires.
 
-[Parler de ma situation](/prendre-rdv/)
+👉 Découvrez le [Pack Résilience](/nos-services/#resilience), le [Pack Soutien](/nos-services/#soutien) ou [parlez de votre situation](/prendre-rdv/).

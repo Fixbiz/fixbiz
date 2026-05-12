@@ -1,7 +1,7 @@
 ---
 const {
-  title = "FixBiz — Redressement, pilotage et structuration d'entreprise",
-  description = "FixBiz accompagne les dirigeants de TPE/PME dans les périodes de tension : redressement, restructuration, pilotage, organisation, cession et soutien opérationnel.",
+  title = "FixBiz — Redressement, trésorerie et accompagnement dirigeant",
+  description = "FixBiz accompagne les dirigeants de TPE et PME : redressement d’entreprise, trésorerie, rentabilité, structuration, pilotage opérationnel et cession.",
   canonical = "https://fixbiz.fr/"
 } = Astro.props;
 ---
@@ -23,6 +23,16 @@ const {
   <meta
     name="description"
     content={description}
+  />
+
+  <meta
+    name="robots"
+    content="index, follow"
+  />
+
+  <meta
+    name="theme-color"
+    content="#2e7fb1"
   />
 
   <meta
@@ -85,10 +95,18 @@ const {
     href={canonical}
   />
 
+  <!-- Favicon -->
+
   <link
     rel="icon"
-    href="/favicon.svg"
-    type="image/svg+xml"
+    type="image/png"
+    sizes="32x32"
+    href="/favicon.png"
+  />
+
+  <link
+    rel="apple-touch-icon"
+    href="/apple-touch-icon.png"
   />
 
   <link
@@ -164,11 +182,13 @@ const {
 
     img {
       max-width: 100%;
+
       display: block;
     }
 
     a {
       color: inherit;
+
       text-decoration: none;
     }
 
@@ -224,20 +244,22 @@ const {
 
     .section-head {
       max-width: 740px;
+
       margin-bottom: 38px;
     }
 
     .section-head--center {
       margin-left: auto;
+
       margin-right: auto;
+
       text-align: center;
     }
 
     .section-title {
       margin: .8rem 0 .7rem;
 
-      font-size:
-        clamp(2rem, 4vw, 3.15rem);
+      font-size: clamp(2rem, 4vw, 3.15rem);
 
       line-height: 1.12;
 
@@ -249,8 +271,7 @@ const {
     }
 
     .section-title--small {
-      font-size:
-        clamp(1.7rem, 3vw, 2.35rem);
+      font-size: clamp(1.7rem, 3vw, 2.35rem);
     }
 
     .section-sub {
@@ -265,6 +286,7 @@ const {
 
     .section-head--center .section-sub {
       margin-left: auto;
+
       margin-right: auto;
     }
 
@@ -349,6 +371,7 @@ const {
 
     .fade.in {
       opacity: 1;
+
       transform: translateY(0);
     }
 
@@ -373,8 +396,20 @@ const {
       "name": "FixBiz",
       "url": "https://fixbiz.fr",
       "logo": "https://fixbiz.fr/logo.png",
-      "description": "FixBiz accompagne les dirigeants de TPE et PME dans les périodes de tension : redressement, restructuration, organisation, rentabilité et accompagnement opérationnel.",
-      "areaServed": "France",
+      "image": "https://fixbiz.fr/og-fixbiz.jpg",
+      "description": "FixBiz accompagne les dirigeants de TPE et PME dans les périodes de tension : redressement d’entreprise, trésorerie, restructuration, organisation, rentabilité, cession et accompagnement opérationnel.",
+      "areaServed": [
+        "France",
+        "Europe"
+      ],
+      "serviceType": [
+        "Redressement d’entreprise",
+        "Accompagnement dirigeant",
+        "Pilotage opérationnel",
+        "Amélioration de rentabilité",
+        "Structuration d’entreprise",
+        "Préparation à la cession"
+      ],
       "email": "contact@fixbiz.fr",
       "telephone": "+33769244959",
       "founder": {

@@ -109,20 +109,35 @@ L’expérience reste souvent extrêmement difficile, mais elle peut aussi perme
 
 ## Chez FixBiz
 
-L’objectif est d’aider les dirigeants à reprendre le contrôle avant que la situation ne devienne irréversible.
+Le [Pack Résilience](/nos-services/#resilience) accompagne les dirigeants confrontés :
+- à une trésorerie tendue ;
+- des difficultés financières ;
+- une baisse de rentabilité ;
+- ou un risque de blocage de l’activité.
 
 Cela passe souvent par :
 - un diagnostic clair ;
 - des décisions rapides ;
 - une meilleure visibilité ;
 - une simplification de l’activité ;
-- et un accompagnement concret, orienté terrain.
+- et un accompagnement concret orienté terrain.
+
+Le [Pack Soutien](/nos-services/#soutien) peut également aider les dirigeants confrontés :
+- à une forte pression ;
+- une surcharge mentale ;
+- ou des décisions difficiles à gérer seuls.
 
 ## Le meilleur moment pour agir est souvent avant l’urgence
 
 Plus une entreprise agit tôt, plus elle garde de possibilités.
 
 Attendre le dernier moment réduit fortement les options disponibles.
+
+Même dans des situations compliquées, certaines entreprises arrivent encore à :
+- se restructurer ;
+- stabiliser leur trésorerie ;
+- retrouver de la visibilité ;
+- et repartir sur des bases plus saines.
 
 ## Besoin d’un regard extérieur sur votre situation ?
 
@@ -131,4 +146,4 @@ Un premier échange permet souvent d’identifier rapidement :
 - les erreurs à éviter ;
 - et les leviers encore disponibles.
 
-[Parler de ma situation](/prendre-rdv/)
+👉 Découvrez le [Pack Résilience](/nos-services/#resilience), le [Pack Soutien](/nos-services/#soutien) ou [parlez de votre situation](/prendre-rdv/).

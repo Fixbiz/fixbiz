@@ -1,0 +1,427 @@
+<section class="section method" id="process">
+
+  <div class="wrap">
+
+    <div class="section-head section-head--center fade">
+
+      <div class="eyebrow">
+        Notre méthode
+      </div>
+
+      <h2 class="section-title section-title--small">
+        Un process clair, étape par étape.
+      </h2>
+
+      <p class="section-sub">
+        On avance uniquement lorsque l’étape précédente est comprise,
+        validée et utile pour la suite.
+      </p>
+
+    </div>
+
+    <div class="method__grid fade">
+
+      <article class="method__card method__card--up card">
+        <div class="method__top">
+          <span class="method__num">01</span>
+          <span class="method__mini">Échanger</span>
+        </div>
+
+        <h3>Premier échange</h3>
+
+        <p>
+          On fait le point sur la situation,
+          les urgences et les priorités.
+        </p>
+      </article>
+
+      <article class="method__card method__card--down card">
+        <div class="method__top">
+          <span class="method__num">02</span>
+          <span class="method__mini">Comprendre</span>
+        </div>
+
+        <h3>Analyse</h3>
+
+        <p>
+          Étude des chiffres et documents
+          utiles pour comprendre la situation.
+        </p>
+      </article>
+
+      <article class="method__card method__card--featured card">
+        <div class="method__top">
+          <span class="method__num">03</span>
+          <span class="method__mini">Décider</span>
+        </div>
+
+        <h3>Objectifs</h3>
+
+        <p>
+          Définition des objectifs,
+          des priorités et du cadre d’action.
+        </p>
+      </article>
+
+      <article class="method__card method__card--down card">
+        <div class="method__top">
+          <span class="method__num">04</span>
+          <span class="method__mini">Agir</span>
+        </div>
+
+        <h3>Action</h3>
+
+        <p>
+          Mise en œuvre avec un pilotage
+          clair et structuré.
+        </p>
+      </article>
+
+      <article class="method__card method__card--up card">
+        <div class="method__top">
+          <span class="method__num">05</span>
+          <span class="method__mini">Cadrer</span>
+        </div>
+
+        <h3>Résultats</h3>
+
+        <p>
+          Les résultats attendus et les
+          conditions sont définis dès le départ.
+        </p>
+      </article>
+
+    </div>
+
+    <div class="method__bottom fade">
+
+      <a
+        href="#contact"
+        class="btn btn--primary"
+      >
+        Faire le point gratuitement
+      </a>
+
+      <p>
+        Premier échange gratuit, sans engagement.
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+<style>
+
+.method {
+  background:
+    radial-gradient(
+      circle at top,
+      #f5fbff 0%,
+      #ffffff 48%,
+      var(--bg) 100%
+    );
+}
+
+.method .section-head {
+  margin-bottom: 52px;
+}
+
+.method__grid {
+  position: relative;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(5, minmax(0, 1fr));
+
+  gap: 16px;
+
+  width: 100%;
+
+  margin-top: 48px;
+}
+
+.method__grid::before {
+  content: '';
+
+  position: absolute;
+
+  top: 42px;
+
+  left: 8%;
+  right: 8%;
+
+  height: 2px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(46,127,177,.28),
+      transparent
+    );
+
+  z-index: 0;
+}
+
+.method__card {
+  position: relative;
+
+  z-index: 1;
+
+  min-height: 222px;
+
+  padding: 22px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  overflow: hidden;
+
+  border-radius: 22px;
+
+  background:
+    rgba(255,255,255,.9);
+
+  backdrop-filter: blur(10px);
+
+  transition:
+    transform .22s ease,
+    box-shadow .22s ease,
+    border-color .22s ease;
+}
+
+.method__card--up {
+  transform: translateY(0);
+}
+
+.method__card--down {
+  transform: translateY(16px);
+}
+
+.method__card:hover {
+  transform: translateY(-5px);
+
+  border-color:
+    rgba(46,127,177,.35);
+
+  box-shadow:
+    0 20px 46px rgba(22,48,71,.11);
+}
+
+.method__card--down:hover {
+  transform: translateY(10px);
+}
+
+.method__card--featured {
+  background:
+    linear-gradient(
+      145deg,
+      #17324a 0%,
+      #214e73 100%
+    );
+
+  border-color:
+    rgba(46,127,177,.55);
+
+  transform: translateY(-14px);
+
+  box-shadow:
+    0 24px 55px rgba(22,48,71,.22);
+}
+
+.method__card--featured:hover {
+  transform: translateY(-20px);
+
+  box-shadow:
+    0 30px 65px rgba(22,48,71,.26);
+}
+
+.method__top {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 10px;
+
+  margin-bottom: 22px;
+}
+
+.method__num {
+  width: 54px;
+  height: 54px;
+
+  border-radius: 17px;
+
+  background: var(--blue-soft);
+
+  color: var(--blue-dark);
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  font-size: .98rem;
+
+  font-weight: 900;
+
+  border: 1px solid var(--line);
+}
+
+.method__mini {
+  padding: .28rem .52rem;
+
+  border-radius: 999px;
+
+  background:
+    rgba(46,127,177,.07);
+
+  color: var(--blue-dark);
+
+  font-size: .65rem;
+
+  font-weight: 800;
+
+  white-space: nowrap;
+}
+
+.method__card--featured .method__num {
+  background:
+    rgba(255,255,255,.13);
+
+  border-color:
+    rgba(255,255,255,.22);
+
+  color: #fff;
+}
+
+.method__card--featured .method__mini {
+  background:
+    rgba(255,255,255,.12);
+
+  color: #fff;
+}
+
+.method__card h3 {
+  margin: 0 0 10px;
+
+  color: var(--ink);
+
+  font-size: 1.12rem;
+
+  line-height: 1.25;
+
+  font-weight: 800;
+}
+
+.method__card p {
+  margin: 0;
+
+  color: var(--muted);
+
+  font-size: .9rem;
+
+  line-height: 1.68;
+}
+
+.method__card--featured h3,
+.method__card--featured p {
+  color: #fff;
+}
+
+.method__card--featured p {
+  opacity: .86;
+}
+
+.method__card::after {
+  content: '→';
+
+  margin-top: auto;
+
+  padding-top: 18px;
+
+  color: var(--blue-dark);
+
+  font-size: 1.15rem;
+
+  font-weight: 900;
+}
+
+.method__card--featured::after {
+  color: #fff;
+}
+
+.method__card:last-child::after {
+  content: '✓';
+
+  color: var(--green);
+}
+
+.method__bottom {
+  margin-top: 54px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 10px;
+
+  text-align: center;
+}
+
+.method__bottom p {
+  margin: 0;
+
+  color: var(--muted);
+
+  font-size: .82rem;
+
+  opacity: .76;
+}
+
+@media (max-width: 1080px) {
+
+  .method__grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+  .method__grid::before {
+    display: none;
+  }
+
+  .method__card,
+  .method__card--up,
+  .method__card--down,
+  .method__card--featured,
+  .method__card:hover,
+  .method__card--down:hover,
+  .method__card--featured:hover {
+    transform: none;
+  }
+
+}
+
+@media (max-width: 760px) {
+
+  .method__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .method__card {
+    min-height: auto;
+  }
+
+}
+
+</style>

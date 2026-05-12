@@ -2,13 +2,13 @@
 const services = [
   {
     id: 'resilience',
-    tag: 'Entreprise en difficulté',
-    title: 'Redressement & trésorerie',
-    text: "Stabiliser une entreprise sous pression : trésorerie tendue, dettes, créanciers et priorités à court terme.",
+    tag: 'Urgence · Trésorerie',
+    title: 'Pack Résilience',
+    text: "Pour les situations où il faut agir vite : trésorerie tendue, dettes, créanciers, perte de visibilité ou risque de blocage.",
     points: [
       'Diagnostic rapide',
-      'Plan de trésorerie',
-      'Négociation créanciers'
+      'Priorités 7 / 30 / 90 jours',
+      'Plan de redressement'
     ],
     featured: true
   },
@@ -16,20 +16,20 @@ const services = [
   {
     id: 'performance',
     tag: 'Rentabilité',
-    title: 'Performance & rentabilité',
-    text: "Structurer l’activité, améliorer les marges et remettre de l’ordre dans le pilotage quotidien.",
+    title: 'Pack Performance',
+    text: "Pour les entreprises qui fonctionnent mais manquent de structure, de marge ou de visibilité dans le pilotage quotidien.",
     points: [
-      'Audit 360°',
+      'Analyse des marges',
       'Process simples',
-      'Indicateurs utiles'
+      'Reporting utile'
     ]
   },
 
   {
     id: 'soutien',
     tag: 'Dirigeant',
-    title: 'Accompagnement du dirigeant',
-    text: "Un appui régulier pour ne plus décider seul et garder de la clarté dans les périodes chargées.",
+    title: 'Pack Soutien',
+    text: "Pour les dirigeants seuls face aux décisions, aux priorités et à la pression quotidienne.",
     points: [
       'Point régulier',
       'Aide à la décision',
@@ -40,10 +40,10 @@ const services = [
   {
     id: 'starter',
     tag: 'Création',
-    title: 'Création & structuration',
-    text: "Poser les bases d’un projet : organisation, partenaires, contrats, formalités et premiers chiffres.",
+    title: 'Pack Starter',
+    text: "Pour lancer un projet sur des bases propres : structure, partenaires, contrats, formalités et organisation initiale.",
     points: [
-      'Structure de départ',
+      'Statut adapté',
       'Formalités',
       'Organisation'
     ]
@@ -51,12 +51,12 @@ const services = [
 
   {
     id: 'expert',
-    tag: 'Pilotage',
-    title: 'Pilotage opérationnel',
-    text: "Déléguer une partie du pilotage administratif, financier et opérationnel sans recruter en interne.",
+    tag: 'Bras droit',
+    title: 'Pack Expert',
+    text: "Pour déléguer une partie du pilotage administratif, financier et opérationnel sans recruter en interne.",
     points: [
-      'Coordination',
       'Suivi trésorerie',
+      'Coordination',
       'Reporting'
     ]
   },
@@ -64,8 +64,8 @@ const services = [
   {
     id: 'surmesure',
     tag: 'Mission ciblée',
-    title: 'Cession, transition ou crise ponctuelle',
-    text: "Construire un accompagnement adapté aux situations atypiques : transition, cession, réorganisation ou crise.",
+    title: 'Pack Sur-mesure',
+    text: "Pour les situations atypiques : cession, transition, réorganisation, crise ponctuelle ou besoin spécifique.",
     points: [
       'Objectifs précis',
       'Format flexible',
@@ -86,12 +86,12 @@ const services = [
       </div>
 
       <h2 class="section-title section-title--small">
-        Redressement, performance et accompagnement des dirigeants.
+        Packs d’accompagnement et de redressement entreprise.
       </h2>
 
       <p class="section-sub">
-        FixBiz accompagne les TPE et PME pour stabiliser une situation difficile,
-        améliorer la rentabilité, structurer l’organisation ou préparer une vente.
+        FixBiz accompagne les dirigeants de TPE et PME pour créer, organiser,
+        développer ou redresser leur entreprise selon leur situation réelle.
       </p>
 
     </div>
@@ -100,7 +100,8 @@ const services = [
 
       {services.map((s) => (
 
-        <article
+        <a
+          href={`/nos-services/#${s.id}`}
           class:list={[
             'services__card',
             'card',
@@ -128,14 +129,7 @@ const services = [
 
           </ul>
 
-          <a
-            href={`/nos-services/#${s.id}`}
-            class="services__link"
-          >
-            Détail du service →
-          </a>
-
-        </article>
+        </a>
 
       ))}
 
@@ -171,15 +165,88 @@ const services = [
 
   .services__grid {
     display: grid;
+
     grid-template-columns: repeat(3, 1fr);
+
     gap: 18px;
   }
 
   .services__card {
     padding: 24px;
+
     display: flex;
+
     flex-direction: column;
+
     min-height: 330px;
+
+    text-decoration: none;
+
+    color: inherit;
+
+    cursor: pointer;
+
+    position: relative;
+
+    overflow: hidden;
+
+    transition:
+      transform .22s ease,
+      box-shadow .22s ease,
+      border-color .22s ease,
+      background .22s ease;
+  }
+
+  .services__card::before {
+    content: '';
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+      linear-gradient(
+        135deg,
+        rgba(46,127,177,.08),
+        transparent 45%
+      );
+
+    opacity: 0;
+
+    transition: opacity .25s ease;
+
+    pointer-events: none;
+  }
+
+  .services__card:hover::before {
+    opacity: 1;
+  }
+
+  .services__card:hover {
+    transform: translateY(-8px);
+
+    border-color:
+      rgba(46,127,177,.45);
+
+    background:
+      linear-gradient(
+        180deg,
+        #ffffff 0%,
+        #eef8ff 100%
+      );
+
+    box-shadow:
+      0 26px 60px rgba(46,127,177,.18);
+  }
+
+  .services__card:hover h3 {
+    color: var(--blue);
+  }
+
+  .services__card:hover .services__tag {
+    background: var(--blue);
+
+    color: #fff;
   }
 
   .services__card--featured {
@@ -207,6 +274,10 @@ const services = [
     font-size: .72rem;
 
     font-weight: 800;
+
+    transition:
+      background .22s ease,
+      color .22s ease;
   }
 
   .services__card h3 {
@@ -217,6 +288,8 @@ const services = [
     line-height: 1.25;
 
     color: #163047;
+
+    transition: color .22s ease;
   }
 
   .services__card p {
@@ -255,18 +328,6 @@ const services = [
     font-weight: 800;
 
     margin-right: 8px;
-  }
-
-  .services__link {
-    margin-top: auto;
-
-    padding-top: 20px;
-
-    color: var(--blue-dark);
-
-    font-weight: 800;
-
-    font-size: .9rem;
   }
 
   .services__bottom {

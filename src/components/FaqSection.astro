@@ -1,0 +1,218 @@
+<section class="faq" id="faq">
+  <div class="faq__inner">
+
+    <div class="faq__header fade in">
+      <div class="section-badge">Questions fréquentes</div>
+
+      <h2 class="section-title">
+        Vous avez des questions ?
+      </h2>
+
+      <p class="section-sub">
+        Les réponses essentielles avant un premier échange.
+      </p>
+    </div>
+
+    <div class="faq__list fade in">
+
+      <div class="faq__item open">
+        <button class="faq__q" type="button">
+          Quand faut-il faire appel à FixBiz ?
+          <span class="faq__arrow">⌄</span>
+        </button>
+        <div class="faq__a">
+          <p>
+            Le plus tôt possible. Plus une situation est traitée rapidement,
+            plus le dirigeant conserve des options, de la visibilité et une capacité de décision.
+          </p>
+        </div>
+      </div>
+
+      <div class="faq__item">
+        <button class="faq__q" type="button">
+          En quoi l’approche FixBiz est différente ?
+          <span class="faq__arrow">⌄</span>
+        </button>
+        <div class="faq__a">
+          <p>
+            FixBiz privilégie une approche concrète, structurée et orientée action.
+          </p>
+          <p>
+            Contrairement à certaines approches principalement centrées sur le conseil,
+            les présentations ou les recommandations sans mise en œuvre opérationnelle réelle,
+            l’accompagnement vise avant tout des décisions concrètes, mesurables
+            et orientées résultats.
+          </p>
+        </div>
+      </div>
+
+      <div class="faq__item">
+        <button class="faq__q" type="button">
+          Acceptez-vous toutes les missions ?
+          <span class="faq__arrow">⌄</span>
+        </button>
+        <div class="faq__a">
+          <p>
+            Non. L’accompagnement nécessite un dirigeant réellement impliqué
+            et prêt à prendre certaines décisions ou ajustements lorsque la situation l’exige.
+          </p>
+          <p>
+            FixBiz intervient uniquement lorsqu’un cadre de travail clair,
+            de la transparence et une réelle volonté d’avancer existent.
+          </p>
+        </div>
+      </div>
+
+      <div class="faq__item">
+        <button class="faq__q" type="button">
+          Comment fonctionne la rémunération de FixBiz ?
+          <span class="faq__arrow">⌄</span>
+        </button>
+        <div class="faq__a">
+          <p>
+            Chaque situation est différente. Les modalités d’intervention
+            sont définies selon le contexte, les objectifs et les contraintes de l’entreprise.
+          </p>
+          <p>
+            Le cadre est toujours défini clairement avant toute intervention.
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="faq__bottom fade in">
+      <a href="/faq" class="btn btn--ghost">
+        Voir toutes les questions
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<style>
+.faq {
+  padding: 86px 0;
+  background: var(--bg);
+}
+
+.faq__inner {
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 0 48px;
+}
+
+.faq__header {
+  max-width: 760px;
+  margin-bottom: 3rem;
+}
+
+.faq__header h2,
+.faq__header p {
+  text-align: center;
+}
+
+.faq__header .section-badge {
+  display: table;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.faq__header p {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.faq__list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 820px;
+}
+
+.faq__item {
+  background: #fff;
+  border-radius: 22px;
+  border: 1px solid rgba(46,127,177,.12);
+  overflow: hidden;
+  box-shadow: 0 12px 28px rgba(16,45,70,.05);
+}
+
+.faq__q {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem 1.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: .98rem;
+  font-weight: 800;
+  color: #163047;
+  text-align: left;
+  gap: 1rem;
+}
+
+.faq__q:hover {
+  color: var(--blue);
+}
+
+.faq__arrow {
+  font-size: 1.25rem;
+  transition: transform .25s ease;
+  flex-shrink: 0;
+  color: var(--blue);
+}
+
+.faq__item.open .faq__arrow {
+  transform: rotate(180deg);
+}
+
+.faq__a {
+  display: none;
+}
+
+.faq__item.open .faq__a {
+  display: block;
+}
+
+.faq__a p {
+  padding: 0 1.5rem 1.1rem;
+  font-size: .93rem;
+  color: var(--muted);
+  line-height: 1.75;
+  margin: 0;
+}
+
+.faq__a p:last-child {
+  padding-bottom: 1.45rem;
+}
+
+.faq__bottom {
+  margin-top: 28px;
+  max-width: 820px;
+  display: flex;
+  justify-content: center;
+}
+
+@media (max-width: 700px) {
+  .faq {
+    padding: 72px 0;
+  }
+
+  .faq__inner {
+    padding: 0 22px;
+  }
+}
+</style>
+
+<script>
+document.querySelectorAll('.faq__q').forEach((button) => {
+  button.addEventListener('click', () => {
+    const item = button.closest('.faq__item');
+    item.classList.toggle('open');
+  });
+});
+</script>

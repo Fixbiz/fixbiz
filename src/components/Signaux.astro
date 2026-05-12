@@ -1,10 +1,12 @@
----
----
-
 <section class="signaux" id="signaux">
+
   <div class="wrap">
+
     <div class="signaux__header fade">
-      <div class="section-badge">Entreprise en difficulté</div>
+
+      <div class="section-badge">
+        Entreprise en difficulté
+      </div>
 
       <h2 class="section-title">
         Les signaux d’alerte à ne pas ignorer.
@@ -14,49 +16,115 @@
         Trésorerie tendue, baisse d’activité, pression bancaire ou juridique :
         plus vous agissez tôt, plus les solutions restent nombreuses.
       </p>
+
     </div>
 
     <div class="signaux__grid fade">
+
       <div class="signaux__card">
-        <div class="signaux__icon">📉</div>
-        <h3>Chiffre d’affaires en baisse</h3>
-        <p>L’activité ralentit et vous n’arrivez plus à inverser la tendance.</p>
+
+        <div class="signaux__icon">
+          📉
+        </div>
+
+        <h3>
+          Chiffre d’affaires en baisse
+        </h3>
+
+        <p>
+          L’activité ralentit et vous n’arrivez plus à inverser la tendance.
+        </p>
+
       </div>
 
       <div class="signaux__card">
-        <div class="signaux__icon">💸</div>
-        <h3>Trésorerie sous pression</h3>
-        <p>Vous jonglez entre fournisseurs, salaires, charges et échéances bancaires.</p>
+
+        <div class="signaux__icon">
+          💸
+        </div>
+
+        <h3>
+          Trésorerie sous pression
+        </h3>
+
+        <p>
+          Vous jonglez entre fournisseurs, salaires, charges et échéances bancaires.
+        </p>
+
       </div>
 
       <div class="signaux__card">
-        <div class="signaux__icon">🏦</div>
-        <h3>Financements refusés</h3>
-        <p>La banque devient plus prudente, réduit ses lignes ou refuse de financer.</p>
+
+        <div class="signaux__icon">
+          🏦
+        </div>
+
+        <h3>
+          Financements refusés
+        </h3>
+
+        <p>
+          La banque devient plus prudente, réduit ses lignes ou refuse de financer.
+        </p>
+
       </div>
 
       <div class="signaux__card">
-        <div class="signaux__icon">👥</div>
-        <h3>Organisation fragilisée</h3>
-        <p>L’équipe fatigue, les priorités se brouillent et la productivité baisse.</p>
+
+        <div class="signaux__icon">
+          👥
+        </div>
+
+        <h3>
+          Organisation fragilisée
+        </h3>
+
+        <p>
+          L’équipe fatigue, les priorités se brouillent et la productivité baisse.
+        </p>
+
       </div>
 
       <div class="signaux__card">
-        <div class="signaux__icon">⚖️</div>
-        <h3>Pression juridique ou créanciers</h3>
-        <p>Relances, injonctions de payer, mises en demeure ou risque de procédure.</p>
+
+        <div class="signaux__icon">
+          ⚖️
+        </div>
+
+        <h3>
+          Pression juridique ou créanciers
+        </h3>
+
+        <p>
+          Relances, injonctions de payer, mises en demeure ou risque de procédure.
+        </p>
+
       </div>
 
       <div class="signaux__card">
-        <div class="signaux__icon">🔄</div>
-        <h3>Clients ou marges qui diminuent</h3>
-        <p>Les clients partent, les marges baissent et le modèle devient moins rentable.</p>
+
+        <div class="signaux__icon">
+          🔄
+        </div>
+
+        <h3>
+          Clients ou marges qui diminuent
+        </h3>
+
+        <p>
+          Les clients partent, les marges baissent et le modèle devient moins rentable.
+        </p>
+
       </div>
+
     </div>
+
   </div>
+
 </section>
 
 <style>
+
   .signaux {
     padding: 86px 0;
     background: var(--bg);
@@ -64,7 +132,16 @@
 
   .signaux__header {
     max-width: 760px;
-    margin-bottom: 3rem;
+    margin: 0 auto 3rem;
+    text-align: center;
+  }
+
+  .signaux__header .section-title,
+  .signaux__header .section-sub,
+  .signaux__header .section-badge {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .section-badge {
@@ -85,7 +162,7 @@
     line-height: 1.08;
     letter-spacing: -.04em;
     color: #163047;
-    margin-bottom: .9rem;
+    margin: 0 0 .9rem;
   }
 
   .section-sub {
@@ -93,6 +170,7 @@
     color: var(--muted);
     max-width: 680px;
     line-height: 1.75;
+    margin: 0 auto;
   }
 
   .signaux__grid {
@@ -107,7 +185,9 @@
     padding: 1.75rem;
     border: 1px solid var(--line);
     box-shadow: var(--shadow-soft);
-    transition: transform .2s, box-shadow .2s;
+    transition:
+      transform .2s,
+      box-shadow .2s;
   }
 
   .signaux__card:hover {
@@ -125,18 +205,22 @@
     font-weight: 800;
     color: #163047;
     line-height: 1.3;
-    margin-bottom: .5rem;
+    margin: 0 0 .5rem;
   }
 
   .signaux__card p {
     font-size: .9rem;
     color: var(--muted);
     line-height: 1.65;
+    margin: 0;
   }
 
   @media (max-width: 900px) {
+
     .signaux__grid {
       grid-template-columns: 1fr;
     }
+
   }
+
 </style>
