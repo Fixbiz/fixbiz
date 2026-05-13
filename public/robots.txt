@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://fixbiz.fr/sitemap-index.xml
+Sitemap: https://fixbiz.fr/sitemap.xml
