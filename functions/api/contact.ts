@@ -181,25 +181,15 @@ export const onRequestPost: PagesFunction<{
       </p>
 
       <p>
-        <strong>Jean-Philippe Schneider</strong><br>
-        Fondateur FixBiz<br>
-        Email : <a href="mailto:contact@fixbiz.fr">contact@fixbiz.fr</a><br>
-        Tel : +33 7 69 24 59 59<br>
-        <a href="https://fixbiz.fr">www.fixbiz.fr</a>
-      </p>
+  <strong>Jean-Philippe Schneider</strong><br>
+  Fondateur FixBiz<br>
+  📞 +33 7 69 24 49 59<br>
+  🌐 <a href="https://fixbiz.fr">www.fixbiz.fr</a>
+</p>
 
-      <br>
-
-      <img
-        src="https://fixbiz.fr/logo-email.png"
-        alt="FixBiz"
-        width="220"
-        style="display:block;max-width:220px;height:auto;"
-      >
-
-      <p style="font-style:italic;color:#2e7fb1;margin-top:8px;">
-        Transformez les défis en succès !
-      </p>
+<p style="font-style:italic;color:#2e7fb1;">
+  Transformez les défis en succès !
+</p>
     `;
 
     const confirmationResponse = await fetch(
