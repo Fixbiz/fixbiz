@@ -132,10 +132,6 @@
 
     <div class="footer__bottom-links">
 
-      <a href="/#contact">
-        Nous contacter
-      </a>
-
       <a href="/prendre-rdv/">
         Diagnostic gratuit
       </a>
@@ -146,151 +142,142 @@
 
 </footer>
 
+
 <style>
 
-  .footer {
-    background: #062b52;
-    color: #dceaf4;
-    padding: 68px 0 28px;
-  }
+.footer {
+  background: #062b52;
+  color: #dceaf4;
+  padding: 68px 0 28px;
+}
 
-  .footer__grid {
-    display: grid;
-    grid-template-columns: 2fr 1fr 1fr 1fr;
-    gap: 42px;
-  }
+.footer__grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 42px;
+}
 
-  .footer__logo {
-    height: 42px;
-    width: auto;
-    object-fit: contain;
-    margin-bottom: 18px;
-    display: block;
-  }
+.footer__logo {
+  height: 42px;
+  width: auto;
+  object-fit: contain;
+  margin-bottom: 18px;
+  display: block;
+}
 
-  .footer__brand p {
-    margin: 0;
+.footer__brand p {
+  margin: 0;
+  color: rgba(255,255,255,.72);
+  line-height: 1.8;
+  font-size: .94rem;
+  max-width: 420px;
+}
 
-    color: rgba(255,255,255,.72);
+.footer__contacts {
+  margin-top: 22px;
+}
 
-    line-height: 1.8;
+.footer__contacts a {
+  display:block;
+  margin-bottom:10px;
+  color:#fff;
+  font-weight:650;
+  font-size:.92rem;
+}
 
-    font-size: .94rem;
+.footer__col h3 {
+  margin:0 0 16px;
+  color:#fff;
+  font-size:.95rem;
+  font-weight:800;
+}
 
-    max-width: 420px;
-  }
+.footer__col a {
+  display:block;
+  margin:10px 0;
+  color:rgba(255,255,255,.72);
+  font-size:.9rem;
+  transition:
+  color .2s ease,
+  transform .2s ease;
+}
 
-  .footer__contacts {
-    margin-top: 22px;
-  }
+.footer__col a:hover {
+  color:#fff;
+  transform:translateX(2px);
+}
 
-  .footer__contacts a {
-    display: block;
+.footer__bottom {
 
-    margin-bottom: 10px;
+  margin-top:46px;
 
-    color: #ffffff;
+  padding-top:22px;
 
-    font-weight: 650;
+  border-top:
+  1px solid rgba(255,255,255,.08);
 
-    font-size: .92rem;
-  }
+  display:flex;
 
-  .footer__col h3 {
-    margin: 0 0 16px;
+  justify-content:space-between;
 
-    color: #ffffff;
+  align-items:center;
 
-    font-size: .95rem;
+  gap:20px;
 
-    font-weight: 800;
-  }
+  color:rgba(255,255,255,.5);
 
-  .footer__col a {
-    display: block;
+  font-size:.84rem;
+}
 
-    margin: 10px 0;
+.footer__bottom-links {
 
-    color: rgba(255,255,255,.72);
+  display:flex;
 
-    font-size: .9rem;
+  align-items:center;
 
-    transition:
-      color .2s ease,
-      transform .2s ease;
-  }
+  gap:18px;
+}
 
-  .footer__col a:hover {
-    color: #ffffff;
-    transform: translateX(2px);
-  }
+.footer__bottom a {
 
-  .footer__bottom {
-    margin-top: 46px;
+  color:#fff;
 
-    padding-top: 22px;
+  font-weight:750;
 
-    border-top:
-      1px solid rgba(255,255,255,.08);
+  font-size:.88rem;
+}
 
-    display: flex;
+@media (max-width:980px){
 
-    justify-content: space-between;
+.footer__grid{
+grid-template-columns:1fr 1fr;
+gap:34px;
+}
 
-    align-items: center;
+}
 
-    gap: 20px;
+@media (max-width:640px){
 
-    color: rgba(255,255,255,.5);
+.footer{
+padding:54px 0 22px;
+}
 
-    font-size: .84rem;
-  }
+.footer__grid{
+grid-template-columns:1fr;
+gap:30px;
+}
 
-  .footer__bottom-links {
-    display: flex;
-    align-items: center;
-    gap: 18px;
-  }
+.footer__bottom{
+flex-direction:column;
+align-items:flex-start;
+}
 
-  .footer__bottom a {
-    color: #ffffff;
+.footer__bottom-links{
+flex-direction:column;
+align-items:flex-start;
+gap:10px;
+}
 
-    font-weight: 750;
-
-    font-size: .88rem;
-  }
-
-  @media (max-width: 980px) {
-
-    .footer__grid {
-      grid-template-columns: 1fr 1fr;
-      gap: 34px;
-    }
-
-  }
-
-  @media (max-width: 640px) {
-
-    .footer {
-      padding: 54px 0 22px;
-    }
-
-    .footer__grid {
-      grid-template-columns: 1fr;
-      gap: 30px;
-    }
-
-    .footer__bottom {
-      flex-direction: column;
-      align-items: flex-start;
-    }
-
-    .footer__bottom-links {
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 10px;
-    }
-
-  }
+}
 
 </style>
