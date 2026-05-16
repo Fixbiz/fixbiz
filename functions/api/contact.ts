@@ -4,7 +4,6 @@ export const onRequestPost: PagesFunction<{
   CONTACT_FROM: string;
 }> = async ({ request, env }) => {
   try {
-
     const body = await request.json();
 
     const nom = String(body.nom || "").trim();
@@ -65,8 +64,7 @@ export const onRequestPost: PagesFunction<{
     // Validation email
     // ------------------------
 
-    const emailRegex =
-      /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     if (!emailRegex.test(email)) {
       return new Response(
@@ -83,20 +81,14 @@ export const onRequestPost: PagesFunction<{
       "mailinator.com",
       "10minutemail.com",
       "guerrillamail.com",
-      "tempmail.com"
+      "tempmail.com",
     ];
 
-    const domain =
-      email.split("@")[1]?.toLowerCase();
+    const domain = email.split("@")[1]?.toLowerCase();
 
-    if (
-      domain &&
-      disposableDomains.includes(domain)
-    ) {
+    if (domain && disposableDomains.includes(domain)) {
       return new Response(
-        JSON.stringify({
-          error: "Adresse refusée"
-        }),
+        JSON.stringify({ error: "Adresse refusée" }),
         { status: 400 }
       );
     }
@@ -108,84 +100,54 @@ export const onRequestPost: PagesFunction<{
     const htmlContent = `
       <h2>Nouvelle demande FixBiz</h2>
 
-      <p>
-        <strong>Nom :</strong>
-        ${nom}
-      </p>
+      <p><strong>Nom :</strong> ${nom}</p>
+      <p><strong>Email :</strong> ${email}</p>
+      <p><strong>Téléphone :</strong> ${telephone || "Non renseigné"}</p>
 
-      <p>
-        <strong>Email :</strong>
-        ${email}
-      </p>
-
-      <p>
-        <strong>Téléphone :</strong>
-        ${telephone || "Non renseigné"}
-      </p>
-
-      <p>
-        <strong>Situation :</strong>
-      </p>
-
-      <p>
-        ${situation.replace(/\n/g, "<br>")}
-      </p>
+      <p><strong>Situation :</strong></p>
+      <p>${situation.replace(/\n/g, "<br>")}</p>
     `;
 
-    const brevoResponse =
-      await fetch(
-        "https://api.brevo.com/v3/smtp/email",
-        {
-          method: "POST",
+    const brevoResponse = await fetch(
+      "https://api.brevo.com/v3/smtp/email",
+      {
+        method: "POST",
 
-          headers: {
-            "Content-Type":
-              "application/json",
+        headers: {
+          "Content-Type": "application/json",
+          "api-key": env.BREVO_API_KEY,
+        },
 
-            "api-key":
-              env.BREVO_API_KEY,
+        body: JSON.stringify({
+          sender: {
+            name: "FixBiz",
+            email: env.CONTACT_FROM,
           },
 
-          body: JSON.stringify({
-
-            sender: {
+          to: [
+            {
+              email: env.CONTACT_TO,
               name: "FixBiz",
-              email:
-                env.CONTACT_FROM,
             },
+          ],
 
-            to: [
-              {
-                email:
-                  env.CONTACT_TO,
+          replyTo: {
+            email,
+            name: nom,
+          },
 
-                name:
-                  "FixBiz",
-              },
-            ],
+          subject: `Nouvelle demande FixBiz - ${nom}`,
 
-            replyTo: {
-              email,
-              name: nom,
-            },
-
-            subject:
-              `Nouvelle demande FixBiz - ${nom}`,
-
-            htmlContent,
-          }),
-        }
-      );
+          htmlContent,
+        }),
+      }
+    );
 
     if (!brevoResponse.ok) {
-
       return new Response(
-        JSON.stringify({
-          error: "Erreur Brevo"
-        }),
+        JSON.stringify({ error: "Erreur Brevo" }),
         { status: 500 }
       );
-
     }
 
     // ------------------------
@@ -196,83 +158,89 @@ export const onRequestPost: PagesFunction<{
       <p>Bonjour ${nom},</p>
 
       <p>
-        Nous avons bien reçu votre demande.
+        Merci pour votre message.
+        Nous avons bien reçu votre demande et allons prendre connaissance de votre situation.
       </p>
 
       <p>
-        Nous allons lire votre message et revenir vers vous rapidement.
+        Nous reviendrons vers vous dès que possible.
       </p>
 
       <p>
-        Si votre situation est urgente, vous pouvez aussi nous contacter directement :
-        <br>
-        📞 +33 7 69 24 49 59
-        <br>
-        💬 WhatsApp disponible
+        En attendant, vous pouvez découvrir notre approche et nos services :
       </p>
 
       <p>
-        À bientôt,<br>
-        FixBiz<br>
-        contact@fixbiz.fr
+        👉 <a href="https://fixbiz.fr">www.fixbiz.fr</a>
+      </p>
+
+      <br>
+
+      <p>
+        Bien cordialement,
+      </p>
+
+      <p>
+        <strong>Jean-Philippe Schneider</strong><br>
+        Fondateur FixBiz<br>
+        Email : <a href="mailto:contact@fixbiz.fr">contact@fixbiz.fr</a><br>
+        Tel : +33 7 69 24 59 59<br>
+        <a href="https://fixbiz.fr">www.fixbiz.fr</a>
+      </p>
+
+      <br>
+
+      <img
+        src="https://fixbiz.fr/logo%20inverse%20copied%20without%20background.png"
+        alt="FixBiz"
+        style="max-width:220px;height:auto;"
+      >
+
+      <p style="font-style:italic;color:#2e7fb1;margin-top:8px;">
+        Transformez les défis en succès !
       </p>
     `;
 
-    const confirmationResponse =
-      await fetch(
-        "https://api.brevo.com/v3/smtp/email",
-        {
-          method: "POST",
+    const confirmationResponse = await fetch(
+      "https://api.brevo.com/v3/smtp/email",
+      {
+        method: "POST",
 
-          headers: {
-            "Content-Type":
-              "application/json",
+        headers: {
+          "Content-Type": "application/json",
+          "api-key": env.BREVO_API_KEY,
+        },
 
-            "api-key":
-              env.BREVO_API_KEY,
+        body: JSON.stringify({
+          sender: {
+            name: "FixBiz",
+            email: env.CONTACT_FROM,
           },
 
-          body: JSON.stringify({
-
-            sender: {
-              name: "FixBiz",
-              email:
-                env.CONTACT_FROM,
+          to: [
+            {
+              email,
+              name: nom,
             },
+          ],
 
-            to: [
-              {
-                email,
-                name: nom,
-              },
-            ],
+          replyTo: {
+            email: env.CONTACT_TO,
+            name: "FixBiz",
+          },
 
-            replyTo: {
-              email:
-                env.CONTACT_TO,
+          subject: "Votre demande a bien été reçue — FixBiz",
 
-              name:
-                "FixBiz",
-            },
-
-            subject:
-              "Nous avons bien reçu votre demande",
-
-            htmlContent:
-              confirmationContent,
-          }),
-        }
-      );
+          htmlContent: confirmationContent,
+        }),
+      }
+    );
 
     if (!confirmationResponse.ok) {
-
       return new Response(
-        JSON.stringify({
-          error: "Erreur confirmation"
-        }),
+        JSON.stringify({ error: "Erreur confirmation" }),
         { status: 500 }
       );
-
     }
 
     // ------------------------
@@ -280,21 +248,13 @@ export const onRequestPost: PagesFunction<{
     // ------------------------
 
     return new Response(
-      JSON.stringify({
-        ok: true
-      }),
+      JSON.stringify({ ok: true }),
       { status: 200 }
     );
-
   } catch {
-
     return new Response(
-      JSON.stringify({
-        error:
-          "Erreur serveur"
-      }),
+      JSON.stringify({ error: "Erreur serveur" }),
       { status: 500 }
     );
-
   }
 };
