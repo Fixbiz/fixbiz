@@ -109,26 +109,26 @@ export const onRequestPost: PagesFunction<{
       <h2>Nouvelle demande FixBiz</h2>
 
       <p>
-      <strong>Nom :</strong>
-      ${nom}
+        <strong>Nom :</strong>
+        ${nom}
       </p>
 
       <p>
-      <strong>Email :</strong>
-      ${email}
+        <strong>Email :</strong>
+        ${email}
       </p>
 
       <p>
-      <strong>Téléphone :</strong>
-      ${telephone || "Non renseigné"}
+        <strong>Téléphone :</strong>
+        ${telephone || "Non renseigné"}
       </p>
 
       <p>
-      <strong>Situation :</strong>
+        <strong>Situation :</strong>
       </p>
 
       <p>
-      ${situation.replace(/\n/g,"<br>")}
+        ${situation.replace(/\n/g, "<br>")}
       </p>
     `;
 
@@ -187,6 +187,97 @@ export const onRequestPost: PagesFunction<{
       );
 
     }
+
+    // ------------------------
+    // Email automatique au prospect
+    // ------------------------
+
+    const confirmationContent = `
+      <p>Bonjour ${nom},</p>
+
+      <p>
+        Nous avons bien reçu votre demande.
+      </p>
+
+      <p>
+        Nous allons lire votre message et revenir vers vous rapidement.
+      </p>
+
+      <p>
+        Si votre situation est urgente, vous pouvez aussi nous contacter directement :
+        <br>
+        📞 +33 7 69 24 49 59
+        <br>
+        💬 WhatsApp disponible
+      </p>
+
+      <p>
+        À bientôt,<br>
+        FixBiz<br>
+        contact@fixbiz.fr
+      </p>
+    `;
+
+    const confirmationResponse =
+      await fetch(
+        "https://api.brevo.com/v3/smtp/email",
+        {
+          method: "POST",
+
+          headers: {
+            "Content-Type":
+              "application/json",
+
+            "api-key":
+              env.BREVO_API_KEY,
+          },
+
+          body: JSON.stringify({
+
+            sender: {
+              name: "FixBiz",
+              email:
+                env.CONTACT_FROM,
+            },
+
+            to: [
+              {
+                email,
+                name: nom,
+              },
+            ],
+
+            replyTo: {
+              email:
+                env.CONTACT_TO,
+
+              name:
+                "FixBiz",
+            },
+
+            subject:
+              "Nous avons bien reçu votre demande",
+
+            htmlContent:
+              confirmationContent,
+          }),
+        }
+      );
+
+    if (!confirmationResponse.ok) {
+
+      return new Response(
+        JSON.stringify({
+          error: "Erreur confirmation"
+        }),
+        { status: 500 }
+      );
+
+    }
+
+    // ------------------------
+    // Réponse OK au formulaire
+    // ------------------------
 
     return new Response(
       JSON.stringify({
