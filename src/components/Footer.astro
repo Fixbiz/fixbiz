@@ -1,7 +1,3 @@
-
----
----
-
 <footer class="footer">
 
   <div class="wrap footer__grid">
@@ -17,7 +13,7 @@
       <p>
         Accompagnement opérationnel des dirigeants :
         redressement, structuration, pilotage,
-        soutien et cession.
+        rentabilité, transition et cession d’entreprise.
       </p>
 
       <div class="footer__contacts">
@@ -36,37 +32,85 @@
 
     <div class="footer__col">
 
-      <h3>Services</h3>
+      <h3>
+        Services
+      </h3>
 
-      <a href="/nos-services/#resilience">Résilience</a>
-      <a href="/nos-services/#performance">Performance</a>
-      <a href="/nos-services/#soutien">Soutien</a>
-      <a href="/nos-services/#starter">Starter</a>
-      <a href="/nos-services/#expert">Expert</a>
+      <a href="/nos-services/#resilience">
+        Redressement & trésorerie
+      </a>
+
+      <a href="/nos-services/#performance">
+        Performance & rentabilité
+      </a>
+
+      <a href="/nos-services/#soutien">
+        Accompagnement dirigeant
+      </a>
+
+      <a href="/nos-services/#starter">
+        Création & structuration
+      </a>
+
+      <a href="/nos-services/#expert">
+        Pilotage opérationnel
+      </a>
 
     </div>
 
     <div class="footer__col">
 
-      <h3>FixBiz</h3>
+      <h3>
+        FixBiz
+      </h3>
 
-      <a href="/#jp">Qui sommes-nous</a>
-      <a href="/blog/">Blog</a>
-      <a href="/#faq">FAQ</a>
-      <a href="/contact/">Contact</a>
-      <a href="/prendre-rdv/">Prendre RDV</a>
+      <a href="/#process">
+        Notre méthode
+      </a>
+
+      <a href="/#jp">
+        Qui suis-je
+      </a>
+
+      <a href="/faq/">
+        FAQ
+      </a>
+
+      <a href="/blog/">
+        Blog
+      </a>
+
+      <a href="/prendre-rdv/">
+        Diagnostic gratuit
+      </a>
 
     </div>
 
     <div class="footer__col">
 
-      <h3>Légal</h3>
+      <h3>
+        Légal
+      </h3>
 
-      <a href="/mentions-legales/">Mentions légales</a>
-      <a href="/politique-de-confidentialite/">Confidentialité</a>
-      <a href="/conditions-generales-de-service/">CGS</a>
-      <a href="/politique-des-cookies/">Cookies</a>
-      <a href="/protection-donnees-personnelles/">Données personnelles</a>
+      <a href="/mentions-legales/">
+        Mentions légales
+      </a>
+
+      <a href="/politique-de-confidentialite/">
+        Confidentialité
+      </a>
+
+      <a href="/conditions-generales-de-service/">
+        Conditions générales
+      </a>
+
+      <a href="/politique-des-cookies/">
+        Cookies
+      </a>
+
+      <a href="/protection-donnees-personnelles/">
+        Données personnelles
+      </a>
 
     </div>
 
@@ -78,9 +122,17 @@
       © 2026 FixBiz. Tous droits réservés.
     </span>
 
-    <a href="/prendre-rdv/">
-      Diagnostic gratuit
-    </a>
+    <div class="footer__bottom-links">
+
+  <a href="/#contact">
+    Nous contacter
+  </a>
+
+  <a href="/prendre-rdv/">
+    Diagnostic gratuit
+  </a>
+
+</div>
 
   </div>
 
@@ -91,7 +143,7 @@
   .footer {
     background: #062b52;
     color: #dceaf4;
-    padding: 64px 0 26px;
+    padding: 68px 0 28px;
   }
 
   .footer__grid {
@@ -110,36 +162,51 @@
 
   .footer__brand p {
     margin: 0;
+
     color: rgba(255,255,255,.72);
+
     line-height: 1.8;
+
     font-size: .94rem;
+
     max-width: 420px;
   }
 
   .footer__contacts {
-    margin-top: 20px;
+    margin-top: 22px;
   }
 
   .footer__contacts a {
     display: block;
+
     margin-bottom: 10px;
+
     color: #ffffff;
-    font-weight: 600;
-    font-size: .9rem;
+
+    font-weight: 650;
+
+    font-size: .92rem;
   }
 
   .footer__col h3 {
     margin: 0 0 16px;
+
     color: #ffffff;
+
     font-size: .95rem;
+
     font-weight: 800;
   }
 
   .footer__col a {
     display: block;
+
     margin: 10px 0;
+
     color: rgba(255,255,255,.72);
+
     font-size: .9rem;
+
     transition:
       color .2s ease,
       transform .2s ease;
@@ -151,23 +218,38 @@
   }
 
   .footer__bottom {
-    margin-top: 42px;
-    padding-top: 20px;
+    margin-top: 46px;
 
-    border-top: 1px solid rgba(255,255,255,.08);
+    padding-top: 22px;
+
+    border-top:
+      1px solid rgba(255,255,255,.08);
 
     display: flex;
+
     justify-content: space-between;
+
     align-items: center;
+
     gap: 20px;
 
     color: rgba(255,255,255,.5);
+
     font-size: .84rem;
+  }
+
+  .footer__bottom-links {
+    display: flex;
+    align-items: center;
+    gap: 18px;
   }
 
   .footer__bottom a {
     color: #ffffff;
-    font-weight: 800;
+
+    font-weight: 750;
+
+    font-size: .88rem;
   }
 
   @media (max-width: 980px) {
@@ -193,6 +275,12 @@
     .footer__bottom {
       flex-direction: column;
       align-items: flex-start;
+    }
+
+    .footer__bottom-links {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
     }
 
   }
