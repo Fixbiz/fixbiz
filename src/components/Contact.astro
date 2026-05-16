@@ -1,29 +1,73 @@
 ---
 ---
+
 <section class="section contact" id="contact">
   <div class="wrap contact__inner">
     <div class="contact__copy fade">
       <div class="eyebrow">Contact</div>
       <h2 class="section-title section-title--small">Expliquez la situation. On vous répond rapidement.</h2>
       <p class="section-sub">Décrivez simplement votre problème : baisse d’activité, tension de trésorerie, dettes, organisation bloquée, projet de cession ou besoin de soutien.</p>
+
       <div class="contact__cards">
         <a href="tel:+33769244959" class="contact__card card"><span>📞</span><div><strong>Téléphone</strong><small>+33 7 69 24 49 59</small></div></a>
         <a href="https://wa.me/33769244959" class="contact__card card"><span>💬</span><div><strong>WhatsApp</strong><small>Échange direct</small></div></a>
         <a href="mailto:contact@fixbiz.fr" class="contact__card card"><span>✉️</span><div><strong>Email</strong><small>contact@fixbiz.fr</small></div></a>
       </div>
     </div>
+
     <div class="contact__form-wrap card fade">
-      <form class="contact__form" action="https://formspree.io/f/xqewvzaw" method="POST">
+      <form class="contact__form" id="fixbiz-contact-form">
         <label>Nom<input type="text" name="nom" placeholder="Votre nom" required /></label>
         <label>Email<input type="email" name="email" placeholder="vous@entreprise.fr" required /></label>
         <label>Téléphone<input type="tel" name="telephone" placeholder="+33 6 00 00 00 00" /></label>
         <label>Situation<textarea name="situation" rows="5" placeholder="Expliquez brièvement votre situation..." required></textarea></label>
+
+        <input type="text" name="website" class="honeypot" tabindex="-1" autocomplete="off" />
+
         <button type="submit" class="btn btn--primary">Envoyer ma demande →</button>
-        <p>Premier échange gratuit. Données confidentielles.</p>
+        <p class="contact__status">Premier échange gratuit. Données confidentielles.</p>
       </form>
     </div>
   </div>
 </section>
+
+<script>
+  const form = document.querySelector("#fixbiz-contact-form");
+  const status = document.querySelector(".contact__status");
+  const button = form?.querySelector("button");
+
+  form?.addEventListener("submit", async (event) => {
+    event.preventDefault();
+
+    if (!button || !status) return;
+
+    button.disabled = true;
+    button.textContent = "Envoi en cours...";
+    status.textContent = "Envoi de votre demande...";
+
+    const formData = new FormData(form);
+    const payload = Object.fromEntries(formData.entries());
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      if (!response.ok) throw new Error("Erreur");
+
+      form.reset();
+      button.textContent = "Demande envoyée ✓";
+      status.textContent = "Merci. Votre message a bien été envoyé.";
+    } catch {
+      button.textContent = "Envoyer ma demande →";
+      status.textContent = "Erreur d’envoi. Vous pouvez aussi écrire à contact@fixbiz.fr.";
+    } finally {
+      button.disabled = false;
+    }
+  });
+</script>
 
 <style>
   .contact { background: #fff; }
@@ -40,5 +84,6 @@
   .contact__form input:focus, .contact__form textarea:focus { border-color: var(--blue); box-shadow: 0 0 0 3px rgba(46,127,177,.12); }
   .contact__form button { width: 100%; border: 0; }
   .contact__form p { margin: 0; text-align: center; color: var(--muted); font-size: .78rem; }
+  .honeypot { display: none; }
   @media (max-width: 860px) { .contact__inner { grid-template-columns: 1fr; } }
 </style>
