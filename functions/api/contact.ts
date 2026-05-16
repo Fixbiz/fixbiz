@@ -191,9 +191,10 @@ export const onRequestPost: PagesFunction<{
       <br>
 
       <img
-        src="https://fixbiz.fr/logo%20inverse%20copied%20without%20background.png"
+        src="https://fixbiz.fr/logo-email.png"
         alt="FixBiz"
-        style="max-width:220px;height:auto;"
+        width="220"
+        style="display:block;max-width:220px;height:auto;"
       >
 
       <p style="font-style:italic;color:#2e7fb1;margin-top:8px;">
