@@ -2,8 +2,14 @@
 const {
   title = "FixBiz — Redressement, trésorerie et accompagnement dirigeant",
   description = "FixBiz accompagne les dirigeants de TPE et PME : redressement d’entreprise, trésorerie, rentabilité, structuration, pilotage opérationnel et cession.",
-  canonical = "https://fixbiz.fr/"
+  canonical = "https://fixbiz.fr/",
+  image = "/og-fixbiz.jpg",
+  type = "website"
 } = Astro.props;
+
+const imageUrl = image.startsWith("http")
+  ? image
+  : `https://fixbiz.fr${image}`;
 ---
 
 <!DOCTYPE html>
@@ -35,9 +41,14 @@ const {
     content="#2e7fb1"
   />
 
+  <link
+    rel="canonical"
+    href={canonical}
+  />
+
   <meta
     property="og:type"
-    content="website"
+    content={type}
   />
 
   <meta
@@ -67,7 +78,17 @@ const {
 
   <meta
     property="og:image"
-    content="https://fixbiz.fr/og-fixbiz.jpg"
+    content={imageUrl}
+  />
+
+  <meta
+    property="og:image:width"
+    content="1200"
+  />
+
+  <meta
+    property="og:image:height"
+    content="630"
   />
 
   <meta
@@ -87,12 +108,7 @@ const {
 
   <meta
     name="twitter:image"
-    content="https://fixbiz.fr/og-fixbiz.jpg"
-  />
-
-  <link
-    rel="canonical"
-    href={canonical}
+    content={imageUrl}
   />
 
   <link
@@ -347,8 +363,8 @@ const {
       "name": "FixBiz",
       "url": "https://fixbiz.fr",
       "logo": "https://fixbiz.fr/logo.png",
-      "image": "https://fixbiz.fr/og-fixbiz.jpg",
-      "description": "FixBiz accompagne les dirigeants de TPE et PME dans les périodes de tension : redressement d’entreprise, trésorerie, restructuration, organisation, rentabilité, cession et accompagnement opérationnel.",
+      "image": imageUrl,
+      "description": description,
       "areaServed": [
         "France",
         "Europe"

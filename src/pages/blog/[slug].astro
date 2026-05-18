@@ -34,7 +34,13 @@ const relatedPosts = allPosts
 const slug = (item) => `/blog/${item.id.replace(/\.md$/, '')}/`;
 ---
 
-<Layout title={post.data.title} description={post.data.description}>
+<Layout
+  title={post.data.title}
+  description={post.data.description}
+  canonical={`https://fixbiz.fr/blog/${post.id.replace(/\.md$/, '')}/`}
+  image={post.data.image}
+  type="article"
+>
   <Nav />
 
   <main class="article">
