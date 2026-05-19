@@ -40,9 +40,7 @@ export const onRequest: PagesFunction<{
       return new Response(JSON.stringify({ ok: true }), { status: 200 });
     }
 
-    const now = Date.now();
-
-    if (startedAt && now - startedAt < 3000) {
+    if (startedAt && Date.now() - startedAt < 3000) {
       return new Response(JSON.stringify({ error: "Spam détecté" }), {
         status: 400,
       });
@@ -73,14 +71,15 @@ export const onRequest: PagesFunction<{
       });
     }
 
+    const signatureBase64 = signatureImage.replace(/^data:image\/png;base64,/, "");
+
     const ip =
       request.headers.get("CF-Connecting-IP") ||
       request.headers.get("X-Forwarded-For") ||
       "Non disponible";
 
     const userAgent =
-      request.headers.get("User-Agent") ||
-      "Non disponible";
+      request.headers.get("User-Agent") || "Non disponible";
 
     const dateSignature = new Date().toLocaleString("fr-FR", {
       timeZone: "Europe/Paris",
@@ -213,7 +212,6 @@ export const onRequest: PagesFunction<{
         </ul>
 
         <p><strong>Date de validation :</strong><br>${dateSignature}</p>
-
         <p><strong>Adresse IP :</strong><br>${escapeHtml(ip)}</p>
         <p><strong>Navigateur :</strong><br>${escapeHtml(userAgent)}</p>
 
@@ -221,18 +219,14 @@ export const onRequest: PagesFunction<{
           <tr>
             <td style="width:50%;vertical-align:top;border:1px solid #dbe4ee;padding:14px;">
               <strong>Pour FixBiz</strong><br>
+              Jean-Philippe Schneider<br>
+              Fondateur FixBiz<br><br>
 
-Jean-Philippe Schneider<br>
-Fondateur FixBiz<br><br>
-
-Signature :<br><br>
-
-<img
-src="https://fixbiz.fr/signature-fixbiz.png"
-style="
-max-width:220px;
-"
-/>
+              Signature :<br><br>
+              <img
+                src="https://fixbiz.fr/signature-fixbiz.png"
+                style="max-width:220px;"
+              />
             </td>
 
             <td style="width:50%;vertical-align:top;border:1px solid #dbe4ee;padding:14px;">
@@ -244,21 +238,8 @@ max-width:220px;
               Nom du signataire :<br>
               <strong>${escapeHtml(signataire)}</strong><br><br>
 
-              Signature manuscrite :<br>
-              Signature manuscrite du client :<br><br>
-
-<img
-src="${signatureImage}"
-width="220"
-height="90"
-style="
-display:block;
-background:#fff;
-border:1px solid #dbe4ee;
-padding:8px;
-object-fit:contain;
-"
-/>
+              Signature manuscrite du client :<br>
+              Voir pièce jointe <strong>signature-client.png</strong>.
             </td>
           </tr>
         </table>
@@ -293,6 +274,12 @@ object-fit:contain;
           },
           subject,
           htmlContent: lettreHtml,
+          attachment: [
+            {
+              content: signatureBase64,
+              name: "signature-client.png",
+            },
+          ],
         }),
       });
     };
