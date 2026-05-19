@@ -71,11 +71,25 @@ export const onRequest: PagesFunction<{
     }
 
     const ip =
-      request.headers.get("CF-Connecting-IP") ||
-      request.headers.get("X-Forwarded-For") ||
-      "Non disponible";
+  request.headers.get("CF-Connecting-IP") ||
+  request.headers.get("X-Forwarded-For") ||
+  "Non disponible";
 
-    const userAgent = request.headers.get("User-Agent") || "Non disponible";
+const userAgent =
+  request.headers.get("User-Agent") ||
+  "Non disponible";
+
+const country =
+  (request as any).cf?.country ||
+  "Non disponible";
+
+const city =
+  (request as any).cf?.city ||
+  "Non disponible";
+
+const region =
+  (request as any).cf?.region ||
+  "Non disponible";
 
     const dateSignature = new Date().toLocaleString("fr-FR", {
       timeZone: "Europe/Paris",
@@ -97,8 +111,16 @@ export const onRequest: PagesFunction<{
           <strong>Fonction :</strong> ${escapeHtml(fonction)}<br>
           <strong>Email :</strong> ${escapeHtml(email)}<br>
           <strong>Date de validation :</strong> ${dateSignature}<br>
-          <strong>Adresse IP :</strong> ${escapeHtml(ip)}<br>
-          <strong>Navigateur :</strong> ${escapeHtml(userAgent)}
+          <strong>Adresse IP :</strong>
+${escapeHtml(ip)}<br>
+<strong>Navigateur :</strong>
+${escapeHtml(userAgent)}<br>
+<strong>Pays :</strong>
+${escapeHtml(country)}<br>
+<strong>Région :</strong>
+${escapeHtml(region)}<br>
+<strong>Ville estimée :</strong>
+${escapeHtml(city)}
         </p>
 
         <p>Le PDF signé est joint au présent email.</p>
