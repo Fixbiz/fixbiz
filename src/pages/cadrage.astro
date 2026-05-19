@@ -597,6 +597,42 @@
 
         const pdfDocument = document.querySelector("#pdf-document");
 
+pdfDocument.style.display = "block";
+pdfDocument.style.position = "absolute";
+pdfDocument.style.left = "0";
+pdfDocument.style.top = "0";
+pdfDocument.style.width = "794px";
+pdfDocument.style.background = "white";
+pdfDocument.style.zIndex = "999999";
+pdfDocument.style.visibility = "visible";
+pdfDocument.style.opacity = "1";
+
+window.scrollTo(0, 0);
+
+await new Promise((resolve) => setTimeout(resolve, 1000));
+
+const pdfBlob = await html2pdf()
+  .set({
+    margin: 10,
+    filename: "lettre-cadrage-fixbiz.pdf",
+    image: { type: "jpeg", quality: 0.98 },
+    html2canvas: {
+      scale: 2,
+      useCORS: true,
+      allowTaint: true,
+      backgroundColor: "#ffffff"
+    },
+    jsPDF: {
+      unit: "mm",
+      format: "a4",
+      orientation: "portrait"
+    }
+  })
+  .from(pdfDocument)
+  .outputPdf("blob");
+
+pdfDocument.style.display = "none";
+
 const pdfBlob = await html2pdf()
   .set({
     margin: 10,
