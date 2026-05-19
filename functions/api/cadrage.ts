@@ -140,16 +140,12 @@ export const onRequest: PagesFunction<{
           },
           subject,
           htmlContent,
-          attachment: [
-            {
-              content: pdfBase64,
-              name: "lettre-cadrage-fixbiz.pdf",
-            },
-            {
-              content: signatureBase64,
-              name: "signature-client.png",
-            },
-          ],
+attachment: [
+  {
+    content: pdfBase64,
+    name: "lettre-cadrage-fixbiz.pdf",
+  },
+],
         }),
       });
     };
