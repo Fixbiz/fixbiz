@@ -249,12 +249,14 @@ max-width:220px;
 
 <img
 src="${signatureImage}"
+width="220"
+height="90"
 style="
-max-width:220px;
+display:block;
+background:#fff;
 border:1px solid #dbe4ee;
-border-radius:8px;
 padding:8px;
-background:white;
+object-fit:contain;
 "
 />
             </td>

@@ -474,8 +474,16 @@
         status.textContent = "Merci de signer la lettre avant validation.";
         return;
       }
+const trimmedCanvas =
+signaturePad.toDataURL("image/png");
 
-      signatureInput.value = signaturePad.toDataURL("image/png");
+signatureInput.value =
+trimmedCanvas;
+      signatureInput.value =
+signaturePad.toDataURL(
+  "image/png",
+  0.7
+);
 
       button.disabled = true;
       button.textContent = "Envoi en cours...";
