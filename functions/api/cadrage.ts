@@ -230,17 +230,31 @@ export const onRequest: PagesFunction<{
             </td>
 
             <td style="width:50%;vertical-align:top;border:1px solid #dbe4ee;padding:14px;">
-              <strong>Pour ${escapeHtml(signataire)}</strong><br>
-              ${escapeHtml(fonction)}<br>
-              Agissant pour :<br>
-              ${escapeHtml(societe)}<br><br>
 
-              Nom du signataire :<br>
-              <strong>${escapeHtml(signataire)}</strong><br><br>
+<strong>
+Pour ${escapeHtml(societe)}
+</strong><br><br>
 
-              Signature manuscrite du client :<br>
-              Voir pièce jointe <strong>signature-client.png</strong>.
-            </td>
+Nom du signataire :<br>
+
+<strong>
+${escapeHtml(signataire)}
+</strong><br><br>
+
+Fonction :<br>
+
+${escapeHtml(fonction)}<br><br>
+
+Agissant pour :<br>
+
+${escapeHtml(societe)}<br><br>
+
+Signature manuscrite du client :<br>
+
+Voir pièce jointe
+<strong>signature-client.png</strong>
+
+</td>
           </tr>
         </table>
 
