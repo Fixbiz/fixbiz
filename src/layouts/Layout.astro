@@ -356,35 +356,36 @@ const imageUrl = image.startsWith("http")
     }
   </style>
 
-  <script type="application/ld+json">
-    {JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "ProfessionalService",
-      "name": "FixBiz",
-      "url": "https://fixbiz.fr",
-      "logo": "https://fixbiz.fr/logo.png",
-      "image": imageUrl,
-      "description": description,
-      "areaServed": [
-        "France",
-        "Europe"
-      ],
-      "serviceType": [
-        "Redressement d’entreprise",
-        "Accompagnement dirigeant",
-        "Pilotage opérationnel",
-        "Amélioration de rentabilité",
-        "Structuration d’entreprise",
-        "Préparation à la cession"
-      ],
-      "email": "contact@fixbiz.fr",
-      "telephone": "+33769244959",
-      "founder": {
-        "@type": "Person",
-        "name": "Jean-Philippe Schneider"
-      }
-    })}
-  </script>
+<script
+  type="application/ld+json"
+  set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "FixBiz",
+    "url": "https://fixbiz.fr",
+    "logo": "https://fixbiz.fr/logo.png",
+    "image": imageUrl,
+    "description": description,
+    "areaServed": [
+      "France",
+      "Europe"
+    ],
+    "serviceType": [
+      "Redressement d’entreprise",
+      "Accompagnement dirigeant",
+      "Pilotage opérationnel",
+      "Amélioration de rentabilité",
+      "Structuration d’entreprise",
+      "Préparation à la cession"
+    ],
+    "email": "contact@fixbiz.fr",
+    "telephone": "+33769244959",
+    "founder": {
+      "@type": "Person",
+      "name": "Jean-Philippe Schneider"
+    }
+  })}
+/>
 
 </head>
 
