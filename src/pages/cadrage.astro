@@ -182,11 +182,8 @@
       margin-top: 14px;
     }
 
-    /* PDF caché */
     #pdf-document {
-      position: fixed;
-      left: -99999px;
-      top: 0;
+      display: none;
       width: 794px;
       background: white;
       color: #1f2937;
@@ -221,30 +218,26 @@
       line-height: 1.45;
     }
 
-    .pdf-parties {
+    .pdf-parties,
+    .pdf-signatures {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 14px;
       margin: 18px 0;
     }
 
-    .pdf-party {
-      border: 1px solid #dbe4ee;
-      padding: 12px;
-      min-height: 120px;
-      box-sizing: border-box;
-    }
-
-    .pdf-signatures {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 14px;
-      margin-top: 18px;
-    }
-
+    .pdf-party,
     .pdf-signature-box {
       border: 1px solid #dbe4ee;
       padding: 12px;
+      box-sizing: border-box;
+    }
+
+    .pdf-party {
+      min-height: 120px;
+    }
+
+    .pdf-signature-box {
       min-height: 145px;
     }
 
@@ -258,6 +251,10 @@
       color: #6b7280;
       font-size: 10px;
       margin-top: 12px;
+    }
+
+    .pdf-pre {
+      white-space: pre-line;
     }
 
     @media (max-width: 760px) {
@@ -330,14 +327,10 @@
         </div>
 
         <h2>1. Objet</h2>
-        <p>
-          La présente lettre a pour objet de définir les conditions dans lesquelles FixBiz intervient dans une phase préliminaire de compréhension, d’analyse et de cadrage de la situation du Client avant toute éventuelle mission d’accompagnement.
-        </p>
+        <p>La présente lettre a pour objet de définir les conditions dans lesquelles FixBiz intervient dans une phase préliminaire de compréhension, d’analyse et de cadrage de la situation du Client avant toute éventuelle mission d’accompagnement.</p>
 
         <h2>2. Contexte communiqué par le Client</h2>
-        <p>
-          Dans le cadre de la présente phase de cadrage, le Client expose les éléments, enjeux ou objectifs pour lesquels il sollicite l’avis ou l’accompagnement éventuel de FixBiz.
-        </p>
+        <p>Dans le cadre de la présente phase de cadrage, le Client expose les éléments, enjeux ou objectifs pour lesquels il sollicite l’avis ou l’accompagnement éventuel de FixBiz.</p>
 
         <label>Niveau d’urgence déclaré
           <select name="urgence" required>
@@ -354,73 +347,37 @@
         </label>
 
         <h2>3. Périmètre de la phase de cadrage</h2>
-        <p>
-          La phase de cadrage a pour objet de permettre à FixBiz de mieux comprendre la situation du Client, d’identifier les principaux enjeux communiqués et d’apprécier la pertinence d’un éventuel accompagnement.
-        </p>
-        <p>
-          À cette fin, FixBiz pourra examiner les éléments transmis par le Client, solliciter des précisions complémentaires et évaluer les besoins susceptibles de nécessiter une intervention ultérieure.
-        </p>
-        <p>
-          Cette phase pourra également conduire, si cela apparaît pertinent, à la définition des contours d’un accompagnement ou à la préparation d’une proposition ou d’une lettre de mission spécifique.
-        </p>
+        <p>La phase de cadrage a pour objet de permettre à FixBiz de mieux comprendre la situation du Client, d’identifier les principaux enjeux communiqués et d’apprécier la pertinence d’un éventuel accompagnement.</p>
+        <p>À cette fin, FixBiz pourra examiner les éléments transmis par le Client, solliciter des précisions complémentaires et évaluer les besoins susceptibles de nécessiter une intervention ultérieure.</p>
+        <p>Cette phase pourra également conduire, si cela apparaît pertinent, à la définition des contours d’un accompagnement ou à la préparation d’une proposition ou d’une lettre de mission spécifique.</p>
 
         <h2>4. Informations nécessaires à la phase de cadrage</h2>
-        <p>
-          Afin de permettre une compréhension suffisante de la situation du Client et, le cas échéant, l’évaluation d’un accompagnement adapté, FixBiz pourra solliciter toute information, précision ou document jugé utile à l’analyse.
-        </p>
-        <p>
-          Le Client s’engage à communiquer des éléments sincères, exacts et suffisamment complets pour permettre cette phase d’étude.
-        </p>
+        <p>Afin de permettre une compréhension suffisante de la situation du Client et, le cas échéant, l’évaluation d’un accompagnement adapté, FixBiz pourra solliciter toute information, précision ou document jugé utile à l’analyse.</p>
+        <p>Le Client s’engage à communiquer des éléments sincères, exacts et suffisamment complets pour permettre cette phase d’étude.</p>
 
         <h2>5. Issue de la phase de cadrage</h2>
-        <p>
-          À l’issue de la phase de cadrage, FixBiz pourra, selon les éléments communiqués et l’analyse réalisée, proposer un accompagnement, solliciter des informations complémentaires ou recommander l’intervention d’un professionnel tiers lorsque cela apparaît plus adapté à la situation du Client.
-        </p>
-        <p>
-          Cette phase peut également conduire à l’absence de proposition d’intervention complémentaire lorsque la situation ne nécessite pas ou ne permet pas un accompagnement adapté.
-        </p>
-        <p>
-          La présente lettre n’emporte aucun engagement réciproque quant à la conclusion d’une mission ultérieure. Toute intervention complémentaire fera, le cas échéant, l’objet d’un accord distinct entre les parties.
-        </p>
+        <p>À l’issue de la phase de cadrage, FixBiz pourra, selon les éléments communiqués et l’analyse réalisée, proposer un accompagnement, solliciter des informations complémentaires ou recommander l’intervention d’un professionnel tiers lorsque cela apparaît plus adapté à la situation du Client.</p>
+        <p>Cette phase peut également conduire à l’absence de proposition d’intervention complémentaire lorsque la situation ne nécessite pas ou ne permet pas un accompagnement adapté.</p>
+        <p>La présente lettre n’emporte aucun engagement réciproque quant à la conclusion d’une mission ultérieure. Toute intervention complémentaire fera, le cas échéant, l’objet d’un accord distinct entre les parties.</p>
 
         <h2>6. Limites de la phase de cadrage</h2>
-        <p>
-          La présente phase constitue une étape préliminaire d’analyse et de compréhension de la situation du Client.
-        </p>
-        <p>
-          Elle ne constitue ni une mission complète d’accompagnement, ni un mandat de représentation, ni une prestation réglementée de nature juridique, fiscale ou comptable, et n’emporte aucune garantie de résultat.
-        </p>
-        <p>
-          FixBiz intervient exclusivement dans le cadre d’une obligation de moyens.
-        </p>
+        <p>La présente phase constitue une étape préliminaire d’analyse et de compréhension de la situation du Client.</p>
+        <p>Elle ne constitue ni une mission complète d’accompagnement, ni un mandat de représentation, ni une prestation réglementée de nature juridique, fiscale ou comptable, et n’emporte aucune garantie de résultat.</p>
+        <p>FixBiz intervient exclusivement dans le cadre d’une obligation de moyens.</p>
 
         <h2>7. Confidentialité</h2>
-        <p>
-          Les informations transmises par le Client sont strictement confidentielles. FixBiz s’engage à ne pas les communiquer à des tiers, sauf accord du Client ou nécessité liée à l’étude du dossier.
-        </p>
-        <p>
-          Cette obligation de confidentialité survivra à la fin des échanges entre les parties.
-        </p>
+        <p>Les informations transmises par le Client sont strictement confidentielles. FixBiz s’engage à ne pas les communiquer à des tiers, sauf accord du Client ou nécessité liée à l’étude du dossier.</p>
+        <p>Cette obligation de confidentialité survivra à la fin des échanges entre les parties.</p>
 
         <h2>8. Conditions financières</h2>
-        <p>
-          La signature de la présente lettre de cadrage n’entraîne, à elle seule, aucune facturation ni engagement financier pour le Client.
-        </p>
-        <p>
-          La phase de cadrage a pour objet de permettre une première compréhension de la situation exposée et l’évaluation d’un éventuel accompagnement.
-        </p>
-        <p>
-          Si une analyse approfondie ou une intervention complémentaire apparaît pertinente, les modalités applicables feront, le cas échéant, l’objet d’une proposition distincte préalablement présentée au Client.
-        </p>
-        <p>
-          Aucune prestation complémentaire payante ne sera engagée sans accord exprès du Client.
-        </p>
+        <p>La signature de la présente lettre de cadrage n’entraîne, à elle seule, aucune facturation ni engagement financier pour le Client.</p>
+        <p>La phase de cadrage a pour objet de permettre une première compréhension de la situation exposée et l’évaluation d’un éventuel accompagnement.</p>
+        <p>Si une analyse approfondie ou une intervention complémentaire apparaît pertinente, les modalités applicables feront, le cas échéant, l’objet d’une proposition distincte préalablement présentée au Client.</p>
+        <p>Aucune prestation complémentaire payante ne sera engagée sans accord exprès du Client.</p>
 
         <h2>9. Validation</h2>
 
-        <div class="notice">
-          Avant validation de la présente lettre, le Client confirme expressément les éléments ci-dessous.
-        </div>
+        <div class="notice">Avant validation de la présente lettre, le Client confirme expressément les éléments ci-dessous.</div>
 
         <label class="checkbox"><input type="checkbox" required />Être habilité à engager la structure concernée ;</label>
         <label class="checkbox"><input type="checkbox" required />Souhaiter ouvrir une phase de cadrage initial avec FixBiz ;</label>
@@ -446,12 +403,10 @@
         <input type="text" name="website" class="honeypot" autocomplete="off" />
 
         <button type="submit">Valider et envoyer la lettre →</button>
-
         <p class="status">Aucune donnée n’est stockée sur le site.</p>
       </form>
     </div>
 
-    <!-- Document PDF caché -->
     <div id="pdf-document">
       <h1>LETTRE DE CADRAGE INITIAL</h1>
       <p class="pdf-subtitle">Phase préliminaire de compréhension, d’analyse et de cadrage</p>
@@ -470,7 +425,7 @@
 
         <div class="pdf-party">
           <strong id="pdf-societe">Client</strong><br />
-          <span id="pdf-adresse"></span><br />
+          <span id="pdf-adresse" class="pdf-pre"></span><br />
           SIREN : <span id="pdf-siren"></span><br />
           Représentée par : <span id="pdf-representant"></span><br />
           Fonction : <span id="pdf-fonction"></span><br />
@@ -480,80 +435,41 @@
       </div>
 
       <h2>1. Objet</h2>
-      <p>
-        La présente lettre a pour objet de définir les conditions dans lesquelles FixBiz intervient dans une phase préliminaire de compréhension, d’analyse et de cadrage de la situation du Client avant toute éventuelle mission d’accompagnement.
-      </p>
+      <p>La présente lettre a pour objet de définir les conditions dans lesquelles FixBiz intervient dans une phase préliminaire de compréhension, d’analyse et de cadrage de la situation du Client avant toute éventuelle mission d’accompagnement.</p>
 
       <h2>2. Contexte communiqué par le Client</h2>
-      <p>
-        Dans le cadre de la présente phase de cadrage, le Client expose les éléments, enjeux ou objectifs pour lesquels il sollicite l’avis ou l’accompagnement éventuel de FixBiz.
-      </p>
-
+      <p>Dans le cadre de la présente phase de cadrage, le Client expose les éléments, enjeux ou objectifs pour lesquels il sollicite l’avis ou l’accompagnement éventuel de FixBiz.</p>
       <p><strong>Niveau d’urgence déclaré :</strong><br /><span id="pdf-urgence"></span></p>
-      <p><strong>Description communiquée par le Client :</strong><br /><span id="pdf-situation"></span></p>
+      <p><strong>Description communiquée par le Client :</strong><br /><span id="pdf-situation" class="pdf-pre"></span></p>
 
       <h2>3. Périmètre de la phase de cadrage</h2>
-      <p>
-        La phase de cadrage a pour objet de permettre à FixBiz de mieux comprendre la situation du Client, d’identifier les principaux enjeux communiqués et d’apprécier la pertinence d’un éventuel accompagnement.
-      </p>
-      <p>
-        À cette fin, FixBiz pourra examiner les éléments transmis par le Client, solliciter des précisions complémentaires et évaluer les besoins susceptibles de nécessiter une intervention ultérieure.
-      </p>
-      <p>
-        Cette phase pourra également conduire, si cela apparaît pertinent, à la définition des contours d’un accompagnement ou à la préparation d’une proposition ou d’une lettre de mission spécifique.
-      </p>
+      <p>La phase de cadrage a pour objet de permettre à FixBiz de mieux comprendre la situation du Client, d’identifier les principaux enjeux communiqués et d’apprécier la pertinence d’un éventuel accompagnement.</p>
+      <p>À cette fin, FixBiz pourra examiner les éléments transmis par le Client, solliciter des précisions complémentaires et évaluer les besoins susceptibles de nécessiter une intervention ultérieure.</p>
+      <p>Cette phase pourra également conduire, si cela apparaît pertinent, à la définition des contours d’un accompagnement ou à la préparation d’une proposition ou d’une lettre de mission spécifique.</p>
 
       <h2>4. Informations nécessaires à la phase de cadrage</h2>
-      <p>
-        Afin de permettre une compréhension suffisante de la situation du Client et, le cas échéant, l’évaluation d’un accompagnement adapté, FixBiz pourra solliciter toute information, précision ou document jugé utile à l’analyse.
-      </p>
-      <p>
-        Le Client s’engage à communiquer des éléments sincères, exacts et suffisamment complets pour permettre cette phase d’étude.
-      </p>
+      <p>Afin de permettre une compréhension suffisante de la situation du Client et, le cas échéant, l’évaluation d’un accompagnement adapté, FixBiz pourra solliciter toute information, précision ou document jugé utile à l’analyse.</p>
+      <p>Le Client s’engage à communiquer des éléments sincères, exacts et suffisamment complets pour permettre cette phase d’étude.</p>
 
       <h2>5. Issue de la phase de cadrage</h2>
-      <p>
-        À l’issue de la phase de cadrage, FixBiz pourra, selon les éléments communiqués et l’analyse réalisée, proposer un accompagnement, solliciter des informations complémentaires ou recommander l’intervention d’un professionnel tiers lorsque cela apparaît plus adapté à la situation du Client.
-      </p>
-      <p>
-        Cette phase peut également conduire à l’absence de proposition d’intervention complémentaire lorsque la situation ne nécessite pas ou ne permet pas un accompagnement adapté.
-      </p>
-      <p>
-        La présente lettre n’emporte aucun engagement réciproque quant à la conclusion d’une mission ultérieure. Toute intervention complémentaire fera, le cas échéant, l’objet d’un accord distinct entre les parties.
-      </p>
+      <p>À l’issue de la phase de cadrage, FixBiz pourra, selon les éléments communiqués et l’analyse réalisée, proposer un accompagnement, solliciter des informations complémentaires ou recommander l’intervention d’un professionnel tiers lorsque cela apparaît plus adapté à la situation du Client.</p>
+      <p>Cette phase peut également conduire à l’absence de proposition d’intervention complémentaire lorsque la situation ne nécessite pas ou ne permet pas un accompagnement adapté.</p>
+      <p>La présente lettre n’emporte aucun engagement réciproque quant à la conclusion d’une mission ultérieure. Toute intervention complémentaire fera, le cas échéant, l’objet d’un accord distinct entre les parties.</p>
 
       <h2>6. Limites de la phase de cadrage</h2>
-      <p>
-        La présente phase constitue une étape préliminaire d’analyse et de compréhension de la situation du Client.
-      </p>
-      <p>
-        Elle ne constitue ni une mission complète d’accompagnement, ni un mandat de représentation, ni une prestation réglementée de nature juridique, fiscale ou comptable, et n’emporte aucune garantie de résultat.
-      </p>
-      <p>
-        FixBiz intervient exclusivement dans le cadre d’une obligation de moyens.
-      </p>
+      <p>La présente phase constitue une étape préliminaire d’analyse et de compréhension de la situation du Client.</p>
+      <p>Elle ne constitue ni une mission complète d’accompagnement, ni un mandat de représentation, ni une prestation réglementée de nature juridique, fiscale ou comptable, et n’emporte aucune garantie de résultat.</p>
+      <p>FixBiz intervient exclusivement dans le cadre d’une obligation de moyens.</p>
 
       <h2>7. Confidentialité</h2>
-      <p>
-        Les informations transmises par le Client sont strictement confidentielles. FixBiz s’engage à ne pas les communiquer à des tiers, sauf accord du Client ou nécessité liée à l’étude du dossier.
-      </p>
-      <p>
-        Cette obligation de confidentialité survivra à la fin des échanges entre les parties.
-      </p>
+      <p>Les informations transmises par le Client sont strictement confidentielles. FixBiz s’engage à ne pas les communiquer à des tiers, sauf accord du Client ou nécessité liée à l’étude du dossier.</p>
+      <p>Cette obligation de confidentialité survivra à la fin des échanges entre les parties.</p>
 
       <h2>8. Conditions financières</h2>
-      <p>
-        La signature de la présente lettre de cadrage n’entraîne, à elle seule, aucune facturation ni engagement financier pour le Client.
-      </p>
-      <p>
-        La phase de cadrage a pour objet de permettre une première compréhension de la situation exposée et l’évaluation d’un éventuel accompagnement.
-      </p>
-      <p>
-        Si une analyse approfondie ou une intervention complémentaire apparaît pertinente, les modalités applicables feront, le cas échéant, l’objet d’une proposition distincte préalablement présentée au Client.
-      </p>
-      <p>
-        Aucune prestation complémentaire payante ne sera engagée sans accord exprès du Client.
-      </p>
+      <p>La signature de la présente lettre de cadrage n’entraîne, à elle seule, aucune facturation ni engagement financier pour le Client.</p>
+      <p>La phase de cadrage a pour objet de permettre une première compréhension de la situation exposée et l’évaluation d’un éventuel accompagnement.</p>
+      <p>Si une analyse approfondie ou une intervention complémentaire apparaît pertinente, les modalités applicables feront, le cas échéant, l’objet d’une proposition distincte préalablement présentée au Client.</p>
+      <p>Aucune prestation complémentaire payante ne sera engagée sans accord exprès du Client.</p>
 
       <h2>9. Validation</h2>
       <p>Avant validation de la présente lettre, le Client confirme expressément :</p>
@@ -589,9 +505,7 @@
         </div>
       </div>
 
-      <p class="pdf-small">
-        La présente lettre est validée électroniquement par le Client à la date indiquée ci-dessus.
-      </p>
+      <p class="pdf-small">La présente lettre est validée électroniquement par le Client à la date indiquée ci-dessus.</p>
     </div>
   </main>
 
@@ -651,8 +565,7 @@
       setText("#pdf-signataire-societe", form.societe.value);
       setText("#pdf-signataire", form.signataire.value);
 
-      const img = document.querySelector("#pdf-signature-client");
-      img.src = signatureDataUrl;
+      document.querySelector("#pdf-signature-client").src = signatureDataUrl;
     }
 
     form?.addEventListener("submit", async (event) => {
@@ -676,6 +589,15 @@
 
         const pdfDocument = document.querySelector("#pdf-document");
 
+        pdfDocument.style.display = "block";
+        pdfDocument.style.position = "fixed";
+        pdfDocument.style.left = "0";
+        pdfDocument.style.top = "0";
+        pdfDocument.style.zIndex = "999999";
+        pdfDocument.style.background = "#fff";
+
+        await new Promise((resolve) => requestAnimationFrame(resolve));
+
         const pdfOptions = {
           margin: 8,
           filename: "lettre-cadrage-fixbiz.pdf",
@@ -689,6 +611,9 @@
           .set(pdfOptions)
           .from(pdfDocument)
           .outputPdf("blob");
+
+        pdfDocument.style.display = "none";
+        pdfDocument.removeAttribute("style");
 
         const pdfBase64 = await new Promise((resolve, reject) => {
           const reader = new FileReader();
