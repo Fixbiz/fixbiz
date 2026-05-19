@@ -9,270 +9,187 @@
 
   <style>
     :root {
-      --blue: #2e7fb1;
-      --ink: #102033;
-      --muted: #5f6f82;
-      --line: #d7e3ee;
-      --bg: #f7fafc;
+      --blue:#2e7fb1;
+      --ink:#102033;
+      --muted:#5f6f82;
+      --line:#d7e3ee;
+      --bg:#f7fafc;
     }
 
     body {
-      margin: 0;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: #fff;
-      color: var(--ink);
+      margin:0;
+      font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      background:#fff;
+      color:var(--ink);
     }
 
     .wrap {
-      max-width: 920px;
-      margin: auto;
-      padding: 48px 20px 80px;
+      max-width:920px;
+      margin:auto;
+      padding:48px 20px 80px;
     }
 
     .logo {
-      max-width: 170px;
-      margin-bottom: 28px;
+      max-width:170px;
+      margin-bottom:28px;
     }
 
     .card {
-      border: 1px solid var(--line);
-      border-radius: 22px;
-      padding: 34px;
-      box-shadow: 0 12px 34px rgba(16, 32, 51, 0.05);
-      background: #fff;
+      border:1px solid var(--line);
+      border-radius:22px;
+      padding:34px;
+      box-shadow:0 12px 34px rgba(16,32,51,.05);
+      background:#fff;
     }
 
     h1 {
-      font-size: 2rem;
-      text-align: center;
-      margin-bottom: 6px;
+      font-size:2rem;
+      text-align:center;
+      margin-bottom:6px;
     }
 
     .subtitle {
-      text-align: center;
-      color: var(--muted);
-      margin-bottom: 28px;
+      text-align:center;
+      color:var(--muted);
+      margin-bottom:28px;
     }
 
     h2 {
-      font-size: 1.2rem;
-      margin-top: 30px;
-      border-top: 1px solid var(--line);
-      padding-top: 22px;
+      font-size:1.2rem;
+      margin-top:30px;
+      border-top:1px solid var(--line);
+      padding-top:22px;
     }
 
-    p { line-height: 1.6; }
+    p { line-height:1.6; }
 
     .parties {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 18px;
-      margin: 24px 0;
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:18px;
+      margin:24px 0;
     }
 
     .party {
-      border: 1px solid var(--line);
-      border-radius: 16px;
-      padding: 18px;
-      background: var(--bg);
+      border:1px solid var(--line);
+      border-radius:16px;
+      padding:18px;
+      background:var(--bg);
     }
 
     .grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 18px;
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:18px;
     }
 
     label {
-      display: grid;
-      gap: 8px;
-      font-weight: 700;
-      margin-top: 14px;
+      display:grid;
+      gap:8px;
+      font-weight:700;
+      margin-top:14px;
     }
 
     input,
     textarea,
     select {
-      width: 100%;
-      box-sizing: border-box;
-      border: 1px solid var(--line);
-      border-radius: 13px;
-      padding: 13px;
-      font-size: 1rem;
-      color: var(--ink);
-      background: #fff;
+      width:100%;
+      box-sizing:border-box;
+      border:1px solid var(--line);
+      border-radius:13px;
+      padding:13px;
+      font-size:1rem;
+      color:var(--ink);
+      background:#fff;
     }
 
-    textarea { resize: vertical; }
+    textarea { resize:vertical; }
 
     input:focus,
     textarea:focus,
     select:focus {
-      outline: none;
-      border-color: var(--blue);
-      box-shadow: 0 0 0 3px rgba(46,127,177,.14);
+      outline:none;
+      border-color:var(--blue);
+      box-shadow:0 0 0 3px rgba(46,127,177,.14);
     }
 
     .checkbox {
-      display: flex;
-      gap: 10px;
-      align-items: flex-start;
-      font-weight: 500;
-      line-height: 1.45;
-      margin-top: 12px;
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+      font-weight:500;
+      line-height:1.45;
+      margin-top:12px;
     }
 
     .checkbox input {
-      width: auto;
-      margin-top: 4px;
+      width:auto;
+      margin-top:4px;
     }
 
     .notice {
-      background: var(--bg);
-      border: 1px solid var(--line);
-      border-radius: 16px;
-      padding: 16px;
-      color: var(--muted);
-      font-size: .95rem;
-      line-height: 1.55;
-      margin-top: 18px;
+      background:var(--bg);
+      border:1px solid var(--line);
+      border-radius:16px;
+      padding:16px;
+      color:var(--muted);
+      font-size:.95rem;
+      line-height:1.55;
+      margin-top:18px;
     }
 
     canvas {
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      background: #fff;
-      width: 100%;
-      height: 180px;
-      touch-action: none;
+      border:1px solid var(--line);
+      border-radius:14px;
+      background:#fff;
+      width:100%;
+      height:180px;
+      touch-action:none;
     }
 
     .secondary {
-      background: #eef5fa;
-      color: var(--ink);
-      margin-top: 10px;
+      background:#eef5fa;
+      color:var(--ink);
+      margin-top:10px;
     }
 
     .honeypot {
-      display: none;
+      display:none;
     }
 
     button {
-      border: 0;
-      border-radius: 14px;
-      padding: 16px 20px;
-      background: var(--blue);
-      color: white;
-      font-weight: 800;
-      font-size: 1rem;
-      cursor: pointer;
-      width: 100%;
-      margin-top: 22px;
+      border:0;
+      border-radius:14px;
+      padding:16px 20px;
+      background:var(--blue);
+      color:white;
+      font-weight:800;
+      font-size:1rem;
+      cursor:pointer;
+      width:100%;
+      margin-top:22px;
     }
 
     button:disabled {
-      opacity: .65;
-      cursor: not-allowed;
+      opacity:.65;
+      cursor:not-allowed;
     }
 
     .status {
-      text-align: center;
-      color: var(--muted);
-      font-size: .9rem;
-      margin-top: 14px;
+      text-align:center;
+      color:var(--muted);
+      font-size:.9rem;
+      margin-top:14px;
     }
 
-     #pdf-document {
-  position: absolute;
-  left: -9999px;
-  top: 0;
-
-  width: 794px;
-  background: white;
-  color: #1f2937;
-
-  font-family: Arial, sans-serif;
-  padding: 42px;
-  box-sizing: border-box;
-
-  line-height: 1.45;
-  font-size: 12px;
-
-  visibility: visible;
-  opacity: 1;
-}
-
-    #pdf-document h1 {
-      font-size: 22px;
-      text-align: center;
-      margin: 0 0 4px;
-    }
-
-    #pdf-document .pdf-subtitle {
-      text-align: center;
-      color: #6b7280;
-      margin: 0 0 22px;
-    }
-
-    #pdf-document h2 {
-      font-size: 14px;
-      margin: 16px 0 6px;
-      padding: 0;
-      border: 0;
-    }
-
-    #pdf-document p {
-      margin: 0 0 8px;
-      line-height: 1.45;
-    }
-
-    .pdf-parties,
-    .pdf-signatures {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 14px;
-      margin: 18px 0;
-    }
-
-    .pdf-party,
-    .pdf-signature-box {
-      border: 1px solid #dbe4ee;
-      padding: 12px;
-      box-sizing: border-box;
-    }
-
-    .pdf-party {
-      min-height: 120px;
-    }
-
-    .pdf-signature-box {
-      min-height: 145px;
-    }
-
-    .pdf-signature-img {
-      max-width: 170px;
-      max-height: 80px;
-      margin-top: 8px;
-    }
-
-    .pdf-small {
-      color: #6b7280;
-      font-size: 10px;
-      margin-top: 12px;
-    }
-
-    .pdf-pre {
-      white-space: pre-line;
-    }
-
-    @media (max-width: 760px) {
+    @media(max-width:760px) {
       .grid,
       .parties {
-        grid-template-columns: 1fr;
+        grid-template-columns:1fr;
       }
 
-      .card { padding: 24px; }
-      h1 { font-size: 1.7rem; }
+      .card { padding:24px; }
+      h1 { font-size:1.7rem; }
     }
   </style>
 </head>
@@ -385,7 +302,9 @@
 
         <h2>9. Validation</h2>
 
-        <div class="notice">Avant validation de la présente lettre, le Client confirme expressément les éléments ci-dessous.</div>
+        <div class="notice">
+          Avant validation de la présente lettre, le Client confirme expressément les éléments ci-dessous.
+        </div>
 
         <label class="checkbox"><input type="checkbox" required />Être habilité à engager la structure concernée ;</label>
         <label class="checkbox"><input type="checkbox" required />Souhaiter ouvrir une phase de cadrage initial avec FixBiz ;</label>
@@ -414,111 +333,10 @@
         <p class="status">Aucune donnée n’est stockée sur le site.</p>
       </form>
     </div>
-
-    <div id="pdf-document">
-      <h1>LETTRE DE CADRAGE INITIAL</h1>
-      <p class="pdf-subtitle">Phase préliminaire de compréhension, d’analyse et de cadrage</p>
-
-      <div class="pdf-parties">
-        <div class="pdf-party">
-          <strong>FIXBIZ</strong><br />
-          32 rue Laurent<br />
-          68100 Mulhouse<br />
-          SIREN : XXX XXX XXX<br />
-          Représentée par : Jean-Philippe Schneider<br />
-          Fonction : Fondateur FixBiz<br />
-          Email : contact@fixbiz.fr<br /><br />
-          <em>Ci-après : FixBiz</em>
-        </div>
-
-        <div class="pdf-party">
-          <strong id="pdf-societe">Client</strong><br />
-          <span id="pdf-adresse" class="pdf-pre"></span><br />
-          SIREN : <span id="pdf-siren"></span><br />
-          Représentée par : <span id="pdf-representant"></span><br />
-          Fonction : <span id="pdf-fonction"></span><br />
-          Email : <span id="pdf-email"></span><br /><br />
-          <em>Ci-après : le Client</em>
-        </div>
-      </div>
-
-      <h2>1. Objet</h2>
-      <p>La présente lettre a pour objet de définir les conditions dans lesquelles FixBiz intervient dans une phase préliminaire de compréhension, d’analyse et de cadrage de la situation du Client avant toute éventuelle mission d’accompagnement.</p>
-
-      <h2>2. Contexte communiqué par le Client</h2>
-      <p>Dans le cadre de la présente phase de cadrage, le Client expose les éléments, enjeux ou objectifs pour lesquels il sollicite l’avis ou l’accompagnement éventuel de FixBiz.</p>
-      <p><strong>Niveau d’urgence déclaré :</strong><br /><span id="pdf-urgence"></span></p>
-      <p><strong>Description communiquée par le Client :</strong><br /><span id="pdf-situation" class="pdf-pre"></span></p>
-
-      <h2>3. Périmètre de la phase de cadrage</h2>
-      <p>La phase de cadrage a pour objet de permettre à FixBiz de mieux comprendre la situation du Client, d’identifier les principaux enjeux communiqués et d’apprécier la pertinence d’un éventuel accompagnement.</p>
-      <p>À cette fin, FixBiz pourra examiner les éléments transmis par le Client, solliciter des précisions complémentaires et évaluer les besoins susceptibles de nécessiter une intervention ultérieure.</p>
-      <p>Cette phase pourra également conduire, si cela apparaît pertinent, à la définition des contours d’un accompagnement ou à la préparation d’une proposition ou d’une lettre de mission spécifique.</p>
-
-      <h2>4. Informations nécessaires à la phase de cadrage</h2>
-      <p>Afin de permettre une compréhension suffisante de la situation du Client et, le cas échéant, l’évaluation d’un accompagnement adapté, FixBiz pourra solliciter toute information, précision ou document jugé utile à l’analyse.</p>
-      <p>Le Client s’engage à communiquer des éléments sincères, exacts et suffisamment complets pour permettre cette phase d’étude.</p>
-
-      <h2>5. Issue de la phase de cadrage</h2>
-      <p>À l’issue de la phase de cadrage, FixBiz pourra, selon les éléments communiqués et l’analyse réalisée, proposer un accompagnement, solliciter des informations complémentaires ou recommander l’intervention d’un professionnel tiers lorsque cela apparaît plus adapté à la situation du Client.</p>
-      <p>Cette phase peut également conduire à l’absence de proposition d’intervention complémentaire lorsque la situation ne nécessite pas ou ne permet pas un accompagnement adapté.</p>
-      <p>La présente lettre n’emporte aucun engagement réciproque quant à la conclusion d’une mission ultérieure. Toute intervention complémentaire fera, le cas échéant, l’objet d’un accord distinct entre les parties.</p>
-
-      <h2>6. Limites de la phase de cadrage</h2>
-      <p>La présente phase constitue une étape préliminaire d’analyse et de compréhension de la situation du Client.</p>
-      <p>Elle ne constitue ni une mission complète d’accompagnement, ni un mandat de représentation, ni une prestation réglementée de nature juridique, fiscale ou comptable, et n’emporte aucune garantie de résultat.</p>
-      <p>FixBiz intervient exclusivement dans le cadre d’une obligation de moyens.</p>
-
-      <h2>7. Confidentialité</h2>
-      <p>Les informations transmises par le Client sont strictement confidentielles. FixBiz s’engage à ne pas les communiquer à des tiers, sauf accord du Client ou nécessité liée à l’étude du dossier.</p>
-      <p>Cette obligation de confidentialité survivra à la fin des échanges entre les parties.</p>
-
-      <h2>8. Conditions financières</h2>
-      <p>La signature de la présente lettre de cadrage n’entraîne, à elle seule, aucune facturation ni engagement financier pour le Client.</p>
-      <p>La phase de cadrage a pour objet de permettre une première compréhension de la situation exposée et l’évaluation d’un éventuel accompagnement.</p>
-      <p>Si une analyse approfondie ou une intervention complémentaire apparaît pertinente, les modalités applicables feront, le cas échéant, l’objet d’une proposition distincte préalablement présentée au Client.</p>
-      <p>Aucune prestation complémentaire payante ne sera engagée sans accord exprès du Client.</p>
-
-      <h2>9. Validation</h2>
-      <p>Avant validation de la présente lettre, le Client confirme expressément :</p>
-      <p>
-        ☑ Être habilité à engager la structure concernée ;<br />
-        ☑ Souhaiter ouvrir une phase de cadrage initial avec FixBiz ;<br />
-        ☑ Comprendre que cette phase constitue une étape préliminaire d’analyse et ne correspond pas à une mission complète d’accompagnement ;<br />
-        ☑ Accepter de transmettre les informations ou documents nécessaires à la compréhension de sa situation ;<br />
-        ☑ Reconnaître que les informations communiquées sont exactes à sa connaissance ;<br />
-        ☑ Comprendre qu’aucune intervention complémentaire ne sera engagée sans accord distinct entre les parties ;<br />
-        ☑ Avoir pris connaissance des conditions prévues par la présente lettre de cadrage.
-      </p>
-
-      <p><strong>Date de validation :</strong> <span id="pdf-date"></span></p>
-
-      <div class="pdf-signatures">
-        <div class="pdf-signature-box">
-          <strong>Pour FixBiz</strong><br />
-          Jean-Philippe Schneider<br />
-          Fondateur FixBiz<br /><br />
-          Signature :<br />
-          <img src="/signature-fixbiz.png" class="pdf-signature-img" />
-        </div>
-
-        <div class="pdf-signature-box">
-          <strong>Pour <span id="pdf-signataire-title"></span></strong><br />
-          Fonction : <span id="pdf-signataire-fonction"></span><br />
-          Agissant pour : <span id="pdf-signataire-societe"></span><br /><br />
-          Nom du signataire :<br />
-          <strong id="pdf-signataire"></strong><br /><br />
-          Signature manuscrite :<br />
-          <img id="pdf-signature-client" class="pdf-signature-img" />
-        </div>
-      </div>
-
-      <p class="pdf-small">La présente lettre est validée électroniquement par le Client à la date indiquée ci-dessus.</p>
-    </div>
   </main>
 
   <script src="https://cdn.jsdelivr.net/npm/signature_pad@4.1.6/dist/signature_pad.umd.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
   <script>
     const form = document.querySelector("#fixbiz-cadrage-form");
@@ -551,29 +369,188 @@
 
     clearButton?.addEventListener("click", () => signaturePad.clear());
 
-    function setText(id, value) {
-      const el = document.querySelector(id);
-      if (el) el.textContent = value || "";
+    function addWrappedText(pdf, text, x, y, maxWidth, lineHeight) {
+      const lines = pdf.splitTextToSize(text, maxWidth);
+      pdf.text(lines, x, y);
+      return y + lines.length * lineHeight;
     }
 
-    function setPdfValues(signatureDataUrl) {
-      const now = new Date().toLocaleString("fr-FR");
+    function addSection(pdf, title, body, y) {
+      if (y > 260) {
+        pdf.addPage();
+        y = 20;
+      }
 
-      setText("#pdf-societe", form.societe.value);
-      setText("#pdf-adresse", form.adresse.value);
-      setText("#pdf-siren", form.siren.value);
-      setText("#pdf-representant", form.representant.value);
-      setText("#pdf-fonction", form.fonction.value);
-      setText("#pdf-email", form.email.value);
-      setText("#pdf-urgence", form.urgence.value);
-      setText("#pdf-situation", form.situation.value);
-      setText("#pdf-date", now);
-      setText("#pdf-signataire-title", form.societe.value);
-      setText("#pdf-signataire-fonction", form.fonction.value);
-      setText("#pdf-signataire-societe", form.societe.value);
-      setText("#pdf-signataire", form.signataire.value);
+      pdf.setFont("helvetica", "bold");
+      pdf.setFontSize(11);
+      pdf.text(title, 20, y);
 
-      document.querySelector("#pdf-signature-client").src = signatureDataUrl;
+      y += 6;
+
+      pdf.setFont("helvetica", "normal");
+      pdf.setFontSize(9);
+      y = addWrappedText(pdf, body, 20, y, 170, 4.5);
+
+      return y + 4;
+    }
+
+    function generatePdf(signatureDataUrl) {
+      const { jsPDF } = window.jspdf;
+      const pdf = new jsPDF("p", "mm", "a4");
+
+      const societe = form.societe.value.trim();
+      const adresse = form.adresse.value.trim();
+      const siren = form.siren.value.trim();
+      const email = form.email.value.trim();
+      const representant = form.representant.value.trim();
+      const fonction = form.fonction.value.trim();
+      const urgence = form.urgence.value.trim();
+      const situation = form.situation.value.trim();
+      const signataire = form.signataire.value.trim();
+      const date = new Date().toLocaleString("fr-FR");
+
+      pdf.setFont("helvetica", "bold");
+      pdf.setFontSize(16);
+      pdf.text("LETTRE DE CADRAGE INITIAL", 105, 18, { align: "center" });
+
+      pdf.setFont("helvetica", "normal");
+      pdf.setFontSize(10);
+      pdf.text("Phase préliminaire de compréhension, d’analyse et de cadrage", 105, 25, { align: "center" });
+
+      pdf.setDrawColor(219, 228, 238);
+
+      pdf.rect(20, 34, 80, 42);
+      pdf.rect(110, 34, 80, 42);
+
+      pdf.setFontSize(8.5);
+
+      pdf.setFont("helvetica", "bold");
+      pdf.text("FIXBIZ", 24, 41);
+
+      pdf.setFont("helvetica", "normal");
+      pdf.text("32 rue Laurent", 24, 47);
+      pdf.text("68100 Mulhouse", 24, 52);
+      pdf.text("SIREN : XXX XXX XXX", 24, 57);
+      pdf.text("Représentée par : Jean-Philippe Schneider", 24, 62);
+      pdf.text("Fonction : Fondateur FixBiz", 24, 67);
+      pdf.text("Email : contact@fixbiz.fr", 24, 72);
+
+      pdf.setFont("helvetica", "bold");
+      pdf.text(societe || "Client", 114, 41);
+
+      pdf.setFont("helvetica", "normal");
+      let yClient = 47;
+      const adresseLines = pdf.splitTextToSize(adresse, 70);
+      pdf.text(adresseLines, 114, yClient);
+      yClient += adresseLines.length * 4;
+      pdf.text(`SIREN : ${siren}`, 114, yClient + 1);
+      pdf.text(`Représentée par : ${representant}`, 114, yClient + 6);
+      pdf.text(`Fonction : ${fonction}`, 114, yClient + 11);
+      pdf.text(`Email : ${email}`, 114, yClient + 16);
+
+      let y = 88;
+
+      y = addSection(
+        pdf,
+        "1. Objet",
+        "La présente lettre a pour objet de définir les conditions dans lesquelles FixBiz intervient dans une phase préliminaire de compréhension, d’analyse et de cadrage de la situation du Client avant toute éventuelle mission d’accompagnement.",
+        y
+      );
+
+      y = addSection(
+        pdf,
+        "2. Contexte communiqué par le Client",
+        `Dans le cadre de la présente phase de cadrage, le Client expose les éléments, enjeux ou objectifs pour lesquels il sollicite l’avis ou l’accompagnement éventuel de FixBiz.\n\nNiveau d’urgence déclaré : ${urgence}\n\nDescription communiquée par le Client :\n${situation}`,
+        y
+      );
+
+      y = addSection(
+        pdf,
+        "3. Périmètre de la phase de cadrage",
+        "La phase de cadrage a pour objet de permettre à FixBiz de mieux comprendre la situation du Client, d’identifier les principaux enjeux communiqués et d’apprécier la pertinence d’un éventuel accompagnement.\n\nÀ cette fin, FixBiz pourra examiner les éléments transmis par le Client, solliciter des précisions complémentaires et évaluer les besoins susceptibles de nécessiter une intervention ultérieure.\n\nCette phase pourra également conduire, si cela apparaît pertinent, à la définition des contours d’un accompagnement ou à la préparation d’une proposition ou d’une lettre de mission spécifique.",
+        y
+      );
+
+      y = addSection(
+        pdf,
+        "4. Informations nécessaires à la phase de cadrage",
+        "Afin de permettre une compréhension suffisante de la situation du Client et, le cas échéant, l’évaluation d’un accompagnement adapté, FixBiz pourra solliciter toute information, précision ou document jugé utile à l’analyse.\n\nLe Client s’engage à communiquer des éléments sincères, exacts et suffisamment complets pour permettre cette phase d’étude.",
+        y
+      );
+
+      y = addSection(
+        pdf,
+        "5. Issue de la phase de cadrage",
+        "À l’issue de la phase de cadrage, FixBiz pourra, selon les éléments communiqués et l’analyse réalisée, proposer un accompagnement, solliciter des informations complémentaires ou recommander l’intervention d’un professionnel tiers lorsque cela apparaît plus adapté à la situation du Client.\n\nCette phase peut également conduire à l’absence de proposition d’intervention complémentaire lorsque la situation ne nécessite pas ou ne permet pas un accompagnement adapté.\n\nLa présente lettre n’emporte aucun engagement réciproque quant à la conclusion d’une mission ultérieure. Toute intervention complémentaire fera, le cas échéant, l’objet d’un accord distinct entre les parties.",
+        y
+      );
+
+      y = addSection(
+        pdf,
+        "6. Limites de la phase de cadrage",
+        "La présente phase constitue une étape préliminaire d’analyse et de compréhension de la situation du Client.\n\nElle ne constitue ni une mission complète d’accompagnement, ni un mandat de représentation, ni une prestation réglementée de nature juridique, fiscale ou comptable, et n’emporte aucune garantie de résultat.\n\nFixBiz intervient exclusivement dans le cadre d’une obligation de moyens.",
+        y
+      );
+
+      y = addSection(
+        pdf,
+        "7. Confidentialité",
+        "Les informations transmises par le Client sont strictement confidentielles. FixBiz s’engage à ne pas les communiquer à des tiers, sauf accord du Client ou nécessité liée à l’étude du dossier.\n\nCette obligation de confidentialité survivra à la fin des échanges entre les parties.",
+        y
+      );
+
+      y = addSection(
+        pdf,
+        "8. Conditions financières",
+        "La signature de la présente lettre de cadrage n’entraîne, à elle seule, aucune facturation ni engagement financier pour le Client.\n\nLa phase de cadrage a pour objet de permettre une première compréhension de la situation exposée et l’évaluation d’un éventuel accompagnement.\n\nSi une analyse approfondie ou une intervention complémentaire apparaît pertinente, les modalités applicables feront, le cas échéant, l’objet d’une proposition distincte préalablement présentée au Client.\n\nAucune prestation complémentaire payante ne sera engagée sans accord exprès du Client.",
+        y
+      );
+
+      y = addSection(
+        pdf,
+        "9. Validation",
+        "Avant validation de la présente lettre, le Client confirme expressément :\n\n☑ Être habilité à engager la structure concernée ;\n☑ Souhaiter ouvrir une phase de cadrage initial avec FixBiz ;\n☑ Comprendre que cette phase constitue une étape préliminaire d’analyse et ne correspond pas à une mission complète d’accompagnement ;\n☑ Accepter de transmettre les informations ou documents nécessaires à la compréhension de sa situation ;\n☑ Reconnaître que les informations communiquées sont exactes à sa connaissance ;\n☑ Comprendre qu’aucune intervention complémentaire ne sera engagée sans accord distinct entre les parties ;\n☑ Avoir pris connaissance des conditions prévues par la présente lettre de cadrage.",
+        y
+      );
+
+      if (y > 220) {
+        pdf.addPage();
+        y = 20;
+      }
+
+      pdf.setFont("helvetica", "bold");
+      pdf.setFontSize(9);
+      pdf.text(`Date de validation : ${date}`, 20, y);
+      y += 10;
+
+      pdf.rect(20, y, 80, 45);
+      pdf.rect(110, y, 80, 45);
+
+      pdf.setFont("helvetica", "bold");
+      pdf.text("Pour FixBiz", 24, y + 8);
+      pdf.setFont("helvetica", "normal");
+      pdf.text("Jean-Philippe Schneider", 24, y + 15);
+      pdf.text("Fondateur FixBiz", 24, y + 20);
+      pdf.text("Signature :", 24, y + 28);
+
+      try {
+        pdf.addImage("/signature-fixbiz.png", "PNG", 24, y + 30, 45, 14);
+      } catch {}
+
+      pdf.setFont("helvetica", "bold");
+      pdf.text(`Pour ${societe}`, 114, y + 8);
+      pdf.setFont("helvetica", "normal");
+      pdf.text(`Nom du signataire : ${signataire}`, 114, y + 15);
+      pdf.text(`Fonction : ${fonction}`, 114, y + 20);
+      pdf.text("Signature manuscrite :", 114, y + 28);
+
+      pdf.addImage(signatureDataUrl, "PNG", 114, y + 30, 45, 14);
+
+      pdf.setFontSize(7);
+      pdf.setTextColor(107, 114, 128);
+      pdf.text("La présente lettre est validée électroniquement par le Client à la date indiquée ci-dessus.", 20, 286);
+
+      return pdf.output("datauristring").split(",")[1];
     }
 
     form?.addEventListener("submit", async (event) => {
@@ -593,74 +570,8 @@
       try {
         const signatureDataUrl = signaturePad.toDataURL("image/png");
         signatureInput.value = signatureDataUrl;
-        setPdfValues(signatureDataUrl);
 
-        const pdfDocument = document.querySelector("#pdf-document");
-
-pdfDocument.style.display = "block";
-pdfDocument.style.position = "absolute";
-pdfDocument.style.left = "0";
-pdfDocument.style.top = "0";
-pdfDocument.style.width = "794px";
-pdfDocument.style.background = "white";
-pdfDocument.style.zIndex = "999999";
-pdfDocument.style.visibility = "visible";
-pdfDocument.style.opacity = "1";
-
-window.scrollTo(0, 0);
-
-await new Promise((resolve) => setTimeout(resolve, 1000));
-
-const pdfBlob = await html2pdf()
-  .set({
-    margin: 10,
-    filename: "lettre-cadrage-fixbiz.pdf",
-    image: { type: "jpeg", quality: 0.98 },
-    html2canvas: {
-      scale: 2,
-      useCORS: true,
-      allowTaint: true,
-      backgroundColor: "#ffffff"
-    },
-    jsPDF: {
-      unit: "mm",
-      format: "a4",
-      orientation: "portrait"
-    }
-  })
-  .from(pdfDocument)
-  .outputPdf("blob");
-
-pdfDocument.style.display = "none";
-
-const pdfBlob = await html2pdf()
-  .set({
-    margin: 10,
-    filename: "lettre-cadrage-fixbiz.pdf",
-    image: { type: "jpeg", quality: 0.98 },
-
-    html2canvas: {
-      scale: 2,
-      useCORS: true,
-      scrollY: 0
-    },
-
-    jsPDF: {
-      unit: "mm",
-      format: "a4",
-      orientation: "portrait"
-    }
-  })
-  .from(pdfDocument)
-  .outputPdf("blob");
-
-        const pdfBase64 = await new Promise((resolve, reject) => {
-          const reader = new FileReader();
-          reader.onloadend = () => resolve(String(reader.result).split(",")[1]);
-          reader.onerror = reject;
-          reader.readAsDataURL(pdfBlob);
-        });
-
+        const pdfBase64 = generatePdf(signatureDataUrl);
         pdfInput.value = pdfBase64;
 
         button.textContent = "Envoi en cours...";
