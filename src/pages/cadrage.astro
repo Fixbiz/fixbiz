@@ -572,7 +572,16 @@
         signatureInput.value = signatureDataUrl;
 
         const pdfBase64 = generatePdf(signatureDataUrl);
-        pdfInput.value = pdfBase64;
+
+console.log("PDF length:", pdfBase64.length);
+
+const testLink = document.createElement("a");
+testLink.href =
+  "data:application/pdf;base64," + pdfBase64;
+testLink.download = "test.pdf";
+testLink.click();
+
+pdfInput.value = pdfBase64;
 
         button.textContent = "Envoi en cours...";
         status.textContent = "Transmission de la lettre de cadrage...";
