@@ -1,0 +1,512 @@
+---
+---
+
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Lettre de cadrage initial | FixBiz</title>
+
+  <style>
+    :root {
+      --blue: #2e7fb1;
+      --ink: #102033;
+      --muted: #5f6f82;
+      --line: #d7e3ee;
+      --bg: #f7fafc;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #fff;
+      color: var(--ink);
+    }
+
+    .wrap {
+      max-width: 920px;
+      margin: auto;
+      padding: 48px 20px 80px;
+    }
+
+    .logo {
+      max-width: 170px;
+      margin-bottom: 28px;
+    }
+
+    .card {
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 34px;
+      box-shadow: 0 12px 34px rgba(16, 32, 51, 0.05);
+      background: #fff;
+    }
+
+    h1 {
+      font-size: 2rem;
+      text-align: center;
+      margin-bottom: 6px;
+    }
+
+    .subtitle {
+      text-align: center;
+      color: var(--muted);
+      margin-bottom: 28px;
+    }
+
+    h2 {
+      font-size: 1.2rem;
+      margin-top: 30px;
+      border-top: 1px solid var(--line);
+      padding-top: 22px;
+    }
+
+    p {
+      line-height: 1.6;
+    }
+
+    .parties {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin: 24px 0;
+    }
+
+    .party {
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 18px;
+      background: var(--bg);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    label {
+      display: grid;
+      gap: 8px;
+      font-weight: 700;
+      margin-top: 14px;
+    }
+
+    input,
+    textarea,
+    select {
+      width: 100%;
+      box-sizing: border-box;
+      border: 1px solid var(--line);
+      border-radius: 13px;
+      padding: 13px;
+      font-size: 1rem;
+      color: var(--ink);
+      background: #fff;
+    }
+
+    textarea {
+      resize: vertical;
+    }
+
+    input:focus,
+    textarea:focus,
+    select:focus {
+      outline: none;
+      border-color: var(--blue);
+      box-shadow: 0 0 0 3px rgba(46,127,177,.14);
+    }
+
+    .checkbox {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      font-weight: 500;
+      line-height: 1.45;
+      margin-top: 12px;
+    }
+
+    .checkbox input {
+      width: auto;
+      margin-top: 4px;
+    }
+
+    .notice {
+      background: var(--bg);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 16px;
+      color: var(--muted);
+      font-size: .95rem;
+      line-height: 1.55;
+      margin-top: 18px;
+    }
+
+    canvas {
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: #fff;
+      width: 100%;
+      height: 180px;
+      touch-action: none;
+    }
+
+    .secondary {
+      background: #eef5fa;
+      color: var(--ink);
+      margin-top: 10px;
+    }
+
+    .honeypot {
+      display: none;
+    }
+
+    button {
+      border: 0;
+      border-radius: 14px;
+      padding: 16px 20px;
+      background: var(--blue);
+      color: white;
+      font-weight: 800;
+      font-size: 1rem;
+      cursor: pointer;
+      width: 100%;
+      margin-top: 22px;
+    }
+
+    button:disabled {
+      opacity: .65;
+      cursor: not-allowed;
+    }
+
+    .status {
+      text-align: center;
+      color: var(--muted);
+      font-size: .9rem;
+      margin-top: 14px;
+    }
+
+    @media (max-width: 760px) {
+      .grid,
+      .parties {
+        grid-template-columns: 1fr;
+      }
+
+      .card {
+        padding: 24px;
+      }
+
+      h1 {
+        font-size: 1.7rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="wrap">
+    <img src="/logo best.png" alt="FixBiz" class="logo" />
+
+    <div class="card">
+      <form id="fixbiz-cadrage-form">
+        <h1>LETTRE DE CADRAGE INITIAL</h1>
+        <p class="subtitle">Phase préliminaire de compréhension, d’analyse et de cadrage</p>
+
+        <div class="parties">
+          <div class="party">
+            <strong>FIXBIZ</strong><br />
+            32 rue Laurent<br />
+            68100 Mulhouse<br />
+            SIREN : XXX XXX XXX<br />
+            Représentée par : Jean-Philippe Schneider<br />
+            Fonction : Fondateur FixBiz<br />
+            Email : contact@fixbiz.fr<br /><br />
+            <em>Ci-après : FixBiz</em>
+          </div>
+
+          <div class="party">
+            <strong>Client</strong>
+
+            <label>
+              Société
+              <input type="text" name="societe" autocomplete="off" required />
+            </label>
+
+            <label>
+              Adresse
+              <textarea name="adresse" rows="3" required></textarea>
+            </label>
+
+            <div class="grid">
+              <label>
+                SIREN
+                <input type="text" name="siren" required />
+              </label>
+
+              <label>
+                Email
+                <input type="email" name="email" autocomplete="email" required />
+              </label>
+            </div>
+
+            <div class="grid">
+              <label>
+                Représentant légal
+               <input type="text" name="representant" autocomplete="off" required />
+              </label>
+
+              <label>
+                Fonction
+                <input type="text" name="fonction" required />
+              </label>
+            </div>
+
+            <br />
+            <em>Ci-après : le Client</em>
+          </div>
+        </div>
+
+        <h2>1. Objet</h2>
+        <p>
+          La présente lettre a pour objet de définir les conditions dans lesquelles FixBiz intervient dans une phase préliminaire de compréhension, d’analyse et de cadrage de la situation du Client avant toute éventuelle mission d’accompagnement.
+        </p>
+
+        <h2>2. Contexte communiqué par le Client</h2>
+        <p>
+          Dans le cadre de la présente phase de cadrage, le Client expose les éléments, enjeux ou objectifs pour lesquels il sollicite l’avis ou l’accompagnement éventuel de FixBiz.
+        </p>
+
+        <label>
+          Niveau d’urgence déclaré
+          <select name="urgence" required>
+            <option value="">Sélectionner</option>
+            <option>Faible</option>
+            <option>Moyenne</option>
+            <option>Élevée</option>
+            <option>Très urgente</option>
+          </select>
+        </label>
+
+        <label>
+          Description communiquée par le Client
+          <textarea name="situation" rows="7" required></textarea>
+        </label>
+
+        <h2>3. Périmètre de la phase de cadrage</h2>
+        <p>
+          La phase de cadrage a pour objet de permettre à FixBiz de mieux comprendre la situation du Client, d’identifier les principaux enjeux communiqués et d’apprécier la pertinence d’un éventuel accompagnement.
+        </p>
+        <p>
+          À cette fin, FixBiz pourra examiner les éléments transmis par le Client, solliciter des précisions complémentaires et évaluer les besoins susceptibles de nécessiter une intervention ultérieure.
+        </p>
+        <p>
+          Cette phase pourra également conduire, si cela apparaît pertinent, à la définition des contours d’un accompagnement ou à la préparation d’une proposition ou d’une lettre de mission spécifique.
+        </p>
+
+        <h2>4. Informations nécessaires à la phase de cadrage</h2>
+        <p>
+          Afin de permettre une compréhension suffisante de la situation du Client et, le cas échéant, l’évaluation d’un accompagnement adapté, FixBiz pourra solliciter toute information, précision ou document jugé utile à l’analyse.
+        </p>
+        <p>
+          Le Client s’engage à communiquer des éléments sincères, exacts et suffisamment complets pour permettre cette phase d’étude.
+        </p>
+
+        <h2>5. Issue de la phase de cadrage</h2>
+        <p>
+          À l’issue de la phase de cadrage, FixBiz pourra, selon les éléments communiqués et l’analyse réalisée, proposer un accompagnement, solliciter des informations complémentaires ou recommander l’intervention d’un professionnel tiers lorsque cela apparaît plus adapté à la situation du Client.
+        </p>
+        <p>
+          Cette phase peut également conduire à l’absence de proposition d’intervention complémentaire lorsque la situation ne nécessite pas ou ne permet pas un accompagnement adapté.
+        </p>
+        <p>
+          La présente lettre n’emporte aucun engagement réciproque quant à la conclusion d’une mission ultérieure. Toute intervention complémentaire fera, le cas échéant, l’objet d’un accord distinct entre les parties.
+        </p>
+
+        <h2>6. Limites de la phase de cadrage</h2>
+        <p>
+          La présente phase constitue une étape préliminaire d’analyse et de compréhension de la situation du Client.
+        </p>
+        <p>
+          Elle ne constitue ni une mission complète d’accompagnement, ni un mandat de représentation, ni une prestation réglementée de nature juridique, fiscale ou comptable, et n’emporte aucune garantie de résultat.
+        </p>
+        <p>
+          FixBiz intervient exclusivement dans le cadre d’une obligation de moyens.
+        </p>
+
+        <h2>7. Confidentialité</h2>
+        <p>
+          Les informations transmises par le Client sont strictement confidentielles. FixBiz s’engage à ne pas les communiquer à des tiers, sauf accord du Client ou nécessité liée à l’étude du dossier.
+        </p>
+        <p>
+          Cette obligation de confidentialité survivra à la fin des échanges entre les parties.
+        </p>
+
+        <h2>8. Conditions financières</h2>
+        <p>
+          La signature de la présente lettre de cadrage n’entraîne, à elle seule, aucune facturation ni engagement financier pour le Client.
+        </p>
+        <p>
+          La phase de cadrage a pour objet de permettre une première compréhension de la situation exposée et l’évaluation d’un éventuel accompagnement.
+        </p>
+        <p>
+          Si une analyse approfondie ou une intervention complémentaire apparaît pertinente, les modalités applicables feront, le cas échéant, l’objet d’une proposition distincte préalablement présentée au Client.
+        </p>
+        <p>
+          Aucune prestation complémentaire payante ne sera engagée sans accord exprès du Client.
+        </p>
+
+        <h2>9. Validation</h2>
+
+        <div class="notice">
+          Avant validation de la présente lettre, le Client confirme expressément les éléments ci-dessous.
+        </div>
+
+        <label class="checkbox">
+          <input type="checkbox" required />
+          Être habilité à engager la structure concernée ;
+        </label>
+
+        <label class="checkbox">
+          <input type="checkbox" required />
+          Souhaiter ouvrir une phase de cadrage initial avec FixBiz ;
+        </label>
+
+        <label class="checkbox">
+          <input type="checkbox" required />
+          Comprendre que cette phase constitue une étape préliminaire d’analyse et ne correspond pas à une mission complète d’accompagnement ;
+        </label>
+
+        <label class="checkbox">
+          <input type="checkbox" required />
+          Accepter de transmettre les informations ou documents nécessaires à la compréhension de sa situation ;
+        </label>
+
+        <label class="checkbox">
+          <input type="checkbox" required />
+          Reconnaître que les informations communiquées sont exactes à sa connaissance ;
+        </label>
+
+        <label class="checkbox">
+          <input type="checkbox" required />
+          Comprendre qu’aucune intervention complémentaire ne sera engagée sans accord distinct entre les parties ;
+        </label>
+
+        <label class="checkbox">
+          <input type="checkbox" required />
+          Avoir pris connaissance des conditions prévues par la présente lettre de cadrage.
+        </label>
+
+        <label>
+          Nom et prénom du signataire
+         <input
+  type="text"
+  name="signataire"
+  autocomplete="off"
+  placeholder="Nom et prénom du signataire"
+  required
+/>
+        </label>
+
+        <label>
+          Signature manuscrite
+          <canvas id="signature-pad" width="700" height="180"></canvas>
+        </label>
+
+        <button type="button" class="secondary" id="clear-signature">
+          Effacer la signature
+        </button>
+
+        <input type="hidden" name="signatureImage" id="signatureImage" />
+        <input type="hidden" name="startedAt" id="startedAt" />
+        <input type="text" name="website" class="honeypot" autocomplete="off" />
+
+        <button type="submit">Valider et envoyer la lettre →</button>
+
+        <p class="status">Aucune donnée n’est stockée sur le site.</p>
+      </form>
+    </div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/signature_pad@4.1.6/dist/signature_pad.umd.min.js"></script>
+
+  <script>
+    const form = document.querySelector("#fixbiz-cadrage-form");
+    const status = document.querySelector(".status");
+    const button = form?.querySelector("button[type='submit']");
+    const startedAt = document.querySelector("#startedAt");
+    const signatureInput = document.querySelector("#signatureImage");
+    const canvas = document.querySelector("#signature-pad");
+    const clearButton = document.querySelector("#clear-signature");
+
+    if (startedAt) {
+      startedAt.value = Date.now().toString();
+    }
+
+    const signaturePad = new SignaturePad(canvas, {
+      backgroundColor: "rgb(255,255,255)",
+      penColor: "rgb(16,32,51)",
+    });
+
+    function resizeCanvas() {
+      const ratio = Math.max(window.devicePixelRatio || 1, 1);
+      const rect = canvas.getBoundingClientRect();
+
+      canvas.width = rect.width * ratio;
+      canvas.height = 180 * ratio;
+
+      canvas.getContext("2d").scale(ratio, ratio);
+      signaturePad.clear();
+    }
+
+    window.addEventListener("resize", resizeCanvas);
+    resizeCanvas();
+
+    clearButton?.addEventListener("click", () => {
+      signaturePad.clear();
+    });
+
+    form?.addEventListener("submit", async (event) => {
+      event.preventDefault();
+
+      if (!button || !status || !signatureInput) return;
+
+      if (signaturePad.isEmpty()) {
+        status.textContent = "Merci de signer la lettre avant validation.";
+        return;
+      }
+
+      signatureInput.value = signaturePad.toDataURL("image/png");
+
+      button.disabled = true;
+      button.textContent = "Envoi en cours...";
+      status.textContent = "Transmission de la lettre de cadrage...";
+
+      const payload = Object.fromEntries(new FormData(form).entries());
+
+      try {
+        const response = await fetch("/api/cadrage", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(payload),
+        });
+
+        if (!response.ok) {
+          throw new Error("Erreur");
+        }
+
+        form.reset();
+        signaturePad.clear();
+        button.textContent = "Lettre envoyée ✓";
+        status.textContent = "Merci. La lettre de cadrage a bien été transmise.";
+      } catch {
+        button.textContent = "Valider et envoyer la lettre →";
+        status.textContent = "Erreur d’envoi. Vous pouvez aussi écrire à contact@fixbiz.fr.";
+      } finally {
+        button.disabled = false;
+      }
+    });
+  </script>
+</body>
+</html>
