@@ -12,7 +12,6 @@ export const onRequest: PagesFunction<{
 
   try {
     const body = await request.json();
-
     const clean = (value: unknown) => String(value || "").trim();
 
     const escapeHtml = (value: string) =>
@@ -25,6 +24,8 @@ export const onRequest: PagesFunction<{
 
     const societe = clean(body.societe);
     const adresse = clean(body.adresse);
+    const codePostal = clean(body.codePostal);
+    const ville = clean(body.ville);
     const siren = clean(body.siren);
     const representant = clean(body.representant);
     const fonction = clean(body.fonction);
@@ -42,14 +43,14 @@ export const onRequest: PagesFunction<{
     }
 
     if (startedAt && Date.now() - startedAt < 3000) {
-      return new Response(JSON.stringify({ error: "Spam détecté" }), {
-        status: 400,
-      });
+      return new Response(JSON.stringify({ error: "Spam détecté" }), { status: 400 });
     }
 
     if (
       !societe ||
       !adresse ||
+      !codePostal ||
+      !ville ||
       !siren ||
       !representant ||
       !fonction ||
@@ -60,17 +61,13 @@ export const onRequest: PagesFunction<{
       !signatureImage ||
       !pdfBase64
     ) {
-      return new Response(JSON.stringify({ error: "Champs manquants" }), {
-        status: 400,
-      });
+      return new Response(JSON.stringify({ error: "Champs manquants" }), { status: 400 });
     }
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     if (!emailRegex.test(email)) {
-      return new Response(JSON.stringify({ error: "Email invalide" }), {
-        status: 400,
-      });
+      return new Response(JSON.stringify({ error: "Email invalide" }), { status: 400 });
     }
 
     const ip =
@@ -90,12 +87,11 @@ export const onRequest: PagesFunction<{
       <div style="font-family:Arial,sans-serif;color:#1f2937;line-height:1.6;">
         <p>Bonjour,</p>
 
-        <p>
-          Veuillez trouver ci-joint la lettre de cadrage initial FixBiz validée électroniquement.
-        </p>
+        <p>Veuillez trouver ci-joint la lettre de cadrage initial FixBiz validée électroniquement.</p>
 
         <p>
           <strong>Société :</strong> ${escapeHtml(societe)}<br>
+          <strong>Adresse :</strong> ${escapeHtml(adresse)}, ${escapeHtml(codePostal)} ${escapeHtml(ville)}<br>
           <strong>Représentant :</strong> ${escapeHtml(representant)}<br>
           <strong>Signataire :</strong> ${escapeHtml(signataire)}<br>
           <strong>Fonction :</strong> ${escapeHtml(fonction)}<br>
@@ -105,9 +101,7 @@ export const onRequest: PagesFunction<{
           <strong>Navigateur :</strong> ${escapeHtml(userAgent)}
         </p>
 
-        <p>
-          Le PDF signé est joint au présent email.
-        </p>
+        <p>Le PDF signé est joint au présent email.</p>
 
         <p>Bien cordialement,<br>FixBiz</p>
       </div>
@@ -125,12 +119,7 @@ export const onRequest: PagesFunction<{
             name: "FixBiz",
             email: env.CONTACT_FROM,
           },
-          to: [
-            {
-              email: toEmail,
-              name: toName,
-            },
-          ],
+          to: [{ email: toEmail, name: toName }],
           replyTo: {
             email: env.CONTACT_TO,
             name: "FixBiz",
@@ -154,9 +143,7 @@ export const onRequest: PagesFunction<{
     );
 
     if (!fixbizResponse.ok) {
-      return new Response(JSON.stringify({ error: "Erreur Brevo FixBiz" }), {
-        status: 500,
-      });
+      return new Response(JSON.stringify({ error: "Erreur Brevo FixBiz" }), { status: 500 });
     }
 
     const clientResponse = await sendEmail(
@@ -166,15 +153,11 @@ export const onRequest: PagesFunction<{
     );
 
     if (!clientResponse.ok) {
-      return new Response(JSON.stringify({ error: "Erreur Brevo Client" }), {
-        status: 500,
-      });
+      return new Response(JSON.stringify({ error: "Erreur Brevo Client" }), { status: 500 });
     }
 
     return new Response(JSON.stringify({ ok: true }), { status: 200 });
   } catch {
-    return new Response(JSON.stringify({ error: "Erreur serveur" }), {
-      status: 500,
-    });
+    return new Response(JSON.stringify({ error: "Erreur serveur" }), { status: 500 });
   }
 };

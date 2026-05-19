@@ -223,8 +223,18 @@
             </label>
 
             <label>Adresse
-              <textarea name="adresse" rows="3" required></textarea>
+              <input type="text" name="adresse" autocomplete="new-password" required />
             </label>
+
+            <div class="grid">
+              <label>Code postal
+                <input type="text" name="codePostal" autocomplete="new-password" required />
+              </label>
+
+              <label>Ville
+                <input type="text" name="ville" autocomplete="new-password" required />
+              </label>
+            </div>
 
             <div class="grid">
               <label>SIREN
@@ -400,6 +410,8 @@
 
       const societe = form.societe.value.trim();
       const adresse = form.adresse.value.trim();
+      const codePostal = form.codePostal.value.trim();
+      const ville = form.ville.value.trim();
       const siren = form.siren.value.trim();
       const email = form.email.value.trim();
       const representant = form.representant.value.trim();
@@ -409,109 +421,66 @@
       const signataire = form.signataire.value.trim();
       const date = new Date().toLocaleString("fr-FR");
 
+      try {
+        pdf.addImage("/logo best.png", "PNG", 20, 8, 38, 16);
+      } catch {}
+
       pdf.setFont("helvetica", "bold");
       pdf.setFontSize(16);
-      pdf.text("LETTRE DE CADRAGE INITIAL", 105, 18, { align: "center" });
+      pdf.text("LETTRE DE CADRAGE INITIAL", 105, 22, { align: "center" });
 
       pdf.setFont("helvetica", "normal");
       pdf.setFontSize(10);
-      pdf.text("Phase préliminaire de compréhension, d’analyse et de cadrage", 105, 25, { align: "center" });
+      pdf.text("Phase préliminaire de compréhension, d’analyse et de cadrage", 105, 29, { align: "center" });
 
       pdf.setDrawColor(219, 228, 238);
 
-      pdf.rect(20, 34, 80, 42);
-      pdf.rect(110, 34, 80, 42);
+      pdf.rect(20, 38, 80, 42);
+      pdf.rect(110, 38, 80, 42);
 
       pdf.setFontSize(8.5);
 
       pdf.setFont("helvetica", "bold");
-      pdf.text("FIXBIZ", 24, 41);
+      pdf.text("FIXBIZ", 24, 45);
 
       pdf.setFont("helvetica", "normal");
-      pdf.text("32 rue Laurent", 24, 47);
-      pdf.text("68100 Mulhouse", 24, 52);
-      pdf.text("SIREN : XXX XXX XXX", 24, 57);
-      pdf.text("Représentée par : Jean-Philippe Schneider", 24, 62);
-      pdf.text("Fonction : Fondateur FixBiz", 24, 67);
-      pdf.text("Email : contact@fixbiz.fr", 24, 72);
+      pdf.text("32 rue Laurent", 24, 51);
+      pdf.text("68100 Mulhouse", 24, 56);
+      pdf.text("SIREN : XXX XXX XXX", 24, 61);
+      pdf.text("Représentée par : Jean-Philippe Schneider", 24, 66);
+      pdf.text("Fonction : Fondateur FixBiz", 24, 71);
+      pdf.text("Email : contact@fixbiz.fr", 24, 76);
 
       pdf.setFont("helvetica", "bold");
-      pdf.text(societe || "Client", 114, 41);
+      pdf.text(societe || "Client", 114, 45);
 
       pdf.setFont("helvetica", "normal");
-      let yClient = 47;
-      const adresseLines = pdf.splitTextToSize(adresse, 70);
-      pdf.text(adresseLines, 114, yClient);
-      yClient += adresseLines.length * 4;
-      pdf.text(`SIREN : ${siren}`, 114, yClient + 1);
-      pdf.text(`Représentée par : ${representant}`, 114, yClient + 6);
-      pdf.text(`Fonction : ${fonction}`, 114, yClient + 11);
-      pdf.text(`Email : ${email}`, 114, yClient + 16);
+      pdf.text(adresse, 114, 51);
+      pdf.text(`${codePostal} ${ville}`, 114, 56);
+      pdf.text(`SIREN : ${siren}`, 114, 61);
+      pdf.text(`Représentée par : ${representant}`, 114, 66);
+      pdf.text(`Fonction : ${fonction}`, 114, 71);
+      pdf.text(`Email : ${email}`, 114, 76);
 
-      let y = 88;
+      let y = 92;
 
-      y = addSection(
-        pdf,
-        "1. Objet",
-        "La présente lettre a pour objet de définir les conditions dans lesquelles FixBiz intervient dans une phase préliminaire de compréhension, d’analyse et de cadrage de la situation du Client avant toute éventuelle mission d’accompagnement.",
-        y
-      );
+      y = addSection(pdf, "1. Objet", "La présente lettre a pour objet de définir les conditions dans lesquelles FixBiz intervient dans une phase préliminaire de compréhension, d’analyse et de cadrage de la situation du Client avant toute éventuelle mission d’accompagnement.", y);
 
-      y = addSection(
-        pdf,
-        "2. Contexte communiqué par le Client",
-        `Dans le cadre de la présente phase de cadrage, le Client expose les éléments, enjeux ou objectifs pour lesquels il sollicite l’avis ou l’accompagnement éventuel de FixBiz.\n\nNiveau d’urgence déclaré : ${urgence}\n\nDescription communiquée par le Client :\n${situation}`,
-        y
-      );
+      y = addSection(pdf, "2. Contexte communiqué par le Client", `Dans le cadre de la présente phase de cadrage, le Client expose les éléments, enjeux ou objectifs pour lesquels il sollicite l’avis ou l’accompagnement éventuel de FixBiz.\n\nNiveau d’urgence déclaré : ${urgence}\n\nDescription communiquée par le Client :\n${situation}`, y);
 
-      y = addSection(
-        pdf,
-        "3. Périmètre de la phase de cadrage",
-        "La phase de cadrage a pour objet de permettre à FixBiz de mieux comprendre la situation du Client, d’identifier les principaux enjeux communiqués et d’apprécier la pertinence d’un éventuel accompagnement.\n\nÀ cette fin, FixBiz pourra examiner les éléments transmis par le Client, solliciter des précisions complémentaires et évaluer les besoins susceptibles de nécessiter une intervention ultérieure.\n\nCette phase pourra également conduire, si cela apparaît pertinent, à la définition des contours d’un accompagnement ou à la préparation d’une proposition ou d’une lettre de mission spécifique.",
-        y
-      );
+      y = addSection(pdf, "3. Périmètre de la phase de cadrage", "La phase de cadrage a pour objet de permettre à FixBiz de mieux comprendre la situation du Client, d’identifier les principaux enjeux communiqués et d’apprécier la pertinence d’un éventuel accompagnement.\n\nÀ cette fin, FixBiz pourra examiner les éléments transmis par le Client, solliciter des précisions complémentaires et évaluer les besoins susceptibles de nécessiter une intervention ultérieure.\n\nCette phase pourra également conduire, si cela apparaît pertinent, à la définition des contours d’un accompagnement ou à la préparation d’une proposition ou d’une lettre de mission spécifique.", y);
 
-      y = addSection(
-        pdf,
-        "4. Informations nécessaires à la phase de cadrage",
-        "Afin de permettre une compréhension suffisante de la situation du Client et, le cas échéant, l’évaluation d’un accompagnement adapté, FixBiz pourra solliciter toute information, précision ou document jugé utile à l’analyse.\n\nLe Client s’engage à communiquer des éléments sincères, exacts et suffisamment complets pour permettre cette phase d’étude.",
-        y
-      );
+      y = addSection(pdf, "4. Informations nécessaires à la phase de cadrage", "Afin de permettre une compréhension suffisante de la situation du Client et, le cas échéant, l’évaluation d’un accompagnement adapté, FixBiz pourra solliciter toute information, précision ou document jugé utile à l’analyse.\n\nLe Client s’engage à communiquer des éléments sincères, exacts et suffisamment complets pour permettre cette phase d’étude.", y);
 
-      y = addSection(
-        pdf,
-        "5. Issue de la phase de cadrage",
-        "À l’issue de la phase de cadrage, FixBiz pourra, selon les éléments communiqués et l’analyse réalisée, proposer un accompagnement, solliciter des informations complémentaires ou recommander l’intervention d’un professionnel tiers lorsque cela apparaît plus adapté à la situation du Client.\n\nCette phase peut également conduire à l’absence de proposition d’intervention complémentaire lorsque la situation ne nécessite pas ou ne permet pas un accompagnement adapté.\n\nLa présente lettre n’emporte aucun engagement réciproque quant à la conclusion d’une mission ultérieure. Toute intervention complémentaire fera, le cas échéant, l’objet d’un accord distinct entre les parties.",
-        y
-      );
+      y = addSection(pdf, "5. Issue de la phase de cadrage", "À l’issue de la phase de cadrage, FixBiz pourra, selon les éléments communiqués et l’analyse réalisée, proposer un accompagnement, solliciter des informations complémentaires ou recommander l’intervention d’un professionnel tiers lorsque cela apparaît plus adapté à la situation du Client.\n\nCette phase peut également conduire à l’absence de proposition d’intervention complémentaire lorsque la situation ne nécessite pas ou ne permet pas un accompagnement adapté.\n\nLa présente lettre n’emporte aucun engagement réciproque quant à la conclusion d’une mission ultérieure. Toute intervention complémentaire fera, le cas échéant, l’objet d’un accord distinct entre les parties.", y);
 
-      y = addSection(
-        pdf,
-        "6. Limites de la phase de cadrage",
-        "La présente phase constitue une étape préliminaire d’analyse et de compréhension de la situation du Client.\n\nElle ne constitue ni une mission complète d’accompagnement, ni un mandat de représentation, ni une prestation réglementée de nature juridique, fiscale ou comptable, et n’emporte aucune garantie de résultat.\n\nFixBiz intervient exclusivement dans le cadre d’une obligation de moyens.",
-        y
-      );
+      y = addSection(pdf, "6. Limites de la phase de cadrage", "La présente phase constitue une étape préliminaire d’analyse et de compréhension de la situation du Client.\n\nElle ne constitue ni une mission complète d’accompagnement, ni un mandat de représentation, ni une prestation réglementée de nature juridique, fiscale ou comptable, et n’emporte aucune garantie de résultat.\n\nFixBiz intervient exclusivement dans le cadre d’une obligation de moyens.", y);
 
-      y = addSection(
-        pdf,
-        "7. Confidentialité",
-        "Les informations transmises par le Client sont strictement confidentielles. FixBiz s’engage à ne pas les communiquer à des tiers, sauf accord du Client ou nécessité liée à l’étude du dossier.\n\nCette obligation de confidentialité survivra à la fin des échanges entre les parties.",
-        y
-      );
+      y = addSection(pdf, "7. Confidentialité", "Les informations transmises par le Client sont strictement confidentielles. FixBiz s’engage à ne pas les communiquer à des tiers, sauf accord du Client ou nécessité liée à l’étude du dossier.\n\nCette obligation de confidentialité survivra à la fin des échanges entre les parties.", y);
 
-      y = addSection(
-        pdf,
-        "8. Conditions financières",
-        "La signature de la présente lettre de cadrage n’entraîne, à elle seule, aucune facturation ni engagement financier pour le Client.\n\nLa phase de cadrage a pour objet de permettre une première compréhension de la situation exposée et l’évaluation d’un éventuel accompagnement.\n\nSi une analyse approfondie ou une intervention complémentaire apparaît pertinente, les modalités applicables feront, le cas échéant, l’objet d’une proposition distincte préalablement présentée au Client.\n\nAucune prestation complémentaire payante ne sera engagée sans accord exprès du Client.",
-        y
-      );
+      y = addSection(pdf, "8. Conditions financières", "La signature de la présente lettre de cadrage n’entraîne, à elle seule, aucune facturation ni engagement financier pour le Client.\n\nLa phase de cadrage a pour objet de permettre une première compréhension de la situation exposée et l’évaluation d’un éventuel accompagnement.\n\nSi une analyse approfondie ou une intervention complémentaire apparaît pertinente, les modalités applicables feront, le cas échéant, l’objet d’une proposition distincte préalablement présentée au Client.\n\nAucune prestation complémentaire payante ne sera engagée sans accord exprès du Client.", y);
 
-      y = addSection(
-        pdf,
-        "9. Validation",
-        "Avant validation de la présente lettre, le Client confirme expressément :\n\n☑ Être habilité à engager la structure concernée ;\n☑ Souhaiter ouvrir une phase de cadrage initial avec FixBiz ;\n☑ Comprendre que cette phase constitue une étape préliminaire d’analyse et ne correspond pas à une mission complète d’accompagnement ;\n☑ Accepter de transmettre les informations ou documents nécessaires à la compréhension de sa situation ;\n☑ Reconnaître que les informations communiquées sont exactes à sa connaissance ;\n☑ Comprendre qu’aucune intervention complémentaire ne sera engagée sans accord distinct entre les parties ;\n☑ Avoir pris connaissance des conditions prévues par la présente lettre de cadrage.",
-        y
-      );
+      y = addSection(pdf, "9. Validation", "Avant validation de la présente lettre, le Client confirme expressément :\n\n[x] Être habilité à engager la structure concernée ;\n[x] Souhaiter ouvrir une phase de cadrage initial avec FixBiz ;\n[x] Comprendre que cette phase constitue une étape préliminaire d’analyse et ne correspond pas à une mission complète d’accompagnement ;\n[x] Accepter de transmettre les informations ou documents nécessaires à la compréhension de sa situation ;\n[x] Reconnaître que les informations communiquées sont exactes à sa connaissance ;\n[x] Comprendre qu’aucune intervention complémentaire ne sera engagée sans accord distinct entre les parties ;\n[x] Avoir pris connaissance des conditions prévues par la présente lettre de cadrage.", y);
 
       if (y > 220) {
         pdf.addPage();
@@ -531,20 +500,17 @@
       pdf.setFont("helvetica", "normal");
       pdf.text("Jean-Philippe Schneider", 24, y + 15);
       pdf.text("Fondateur FixBiz", 24, y + 20);
-      pdf.text("Signature :", 24, y + 28);
 
       try {
-        pdf.addImage("/signature-fixbiz.png", "PNG", 24, y + 30, 45, 14);
+        pdf.addImage("/signature-fixbiz.png", "PNG", 24, y + 26, 45, 14);
       } catch {}
 
       pdf.setFont("helvetica", "bold");
       pdf.text(`Pour ${societe}`, 114, y + 8);
       pdf.setFont("helvetica", "normal");
-      pdf.text(`Nom du signataire : ${signataire}`, 114, y + 15);
-      pdf.text(`Fonction : ${fonction}`, 114, y + 20);
-      pdf.text("Signature manuscrite :", 114, y + 28);
-
-      pdf.addImage(signatureDataUrl, "PNG", 114, y + 30, 45, 14);
+      pdf.text(signataire, 114, y + 15);
+      pdf.text(fonction, 114, y + 20);
+      pdf.addImage(signatureDataUrl, "PNG", 114, y + 26, 45, 14);
 
       pdf.setFontSize(7);
       pdf.setTextColor(107, 114, 128);
@@ -572,16 +538,7 @@
         signatureInput.value = signatureDataUrl;
 
         const pdfBase64 = generatePdf(signatureDataUrl);
-
-console.log("PDF length:", pdfBase64.length);
-
-const testLink = document.createElement("a");
-testLink.href =
-  "data:application/pdf;base64," + pdfBase64;
-testLink.download = "test.pdf";
-testLink.click();
-
-pdfInput.value = pdfBase64;
+        pdfInput.value = pdfBase64;
 
         button.textContent = "Envoi en cours...";
         status.textContent = "Transmission de la lettre de cadrage...";
