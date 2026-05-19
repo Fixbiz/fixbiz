@@ -221,9 +221,18 @@ export const onRequest: PagesFunction<{
           <tr>
             <td style="width:50%;vertical-align:top;border:1px solid #dbe4ee;padding:14px;">
               <strong>Pour FixBiz</strong><br>
-              Jean-Philippe Schneider<br>
-              Fondateur FixBiz<br><br>
-              Signature :
+
+Jean-Philippe Schneider<br>
+Fondateur FixBiz<br><br>
+
+Signature :<br><br>
+
+<img
+src="https://fixbiz.fr/signature-fixbiz.png"
+style="
+max-width:220px;
+"
+/>
             </td>
 
             <td style="width:50%;vertical-align:top;border:1px solid #dbe4ee;padding:14px;">
@@ -236,7 +245,18 @@ export const onRequest: PagesFunction<{
               <strong>${escapeHtml(signataire)}</strong><br><br>
 
               Signature manuscrite :<br>
-              Signature manuscrite capturée sur le formulaire.
+              Signature manuscrite du client :<br><br>
+
+<img
+src="${signatureImage}"
+style="
+max-width:220px;
+border:1px solid #dbe4ee;
+border-radius:8px;
+padding:8px;
+background:white;
+"
+/>
             </td>
           </tr>
         </table>
