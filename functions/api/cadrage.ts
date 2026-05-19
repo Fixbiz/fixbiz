@@ -73,15 +73,12 @@ export const onRequest: PagesFunction<{
       });
     }
 
-    const signatureBase64 = signatureImage.replace(/^data:image\/png;base64,/, "");
-
     const ip =
       request.headers.get("CF-Connecting-IP") ||
       request.headers.get("X-Forwarded-For") ||
       "Non disponible";
 
-    const userAgent =
-      request.headers.get("User-Agent") || "Non disponible";
+    const userAgent = request.headers.get("User-Agent") || "Non disponible";
 
     const dateSignature = new Date().toLocaleString("fr-FR", {
       timeZone: "Europe/Paris",
@@ -109,7 +106,7 @@ export const onRequest: PagesFunction<{
         </p>
 
         <p>
-          Le PDF signé est joint au présent email. La signature manuscrite du client est également jointe séparément.
+          Le PDF signé est joint au présent email.
         </p>
 
         <p>Bien cordialement,<br>FixBiz</p>
@@ -140,12 +137,12 @@ export const onRequest: PagesFunction<{
           },
           subject,
           htmlContent,
-attachment: [
-  {
-    content: pdfBase64,
-    name: "lettre-cadrage-fixbiz.pdf",
-  },
-],
+          attachment: [
+            {
+              content: pdfBase64,
+              name: "lettre-cadrage-fixbiz.pdf",
+            },
+          ],
         }),
       });
     };
