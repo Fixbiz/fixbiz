@@ -1,8 +1,15 @@
-export const onRequestPost: PagesFunction<{
+export const onRequest: PagesFunction<{
   BREVO_API_KEY: string;
   CONTACT_TO: string;
   CONTACT_FROM: string;
 }> = async ({ request, env }) => {
+  if (request.method !== "POST") {
+    return new Response(JSON.stringify({ error: "Méthode non autorisée" }), {
+      status: 405,
+      headers: { "Content-Type": "application/json" },
+    });
+  }
+
   try {
     const body = await request.json();
 
@@ -229,7 +236,7 @@ export const onRequestPost: PagesFunction<{
               <strong>${escapeHtml(signataire)}</strong><br><br>
 
               Signature manuscrite :<br>
-              <img src="${signatureImage}" style="max-width:280px;border:1px solid #dbe4ee;border-radius:8px;padding:8px;" />
+              Signature manuscrite capturée sur le formulaire.
             </td>
           </tr>
         </table>
