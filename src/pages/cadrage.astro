@@ -182,17 +182,25 @@
       margin-top: 14px;
     }
 
-    #pdf-document {
-      display: none;
-      width: 794px;
-      background: white;
-      color: #1f2937;
-      font-family: Arial, sans-serif;
-      padding: 42px;
-      box-sizing: border-box;
-      line-height: 1.45;
-      font-size: 12px;
-    }
+     #pdf-document {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+
+  width: 794px;
+  background: white;
+  color: #1f2937;
+
+  font-family: Arial, sans-serif;
+  padding: 42px;
+  box-sizing: border-box;
+
+  line-height: 1.45;
+  font-size: 12px;
+
+  visibility: visible;
+  opacity: 1;
+}
 
     #pdf-document h1 {
       font-size: 22px;
@@ -589,31 +597,26 @@
 
         const pdfDocument = document.querySelector("#pdf-document");
 
-        pdfDocument.style.display = "block";
-        pdfDocument.style.position = "fixed";
-        pdfDocument.style.left = "0";
-        pdfDocument.style.top = "0";
-        pdfDocument.style.zIndex = "999999";
-        pdfDocument.style.background = "#fff";
+const pdfBlob = await html2pdf()
+  .set({
+    margin: 10,
+    filename: "lettre-cadrage-fixbiz.pdf",
+    image: { type: "jpeg", quality: 0.98 },
 
-        await new Promise((resolve) => requestAnimationFrame(resolve));
+    html2canvas: {
+      scale: 2,
+      useCORS: true,
+      scrollY: 0
+    },
 
-        const pdfOptions = {
-          margin: 8,
-          filename: "lettre-cadrage-fixbiz.pdf",
-          image: { type: "jpeg", quality: 0.98 },
-          html2canvas: { scale: 2, useCORS: true },
-          jsPDF: { unit: "mm", format: "a4", orientation: "portrait" },
-          pagebreak: { mode: ["css", "legacy"] },
-        };
-
-        const pdfBlob = await html2pdf()
-          .set(pdfOptions)
-          .from(pdfDocument)
-          .outputPdf("blob");
-
-        pdfDocument.style.display = "none";
-        pdfDocument.removeAttribute("style");
+    jsPDF: {
+      unit: "mm",
+      format: "a4",
+      orientation: "portrait"
+    }
+  })
+  .from(pdfDocument)
+  .outputPdf("blob");
 
         const pdfBase64 = await new Promise((resolve, reject) => {
           const reader = new FileReader();
