@@ -151,6 +151,16 @@
       touch-action: none;
     }
 
+    .signature-preview {
+      margin-top: 12px;
+      max-width: 240px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 8px;
+      background: #fff;
+      display: none;
+    }
+
     .secondary {
       background: #eef5fa;
       color: var(--ink);
@@ -207,7 +217,7 @@
   <main class="wrap">
     <img src="/logo best.png" alt="FixBiz" class="logo" />
 
-    <div class="card">
+    <div class="card" id="pdf-content">
       <form id="fixbiz-cadrage-form">
         <h1>LETTRE DE CADRAGE INITIAL</h1>
         <p class="subtitle">Phase préliminaire de compréhension, d’analyse et de cadrage</p>
@@ -229,7 +239,7 @@
 
             <label>
               Société
-              <input type="text" name="societe" autocomplete="off" required />
+              <input type="text" name="societe" autocomplete="new-password" required />
             </label>
 
             <label>
@@ -240,24 +250,24 @@
             <div class="grid">
               <label>
                 SIREN
-                <input type="text" name="siren" required />
+                <input type="text" name="siren" autocomplete="new-password" required />
               </label>
 
               <label>
                 Email
-                <input type="email" name="email" autocomplete="email" required />
+                <input type="email" name="email" autocomplete="new-password" required />
               </label>
             </div>
 
             <div class="grid">
               <label>
                 Représentant légal
-               <input type="text" name="representant" autocomplete="off" required />
+                <input type="text" name="representant" autocomplete="new-password" required />
               </label>
 
               <label>
                 Fonction
-                <input type="text" name="fonction" required />
+                <input type="text" name="fonction" autocomplete="new-password" required />
               </label>
             </div>
 
@@ -398,36 +408,63 @@
 
         <label>
           Nom et prénom du signataire
-         <input
-  type="text"
-  name="signataire"
-  autocomplete="off"
-  placeholder="Nom et prénom du signataire"
-  required
-/>
+          <input
+            type="text"
+            name="signataire"
+            autocomplete="new-password"
+            placeholder="Nom et prénom du signataire"
+            required
+          />
         </label>
 
-        <label>
+        <label class="no-print">
           Signature manuscrite
           <canvas id="signature-pad" width="700" height="180"></canvas>
         </label>
 
-        <button type="button" class="secondary" id="clear-signature">
+        <button type="button" class="secondary no-print" id="clear-signature">
           Effacer la signature
         </button>
 
+        <div id="signature-preview-wrap">
+          <p><strong>Signature manuscrite du client :</strong></p>
+          <img id="signature-preview" class="signature-preview" alt="Signature du client" />
+        </div>
+
+        <div class="parties">
+          <div class="party">
+            <strong>Pour FixBiz</strong><br />
+            Jean-Philippe Schneider<br />
+            Fondateur FixBiz<br /><br />
+            Signature :<br /><br />
+            <img src="/signature-fixbiz.png" alt="Signature FixBiz" style="max-width:220px;" />
+          </div>
+
+          <div class="party">
+            <strong>Pour la société renseignée ci-dessus</strong><br /><br />
+            Nom du signataire :<br />
+            <strong id="signataire-preview">À compléter</strong><br /><br />
+            Fonction :<br />
+            <span id="fonction-preview">À compléter</span><br /><br />
+            Agissant pour :<br />
+            <span id="societe-preview">À compléter</span>
+          </div>
+        </div>
+
         <input type="hidden" name="signatureImage" id="signatureImage" />
+        <input type="hidden" name="pdfBase64" id="pdfBase64" />
         <input type="hidden" name="startedAt" id="startedAt" />
         <input type="text" name="website" class="honeypot" autocomplete="off" />
 
-        <button type="submit">Valider et envoyer la lettre →</button>
+        <button type="submit" class="no-print">Valider et envoyer la lettre →</button>
 
-        <p class="status">Aucune donnée n’est stockée sur le site.</p>
+        <p class="status no-print">Aucune donnée n’est stockée sur le site.</p>
       </form>
     </div>
   </main>
 
   <script src="https://cdn.jsdelivr.net/npm/signature_pad@4.1.6/dist/signature_pad.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 
   <script>
     const form = document.querySelector("#fixbiz-cadrage-form");
@@ -435,8 +472,13 @@
     const button = form?.querySelector("button[type='submit']");
     const startedAt = document.querySelector("#startedAt");
     const signatureInput = document.querySelector("#signatureImage");
+    const pdfInput = document.querySelector("#pdfBase64");
     const canvas = document.querySelector("#signature-pad");
     const clearButton = document.querySelector("#clear-signature");
+    const signaturePreview = document.querySelector("#signature-preview");
+    const signatairePreview = document.querySelector("#signataire-preview");
+    const fonctionPreview = document.querySelector("#fonction-preview");
+    const societePreview = document.querySelector("#societe-preview");
 
     if (startedAt) {
       startedAt.value = Date.now().toString();
@@ -463,35 +505,98 @@
 
     clearButton?.addEventListener("click", () => {
       signaturePad.clear();
+      signaturePreview.style.display = "none";
+      signaturePreview.removeAttribute("src");
     });
+
+    function updatePreviews() {
+      const signataire = form.signataire?.value || "À compléter";
+      const fonction = form.fonction?.value || "À compléter";
+      const societe = form.societe?.value || "À compléter";
+
+      signatairePreview.textContent = signataire;
+      fonctionPreview.textContent = fonction;
+      societePreview.textContent = societe;
+    }
+
+    form?.addEventListener("input", updatePreviews);
 
     form?.addEventListener("submit", async (event) => {
       event.preventDefault();
 
-      if (!button || !status || !signatureInput) return;
+      if (!button || !status || !signatureInput || !pdfInput) return;
 
       if (signaturePad.isEmpty()) {
         status.textContent = "Merci de signer la lettre avant validation.";
         return;
       }
-const trimmedCanvas =
-signaturePad.toDataURL("image/png");
-
-signatureInput.value =
-trimmedCanvas;
-      signatureInput.value =
-signaturePad.toDataURL(
-  "image/png",
-  0.7
-);
 
       button.disabled = true;
-      button.textContent = "Envoi en cours...";
-      status.textContent = "Transmission de la lettre de cadrage...";
-
-      const payload = Object.fromEntries(new FormData(form).entries());
+      button.textContent = "Génération du PDF...";
+      status.textContent = "Préparation de la lettre de cadrage...";
 
       try {
+        updatePreviews();
+
+        const signatureDataUrl = signaturePad.toDataURL("image/png");
+        signatureInput.value = signatureDataUrl;
+
+        signaturePreview.src = signatureDataUrl;
+        signaturePreview.style.display = "block";
+
+        const pdfArea = document.querySelector("#pdf-content");
+        const hiddenElements = document.querySelectorAll(".no-print");
+
+        hiddenElements.forEach((el) => {
+          el.dataset.previousDisplay = el.style.display || "";
+          el.style.display = "none";
+        });
+
+        const pdfOptions = {
+          margin: 8,
+          filename: "lettre-cadrage-fixbiz.pdf",
+          image: { type: "jpeg", quality: 0.98 },
+          html2canvas: {
+            scale: 2,
+            useCORS: true,
+          },
+          jsPDF: {
+            unit: "mm",
+            format: "a4",
+            orientation: "portrait",
+          },
+          pagebreak: {
+            mode: ["avoid-all", "css", "legacy"],
+          },
+        };
+
+        const pdfBlob = await html2pdf()
+          .set(pdfOptions)
+          .from(pdfArea)
+          .outputPdf("blob");
+
+        hiddenElements.forEach((el) => {
+          el.style.display = el.dataset.previousDisplay || "";
+        });
+
+        const pdfBase64 = await new Promise((resolve, reject) => {
+          const reader = new FileReader();
+
+          reader.onloadend = () => {
+            resolve(String(reader.result).split(",")[1]);
+          };
+
+          reader.onerror = reject;
+          reader.readAsDataURL(pdfBlob);
+        });
+
+        pdfInput.value = pdfBase64;
+
+        button.textContent = "Envoi en cours...";
+        status.textContent = "Transmission de la lettre de cadrage...";
+
+        const payload = Object.fromEntries(new FormData(form).entries());
+
         const response = await fetch("/api/cadrage", {
           method: "POST",
           headers: {
@@ -506,6 +611,10 @@ signaturePad.toDataURL(
 
         form.reset();
         signaturePad.clear();
+        signaturePreview.style.display = "none";
+        signaturePreview.removeAttribute("src");
+        updatePreviews();
+
         button.textContent = "Lettre envoyée ✓";
         status.textContent = "Merci. La lettre de cadrage a bien été transmise.";
       } catch {

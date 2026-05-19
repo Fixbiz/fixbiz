@@ -33,6 +33,7 @@ export const onRequest: PagesFunction<{
     const situation = clean(body.situation);
     const signataire = clean(body.signataire);
     const signatureImage = clean(body.signatureImage);
+    const pdfBase64 = clean(body.pdfBase64);
     const website = clean(body.website);
     const startedAt = Number(body.startedAt || 0);
 
@@ -56,7 +57,8 @@ export const onRequest: PagesFunction<{
       !urgence ||
       !situation ||
       !signataire ||
-      !signatureImage
+      !signatureImage ||
+      !pdfBase64
     ) {
       return new Response(JSON.stringify({ error: "Champs manquants" }), {
         status: 400,
@@ -87,180 +89,30 @@ export const onRequest: PagesFunction<{
       timeStyle: "short",
     });
 
-    const lettreHtml = `
-      <div style="font-family:Arial,sans-serif;color:#1f2937;line-height:1.55;max-width:760px;margin:auto;">
-        <h1 style="text-align:center;margin-bottom:4px;">LETTRE DE CADRAGE INITIAL</h1>
-        <p style="text-align:center;color:#6b7280;margin-top:0;">
-          Phase préliminaire de compréhension, d’analyse et de cadrage
-        </p>
+    const htmlContent = `
+      <div style="font-family:Arial,sans-serif;color:#1f2937;line-height:1.6;">
+        <p>Bonjour,</p>
 
-        <table style="width:100%;border-collapse:collapse;margin:24px 0;">
-          <tr>
-            <td style="width:50%;vertical-align:top;border:1px solid #dbe4ee;padding:14px;">
-              <strong>FIXBIZ</strong><br>
-              32 rue Laurent<br>
-              68100 Mulhouse<br>
-              SIREN : XXX XXX XXX<br>
-              Représentée par : Jean-Philippe Schneider<br>
-              Fonction : Fondateur FixBiz<br>
-              Email : contact@fixbiz.fr<br><br>
-              <em>Ci-après : FixBiz</em>
-            </td>
-
-            <td style="width:50%;vertical-align:top;border:1px solid #dbe4ee;padding:14px;">
-              <strong>${escapeHtml(societe)}</strong><br>
-              ${escapeHtml(adresse).replace(/\n/g, "<br>")}<br>
-              SIREN : ${escapeHtml(siren)}<br>
-              Représentée par : ${escapeHtml(representant)}<br>
-              Fonction : ${escapeHtml(fonction)}<br>
-              Email : ${escapeHtml(email)}<br><br>
-              <em>Ci-après : le Client</em>
-            </td>
-          </tr>
-        </table>
-
-        <h2>1. Objet</h2>
         <p>
-          La présente lettre a pour objet de définir les conditions dans lesquelles FixBiz intervient dans une phase préliminaire de compréhension, d’analyse et de cadrage de la situation du Client avant toute éventuelle mission d’accompagnement.
+          Veuillez trouver ci-joint la lettre de cadrage initial FixBiz validée électroniquement.
         </p>
 
-        <h2>2. Contexte communiqué par le Client</h2>
         <p>
-          Dans le cadre de la présente phase de cadrage, le Client expose les éléments, enjeux ou objectifs pour lesquels il sollicite l’avis ou l’accompagnement éventuel de FixBiz.
+          <strong>Société :</strong> ${escapeHtml(societe)}<br>
+          <strong>Représentant :</strong> ${escapeHtml(representant)}<br>
+          <strong>Signataire :</strong> ${escapeHtml(signataire)}<br>
+          <strong>Fonction :</strong> ${escapeHtml(fonction)}<br>
+          <strong>Email :</strong> ${escapeHtml(email)}<br>
+          <strong>Date de validation :</strong> ${dateSignature}<br>
+          <strong>Adresse IP :</strong> ${escapeHtml(ip)}<br>
+          <strong>Navigateur :</strong> ${escapeHtml(userAgent)}
         </p>
 
-        <p><strong>Niveau d’urgence déclaré :</strong><br>${escapeHtml(urgence)}</p>
-
-        <p><strong>Description communiquée par le Client :</strong><br>
-          ${escapeHtml(situation).replace(/\n/g, "<br>")}
-        </p>
-
-        <h2>3. Périmètre de la phase de cadrage</h2>
         <p>
-          La phase de cadrage a pour objet de permettre à FixBiz de mieux comprendre la situation du Client, d’identifier les principaux enjeux communiqués et d’apprécier la pertinence d’un éventuel accompagnement.
-        </p>
-        <p>
-          À cette fin, FixBiz pourra examiner les éléments transmis par le Client, solliciter des précisions complémentaires et évaluer les besoins susceptibles de nécessiter une intervention ultérieure.
-        </p>
-        <p>
-          Cette phase pourra également conduire, si cela apparaît pertinent, à la définition des contours d’un accompagnement ou à la préparation d’une proposition ou d’une lettre de mission spécifique.
+          Le PDF signé est joint au présent email. La signature manuscrite du client est également jointe séparément.
         </p>
 
-        <h2>4. Informations nécessaires à la phase de cadrage</h2>
-        <p>
-          Afin de permettre une compréhension suffisante de la situation du Client et, le cas échéant, l’évaluation d’un accompagnement adapté, FixBiz pourra solliciter toute information, précision ou document jugé utile à l’analyse.
-        </p>
-        <p>
-          Le Client s’engage à communiquer des éléments sincères, exacts et suffisamment complets pour permettre cette phase d’étude.
-        </p>
-
-        <h2>5. Issue de la phase de cadrage</h2>
-        <p>
-          À l’issue de la phase de cadrage, FixBiz pourra, selon les éléments communiqués et l’analyse réalisée, proposer un accompagnement, solliciter des informations complémentaires ou recommander l’intervention d’un professionnel tiers lorsque cela apparaît plus adapté à la situation du Client.
-        </p>
-        <p>
-          Cette phase peut également conduire à l’absence de proposition d’intervention complémentaire lorsque la situation ne nécessite pas ou ne permet pas un accompagnement adapté.
-        </p>
-        <p>
-          La présente lettre n’emporte aucun engagement réciproque quant à la conclusion d’une mission ultérieure. Toute intervention complémentaire fera, le cas échéant, l’objet d’un accord distinct entre les parties.
-        </p>
-
-        <h2>6. Limites de la phase de cadrage</h2>
-        <p>
-          La présente phase constitue une étape préliminaire d’analyse et de compréhension de la situation du Client.
-        </p>
-        <p>
-          Elle ne constitue ni une mission complète d’accompagnement, ni un mandat de représentation, ni une prestation réglementée de nature juridique, fiscale ou comptable, et n’emporte aucune garantie de résultat.
-        </p>
-        <p>
-          FixBiz intervient exclusivement dans le cadre d’une obligation de moyens.
-        </p>
-
-        <h2>7. Confidentialité</h2>
-        <p>
-          Les informations transmises par le Client sont strictement confidentielles. FixBiz s’engage à ne pas les communiquer à des tiers, sauf accord du Client ou nécessité liée à l’étude du dossier.
-        </p>
-        <p>
-          Cette obligation de confidentialité survivra à la fin des échanges entre les parties.
-        </p>
-
-        <h2>8. Conditions financières</h2>
-        <p>
-          La signature de la présente lettre de cadrage n’entraîne, à elle seule, aucune facturation ni engagement financier pour le Client.
-        </p>
-        <p>
-          La phase de cadrage a pour objet de permettre une première compréhension de la situation exposée et l’évaluation d’un éventuel accompagnement.
-        </p>
-        <p>
-          Si une analyse approfondie ou une intervention complémentaire apparaît pertinente, les modalités applicables feront, le cas échéant, l’objet d’une proposition distincte préalablement présentée au Client.
-        </p>
-        <p>
-          Aucune prestation complémentaire payante ne sera engagée sans accord exprès du Client.
-        </p>
-
-        <h2>9. Validation</h2>
-        <p>Avant validation de la présente lettre, le Client confirme expressément :</p>
-
-        <ul>
-          <li>Être habilité à engager la structure concernée ;</li>
-          <li>Souhaiter ouvrir une phase de cadrage initial avec FixBiz ;</li>
-          <li>Comprendre que cette phase constitue une étape préliminaire d’analyse et ne correspond pas à une mission complète d’accompagnement ;</li>
-          <li>Accepter de transmettre les informations ou documents nécessaires à la compréhension de sa situation ;</li>
-          <li>Reconnaître que les informations communiquées sont exactes à sa connaissance ;</li>
-          <li>Comprendre qu’aucune intervention complémentaire ne sera engagée sans accord distinct entre les parties ;</li>
-          <li>Avoir pris connaissance des conditions prévues par la présente lettre de cadrage.</li>
-        </ul>
-
-        <p><strong>Date de validation :</strong><br>${dateSignature}</p>
-        <p><strong>Adresse IP :</strong><br>${escapeHtml(ip)}</p>
-        <p><strong>Navigateur :</strong><br>${escapeHtml(userAgent)}</p>
-
-        <table style="width:100%;border-collapse:collapse;margin-top:24px;">
-          <tr>
-            <td style="width:50%;vertical-align:top;border:1px solid #dbe4ee;padding:14px;">
-              <strong>Pour FixBiz</strong><br>
-              Jean-Philippe Schneider<br>
-              Fondateur FixBiz<br><br>
-
-              Signature :<br><br>
-              <img
-                src="https://fixbiz.fr/signature-fixbiz.png"
-                style="max-width:220px;"
-              />
-            </td>
-
-            <td style="width:50%;vertical-align:top;border:1px solid #dbe4ee;padding:14px;">
-
-<strong>
-Pour ${escapeHtml(societe)}
-</strong><br><br>
-
-Nom du signataire :<br>
-
-<strong>
-${escapeHtml(signataire)}
-</strong><br><br>
-
-Fonction :<br>
-
-${escapeHtml(fonction)}<br><br>
-
-Agissant pour :<br>
-
-${escapeHtml(societe)}<br><br>
-
-Signature manuscrite du client :<br>
-
-Voir pièce jointe
-<strong>signature-client.png</strong>
-
-</td>
-          </tr>
-        </table>
-
-        <p style="font-size:12px;color:#6b7280;margin-top:24px;">
-          La présente lettre est validée électroniquement par le Client à la date indiquée ci-dessus.
-        </p>
+        <p>Bien cordialement,<br>FixBiz</p>
       </div>
     `;
 
@@ -287,8 +139,12 @@ Voir pièce jointe
             name: "FixBiz",
           },
           subject,
-          htmlContent: lettreHtml,
+          htmlContent,
           attachment: [
+            {
+              content: pdfBase64,
+              name: "lettre-cadrage-fixbiz.pdf",
+            },
             {
               content: signatureBase64,
               name: "signature-client.png",
