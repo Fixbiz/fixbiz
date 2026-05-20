@@ -114,19 +114,6 @@ const nextCounter =
 currentCounter + 1;
 
 await env.FIXBIZ_CLIENTS.put(
-  counterKey,
-  String(nextCounter)
-);
-
-const clientId =
-`FB-${year}-${String(
-  nextCounter
-).padStart(4,"0")}`;
-
-
-// ===== STOCKAGE FICHE CLIENT =====
-
-await env.FIXBIZ_CLIENTS.put(
 
 clientId,
 
@@ -136,9 +123,6 @@ id: clientId,
 
 createdAt:
 new Date().toISOString(),
-
-status:
-"cadrage_signe",
 
 societe,
 adresse,
@@ -158,12 +142,41 @@ situation,
 
 signataire,
 
-dateSignature
+dateSignature,
+
+workflow: {
+
+client:
+"prospect",
+
+cadrage:
+"signe",
+
+contrat:
+"a_creer",
+
+mission:
+"a_creer"
+
+},
+
+documents: {
+
+cadrage:
+"envoye",
+
+contrat:
+null,
+
+mission:
+null
+
+}
 
 })
 
 );
-    const htmlContent = `
+    const htmlContent = 
       <div style="font-family:Arial,sans-serif;color:#1f2937;line-height:1.6;">
         <p>Bonjour,</p>
 
