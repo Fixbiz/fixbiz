@@ -2,6 +2,7 @@ export const onRequest: PagesFunction<{
   BREVO_API_KEY: string;
   CONTACT_TO: string;
   CONTACT_FROM: string;
+  FIXBIZ_CLIENTS: KVNamespace;
 }> = async ({ request, env }) => {
   if (request.method !== "POST") {
     return new Response(JSON.stringify({ error: "Méthode non autorisée" }), {
@@ -96,7 +97,72 @@ const region =
       dateStyle: "long",
       timeStyle: "short",
     });
+// ===== CREATION ID DOSSIER =====
 
+const year =
+new Date().getFullYear();
+
+const counterKey =
+`counter_${year}`;
+
+const currentCounter =
+Number(
+  await env.FIXBIZ_CLIENTS.get(counterKey)
+) || 0;
+
+const nextCounter =
+currentCounter + 1;
+
+await env.FIXBIZ_CLIENTS.put(
+  counterKey,
+  String(nextCounter)
+);
+
+const clientId =
+`FB-${year}-${String(
+  nextCounter
+).padStart(4,"0")}`;
+
+
+// ===== STOCKAGE FICHE CLIENT =====
+
+await env.FIXBIZ_CLIENTS.put(
+
+clientId,
+
+JSON.stringify({
+
+id: clientId,
+
+createdAt:
+new Date().toISOString(),
+
+status:
+"cadrage_signe",
+
+societe,
+adresse,
+codePostal,
+ville,
+
+siren,
+
+representant,
+fonction,
+
+email,
+
+urgence,
+
+situation,
+
+signataire,
+
+dateSignature
+
+})
+
+);
     const htmlContent = `
       <div style="font-family:Arial,sans-serif;color:#1f2937;line-height:1.6;">
         <p>Bonjour,</p>
@@ -104,7 +170,8 @@ const region =
         <p>Veuillez trouver ci-joint la lettre de cadrage initial FixBiz validée électroniquement.</p>
 
         <p>
-          <strong>Société :</strong> ${escapeHtml(societe)}<br>
+        <strong>Référence dossier :</strong> ${escapeHtml(clientId)}<br>  
+        <strong>Société :</strong> ${escapeHtml(societe)}<br>
           <strong>Adresse :</strong> ${escapeHtml(adresse)}, ${escapeHtml(codePostal)} ${escapeHtml(ville)}<br>
           <strong>Représentant :</strong> ${escapeHtml(representant)}<br>
           <strong>Signataire :</strong> ${escapeHtml(signataire)}<br>
@@ -123,7 +190,7 @@ ${escapeHtml(region)}<br>
 ${escapeHtml(city)}
         </p>
 
-        <p>Le PDF signé est joint au présent email.</p>
+        <p>La Lettre de Cadrage signée est jointe au présent email.</p>
 
         <p>Bien cordialement,<br>FixBiz</p>
       </div>
