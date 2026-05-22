@@ -1,0 +1,83 @@
+---
+---
+
+<html>
+<head>
+  <title>Nouvelle lettre de mission</title>
+</head>
+
+<body>
+  <h1>Créer une lettre de mission</h1>
+
+  <form method="POST" action="/api/mission/create">
+    <label>Client</label><br>
+    <select name="clientId" id="clientSelect" required>
+      <option value="">Chargement des clients...</option>
+    </select>
+
+    <br><br>
+
+    <label>Pack FixBiz</label><br>
+    <select name="pack">
+      <option>Résilience</option>
+      <option>Performance</option>
+      <option>Soutien</option>
+      <option>Starter</option>
+      <option>Sur mesure</option>
+    </select>
+
+    <br><br>
+
+    <label>Objet mission</label><br>
+    <textarea name="objet"></textarea>
+
+    <br><br>
+
+    <label>Durée prévue</label><br>
+    <input name="duree" placeholder="Ex : 3 mois" />
+
+    <br><br>
+
+    <label>Honoraires</label><br>
+    <input name="honoraires" placeholder="Ex : 400 €/mois" />
+
+    <br><br>
+
+    <label>Conditions particulières</label><br>
+    <textarea name="conditions"></textarea>
+
+    <br><br>
+
+    <button>Créer lettre mission</button>
+  </form>
+
+  <script>
+    async function loadClients() {
+      const select = document.getElementById("clientSelect");
+
+      try {
+        const res = await fetch("/api/clients/list");
+        const data = await res.json();
+
+        select.innerHTML = "";
+
+        if (!data.clients || data.clients.length === 0) {
+          select.innerHTML = '<option value="">Aucun client trouvé</option>';
+          return;
+        }
+
+        for (const client of data.clients) {
+          const option = document.createElement("option");
+          option.value = client.id;
+          option.textContent = `${client.societe || "Client sans nom"} — ${client.id}`;
+          select.appendChild(option);
+        }
+      } catch {
+        select.innerHTML = '<option value="">Erreur chargement clients</option>';
+      }
+    }
+
+    loadClients();
+  </script>
+</body>
+</html>

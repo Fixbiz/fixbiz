@@ -1,0 +1,19 @@
+{
+  "name": "fixbiz",
+  "compatibility_date": "2026-05-20",
+  "compatibility_flags": [
+    "global_fetch_strictly_public"
+  ],
+  "pages_build_output_dir": "./dist",
+
+  "kv_namespaces": [
+    {
+      "binding": "CLIENTS",
+      "id": "947276c0c8a243318408cbe2134946a5"
+    },
+    {
+      "binding": "MISSIONS",
+      "id": "eacb32e638c6424f89989e9e5db6d2d1"
+    }
+  ]
+}

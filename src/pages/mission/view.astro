@@ -1,0 +1,195 @@
+<html>
+
+<head>
+
+<title>
+
+Lettre mission
+
+</title>
+
+<style>
+
+body{
+
+font-family:Arial;
+max-width:900px;
+margin:auto;
+padding:50px;
+line-height:1.8;
+color:#222;
+
+}
+
+.header{
+
+border-bottom:2px solid #ddd;
+padding-bottom:20px;
+margin-bottom:30px;
+
+}
+
+.box{
+
+border:1px solid #ddd;
+padding:25px;
+border-radius:10px;
+margin-top:20px;
+
+}
+
+button{
+
+padding:14px 24px;
+border:none;
+background:black;
+color:white;
+cursor:pointer;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="header">
+
+<h1>
+
+FIXBIZ
+
+</h1>
+
+<h2>
+
+Lettre de mission
+
+</h2>
+
+</div>
+
+<div id="mission">
+
+Chargement...
+
+</div>
+
+<script>
+
+const id =
+new URLSearchParams(
+window.location.search
+).get("id");
+
+Promise.all([
+
+fetch(`/api/mission/get?id=${id}`)
+.then(r=>r.json()),
+
+fetch(`/api/clients/list`)
+.then(r=>r.json())
+
+])
+
+.then(([mission,client])=>{
+
+document.getElementById(
+"mission"
+).innerHTML = `
+
+<div class="box">
+
+<h3>Client</h3>
+
+<p>
+
+<b>Société :</b>
+
+${client.societe}
+
+</p>
+
+<p>
+
+<b>Représentant :</b>
+
+${client.representant}
+
+</p>
+
+<p>
+
+<b>Email :</b>
+
+${client.email}
+
+</p>
+
+</div>
+
+
+<div class="box">
+
+<h3>Mission</h3>
+
+<p><b>Pack :</b>
+${mission.pack}</p>
+
+<p><b>Objet :</b>
+${mission.objet}</p>
+
+<p><b>Durée :</b>
+${mission.duree}</p>
+
+<p><b>Honoraires :</b>
+${mission.honoraires}</p>
+
+<p><b>Conditions :</b>
+${mission.conditions}</p>
+
+</div>
+
+
+<div class="box">
+
+<h3>Validation</h3>
+
+<label>
+
+<input type="checkbox">
+
+J’accepte le contrat cadre FixBiz
+
+</label>
+
+<br><br>
+
+<label>
+
+<input type="checkbox">
+
+Je valide la lettre de mission
+
+</label>
+
+<br><br><br>
+
+<button>
+
+Signer
+
+</button>
+
+</div>
+
+`;
+
+});
+
+</script>
+
+</body>
+
+</html>

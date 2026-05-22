@@ -176,38 +176,41 @@ null
 })
 
 );
-    const htmlContent = 
-      <div style="font-family:Arial,sans-serif;color:#1f2937;line-height:1.6;">
-        <p>Bonjour,</p>
+const htmlContent = `
+<div style="font-family:Arial,sans-serif;color:#1f2937;line-height:1.6;">
+  <p>Bonjour,</p>
 
-        <p>Veuillez trouver ci-joint la lettre de cadrage initial FixBiz validée électroniquement.</p>
+  <p>
+    Veuillez trouver ci-joint la lettre de cadrage initial FixBiz validée électroniquement.
+  </p>
 
-        <p>
-        <strong>Référence dossier :</strong> ${escapeHtml(clientId)}<br>  
-        <strong>Société :</strong> ${escapeHtml(societe)}<br>
-          <strong>Adresse :</strong> ${escapeHtml(adresse)}, ${escapeHtml(codePostal)} ${escapeHtml(ville)}<br>
-          <strong>Représentant :</strong> ${escapeHtml(representant)}<br>
-          <strong>Signataire :</strong> ${escapeHtml(signataire)}<br>
-          <strong>Fonction :</strong> ${escapeHtml(fonction)}<br>
-          <strong>Email :</strong> ${escapeHtml(email)}<br>
-          <strong>Date de validation :</strong> ${dateSignature}<br>
-          <strong>Adresse IP :</strong>
-${escapeHtml(ip)}<br>
-<strong>Navigateur :</strong>
-${escapeHtml(userAgent)}<br>
-<strong>Pays :</strong>
-${escapeHtml(country)}<br>
-<strong>Région :</strong>
-${escapeHtml(region)}<br>
-<strong>Ville estimée :</strong>
-${escapeHtml(city)}
-        </p>
+  <p>
+    <strong>Référence dossier :</strong> ${escapeHtml(clientId)}<br>
+    <strong>Société :</strong> ${escapeHtml(societe)}<br>
+    <strong>Adresse :</strong> ${escapeHtml(adresse)}, ${escapeHtml(codePostal)} ${escapeHtml(ville)}<br>
+    <strong>Représentant :</strong> ${escapeHtml(representant)}<br>
+    <strong>Signataire :</strong> ${escapeHtml(signataire)}<br>
+    <strong>Fonction :</strong> ${escapeHtml(fonction)}<br>
+    <strong>Email :</strong> ${escapeHtml(email)}<br>
+    <strong>Date de validation :</strong> ${dateSignature}<br>
 
-        <p>La Lettre de Cadrage signée est jointe au présent email.</p>
+    <strong>Adresse IP :</strong> ${escapeHtml(ip)}<br>
+    <strong>Navigateur :</strong> ${escapeHtml(userAgent)}<br>
+    <strong>Pays :</strong> ${escapeHtml(country)}<br>
+    <strong>Région :</strong> ${escapeHtml(region)}<br>
+    <strong>Ville estimée :</strong> ${escapeHtml(city)}
+  </p>
 
-        <p>Bien cordialement,<br>FixBiz</p>
-      </div>
-    `;
+  <p>
+    La lettre de cadrage signée est jointe au présent email.
+  </p>
+
+  <p>
+    Bien cordialement,<br>
+    FixBiz
+  </p>
+</div>
+`;
 
     const sendEmail = async (toEmail: string, toName: string, subject: string) => {
       return fetch("https://api.brevo.com/v3/smtp/email", {
