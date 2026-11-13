@@ -1,268 +1,352 @@
----
 
+---
 ---
 
 <section class="hero">
-  <div class="wrap hero__inner">
 
+  <div class="wrap hero__layout">
+
+    <!-- TEXTE PRINCIPAL -->
     <div class="hero__copy fade">
 
       <div class="eyebrow">
-        Redressement, rentabilité et accompagnement des dirigeants de TPE & PME
+        FIXBIZ — Redressement & Performance des TPE et PME
       </div>
 
       <h1>
-        Moins de stress,<br />
-        plus de BiZness pour votre entreprise.
+        <span class="hero__question">
+          Entreprise en difficulté ?
+        </span>
+
+        <span class="hero__title-line">
+          Je la redresse avec vous.
+        </span>
+
+        <span class="hero__highlight">
+          Vous payez sur les résultats.
+        </span>
       </h1>
 
       <p class="hero__lead">
-        FixBiz accompagne les dirigeants de TPE et PME confrontés à des difficultés
-        de trésorerie, une baisse de rentabilité, un risque de liquidation,
-        des problèmes d’organisation ou une phase de transition afin de redresser,
-        structurer et améliorer durablement l’entreprise.
+        Trésorerie sous pression, marges en baisse,
+        difficultés financières : j'interviens directement
+        à vos côtés, sur le terrain, pour remettre
+        votre entreprise sur pied.
       </p>
 
       <div class="hero__actions">
 
-        <a
-          class="btn btn--primary"
-          href="/prendre-rdv/"
-        >
-          Faire le point gratuitement →
+        <a class="btn btn--primary" href="/prendre-rdv/">
+          Parlons de votre situation →
         </a>
 
-        <a
-          class="btn btn--ghost"
-          href="/nos-services/"
-        >
+        <a class="btn btn--ghost" href="/nos-services/">
           Découvrir les services
         </a>
 
       </div>
 
-      <div class="hero__proof">
-
-        <div>
-          <strong>
-            Entreprise en difficulté
-          </strong>
-
-          <span>
-            trésorerie, organisation, pression
-          </span>
-        </div>
-
-        <div>
-          <strong>
-            Performance
-          </strong>
-
-          <span>
-            rentabilité, efficacité, pilotage
-          </span>
-        </div>
-
-        <div>
-          <strong>
-            Préparation à la vente
-          </strong>
-
-          <span>
-            valorisation et structuration
-          </span>
-        </div>
-
+      <div class="hero__signature">
+        <strong>Moins de stress, plus de BiZness.</strong>
+        <span>Premier échange gratuit et confidentiel.</span>
       </div>
 
     </div>
 
+    <!-- PHOTO -->
     <div class="hero__visual fade">
 
       <img
         src="/hero-fixbiz.png"
-        alt="Redressement d’entreprise, trésorerie, rentabilité et accompagnement des dirigeants de TPE et PME"
+        alt="FixBiz accompagne les dirigeants de TPE et PME sur le terrain"
+        fetchpriority="high"
       />
 
     </div>
 
   </div>
+
+  <!-- LES TROIS ENGAGEMENTS -->
+  <div class="wrap hero__proof">
+
+    <div class="hero__proof-card">
+
+      <div class="hero__proof-icon" aria-hidden="true">
+        ✓
+      </div>
+
+      <div>
+        <strong>Rémunéré sur les résultats</strong>
+        <p>
+          Pour les missions éligibles, aucun honoraire
+          avant l'atteinte des objectifs convenus.
+        </p>
+      </div>
+
+    </div>
+
+    <div class="hero__proof-card">
+
+      <div class="hero__proof-icon" aria-hidden="true">
+        ↗
+      </div>
+
+      <div>
+        <strong>Sur le terrain avec vous</strong>
+        <p>
+          De l'action, pas des rapports qui dorment
+          dans un tiroir.
+        </p>
+      </div>
+
+    </div>
+
+    <div class="hero__proof-card">
+
+      <div class="hero__proof-icon" aria-hidden="true">
+        ⚡
+      </div>
+
+      <div>
+        <strong>Agir sans attendre</strong>
+        <p>
+          Identifier les urgences, définir les priorités
+          et engager les premières actions.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+
 </section>
 
 <style>
 
+  /* SECTION PRINCIPALE */
+
   .hero {
-    padding: 92px 0 54px;
+    padding: 76px 0 65px;
 
     background:
       radial-gradient(circle at 15% 20%, #dff1fb 0, transparent 34%),
       linear-gradient(135deg, var(--blue-soft) 0%, #fff 62%);
   }
 
-  .hero__inner {
+  /* DEUX COLONNES */
+
+  .hero__layout {
     display: grid;
-
-    grid-template-columns: 1.08fr .82fr;
-
-    gap: 54px;
-
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+    gap: clamp(24px, 3.5vw, 55px);
     align-items: center;
   }
 
-  .hero__copy h1 {
-    margin: 1rem 0 .95rem;
-
-    font-size:
-      clamp(1.9rem, 3.5vw, 3.15rem);
-
-    line-height: 1.08;
-
-    letter-spacing: -.04em;
-
-    font-weight: 780;
-
-    color: #163047;
-
-    max-width: 620px;
+  .hero__copy {
+    min-width: 0;
   }
+
+  /* TITRE */
+
+  .hero__copy h1 {
+    margin: 1.15rem 0 1.25rem;
+    font-size: clamp(1.8rem, 2.65vw, 2.65rem);
+    line-height: 1.16;
+    letter-spacing: -.035em;
+    font-weight: 780;
+    color: #163047;
+  }
+
+  .hero__question,
+  .hero__title-line,
+  .hero__highlight {
+    display: block;
+  }
+
+  .hero__highlight {
+    color: var(--blue);
+    margin-top: .25em;
+  }
+
+  /* TEXTE DE PRESENTATION */
 
   .hero__lead {
-    max-width: 620px;
-
+    max-width: 650px;
     margin: 0;
-
     color: var(--muted);
-
-    font-size:
-      clamp(1rem, 1.25vw, 1.12rem);
-
-    line-height: 1.62;
-
-    text-align: justify;
+    font-size: clamp(1rem, 1.2vw, 1.12rem);
+    line-height: 1.65;
+    text-align: left;
   }
+
+  /* BOUTONS */
 
   .hero__actions {
     display: flex;
-
     flex-wrap: wrap;
-
     gap: .85rem;
-
-    margin-top: 1.55rem;
+    margin-top: 1.7rem;
   }
 
-  .hero__proof {
-    display: grid;
+  /* SLOGAN */
 
-    grid-template-columns: repeat(3, 1fr);
-
-    gap: 10px;
-
-    margin-top: 1.55rem;
-  }
-
-  .hero__proof div {
-    padding: 12px 13px;
-
+  .hero__signature {
+    display: flex;
+    flex-direction: column;
+    gap: .3rem;
+    margin-top: 1.45rem;
+    padding-left: 15px;
     border-left: 3px solid var(--blue);
-
-    background:
-      rgba(255, 255, 255, .62);
-
-    border-radius: 14px;
   }
 
-  .hero__proof strong {
-    display: block;
-
-    font-size: .88rem;
-
-    color: var(--ink);
-
-    line-height: 1.25;
+  .hero__signature strong {
+    font-size: 1.05rem;
+    color: #163047;
+    font-weight: 750;
   }
 
-  .hero__proof span {
-    display: block;
-
+  .hero__signature span {
+    font-size: .87rem;
     color: var(--muted);
-
-    font-size: .75rem;
-
-    line-height: 1.35;
-
-    margin-top: .25rem;
   }
+
+  /* PHOTO */
 
   .hero__visual {
     position: relative;
+    min-width: 0;
   }
 
   .hero__visual img {
+    display: block;
     width: 100%;
-
-    aspect-ratio: 4 / 3.15;
-
+    height: auto;
+    aspect-ratio: 4 / 3.5;
     object-fit: cover;
-
+    object-position: center;
     border-radius: 26px;
-
     box-shadow: var(--shadow);
   }
 
-  @media (max-width: 900px) {
+  /* TROIS ENGAGEMENTS */
 
-    .hero {
-      padding: 84px 0 46px;
-    }
+  .hero__proof {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+    margin-top: 45px;
+  }
 
-    .hero__inner {
-      grid-template-columns: 1fr;
+  .hero__proof-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    padding: 23px 21px;
+    background: rgba(255, 255, 255, .88);
+    border: 1px solid rgba(35, 120, 180, .12);
+    border-radius: 18px;
+    box-shadow: 0 8px 26px rgba(22, 48, 71, .045);
+  }
 
+  .hero__proof-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 39px;
+    width: 39px;
+    height: 39px;
+    border-radius: 12px;
+    background: #e6f3fb;
+    color: var(--blue);
+    font-size: 1.3rem;
+    font-weight: 750;
+  }
+
+  .hero__proof-card strong {
+    display: block;
+    color: #163047;
+    font-size: 1.02rem;
+    line-height: 1.35;
+    margin-bottom: .45rem;
+  }
+
+  .hero__proof-card p {
+    margin: 0;
+    color: var(--muted);
+    font-size: .9rem;
+    line-height: 1.55;
+  }
+
+  /* TABLETTES */
+
+  @media (max-width: 1050px) {
+
+    .hero__layout {
       gap: 28px;
     }
 
+    .hero__proof {
+      gap: 12px;
+    }
+
+    .hero__proof-card {
+      padding: 18px 15px;
+      gap: 11px;
+    }
+
+  }
+
+  /* MOBILES */
+
+  @media (max-width: 760px) {
+
+    .hero {
+      padding: 75px 0 45px;
+    }
+
+    .hero__layout {
+      grid-template-columns: 1fr;
+      gap: 30px;
+    }
+
     .hero__copy h1 {
-      font-size:
-        clamp(1.9rem, 8vw, 2.6rem);
-
-      line-height: 1.08;
-
-      max-width: 100%;
+      font-size: clamp(1.95rem, 7.5vw, 2.65rem);
+      line-height: 1.13;
     }
 
     .hero__lead {
       font-size: 1rem;
-
-      line-height: 1.55;
-
-      text-align: left;
+      line-height: 1.6;
     }
 
     .hero__actions {
       flex-direction: column;
-
-      margin-top: 1.35rem;
+      margin-top: 1.45rem;
     }
 
     .hero__actions .btn {
       width: 100%;
-
       justify-content: center;
-
       text-align: center;
     }
 
-    .hero__proof {
-      grid-template-columns: 1fr;
-
+    .hero__signature {
       margin-top: 1.3rem;
     }
 
     .hero__visual img {
-      border-radius: 22px;
-
       aspect-ratio: 4 / 3;
+      border-radius: 20px;
+    }
+
+    .hero__proof {
+      grid-template-columns: 1fr;
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    .hero__proof-card {
+      padding: 18px;
     }
 
   }
